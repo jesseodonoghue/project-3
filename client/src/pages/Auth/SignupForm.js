@@ -9,7 +9,7 @@ function SignupForm() {
   const [userObject, setUserObject] = useState({
     firstName: '',
     lastName: '',
-    username: '',
+    email: '',
     password: '',
     confirmPassword: '',
     redirectTo: null
@@ -29,7 +29,7 @@ function SignupForm() {
 		AUTH.signup({
       firstName: userObject.firstName,
       lastName: userObject.lastName,
-      username: userObject.username,
+      email: userObject.email,
       password: userObject.password
     }).then(response => {
       // console.log(response);
@@ -52,25 +52,25 @@ function SignupForm() {
         <Col size="md-6">
           <Card title="Register for React Reading List">
             <form style={{marginTop: 10}}>
-              <label htmlFor="username">First name: </label>
+              <label htmlFor="firstName">First name: </label>
               <Input
                 type="text"
                 name="firstName"
                 value={userObject.firstName}
                 onChange={handleChange}
               />
-              <label htmlFor="username">Last name: </label>
+              <label htmlFor="lastName">Last name: </label>
               <Input
                 type="text"
                 name="lastName"
                 value={userObject.lastName}
                 onChange={handleChange}
               />
-              <label htmlFor="username">Username: </label>
+              <label htmlFor="email">email: </label>
               <Input
                 type="text"
-                name="username"
-                value={userObject.username}
+                name="email"
+                value={userObject.email}
                 onChange={handleChange}
               />
               <label htmlFor="password">Password: </label>
