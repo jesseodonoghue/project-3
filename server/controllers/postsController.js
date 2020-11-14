@@ -3,7 +3,15 @@ const db = require("../models");
 
 // Defining methods for the postsController
 module.exports = {
-  findAll: function(req, res) {
+  findAllPosts: function (req, res) {
+    db.Post
+      .find({})
+      .then(dbPosts => {
+        res.json(dbPosts);
+      })
+      .catch(err => res.status(422).json(err));
+  },
+  findAllByUserId: function(req, res) {
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
@@ -16,7 +24,7 @@ module.exports = {
       return res.json({ posts: null });
     }
   },
-  findById: function(req, res) {
+  findByPostId: function(req, res) {
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
