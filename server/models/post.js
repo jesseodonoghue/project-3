@@ -11,7 +11,7 @@ const postSchema = new Schema({
     required: true
   },
   body: {
-    type: Text,
+    type: String,
     required: true
   },
   attachment: {
@@ -25,7 +25,7 @@ const postSchema = new Schema({
   },
   replies: [{
     body: {
-      type: Text
+      type: String
     },
     createdby: {
       type: Schema.Types.ObjectId

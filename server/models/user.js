@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 const strategy = require('../passport/localStrategy');
-const { schema } = require('./book');
+const { schema } = require('./post');
 mongoose.promise = Promise;
 
 // Define userSchema
@@ -30,7 +30,7 @@ const userSchema = new Schema({
 		unique: false
 	},
 	Bio: {
-		type: Text,
+		type: String,
 		unique: false
 	},
 	linkedin: {
@@ -45,85 +45,87 @@ const userSchema = new Schema({
 		type: Number,
 		unique: false
 	},
-	jsMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	jsStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	htmlMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	htmlStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	cssMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	cssStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	nodejsMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	nodejsStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	expressMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	expressStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	reactMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	reactStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	mongodbMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	mongodbStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	mysqlMentor: {
-		type: Boolean,
-		unique: false,
-		default: false
-	},
-	mysqlStudent: {
-		type: Boolean,
-		unique: false,
-		default: false
+	skills: {
+		jsMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		jsStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		htmlMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		htmlStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		cssMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		cssStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		nodejsMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		nodejsStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		expressMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		expressStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		reactMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		reactStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		mongodbMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		mongodbStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		mysqlMentor: {
+			type: Boolean,
+			unique: false,
+			default: false
+		},
+		mysqlStudent: {
+			type: Boolean,
+			unique: false,
+			default: false
+		}
 	},
 	savedPosts: [{
 		type: Schema.Types.ObjectId,
