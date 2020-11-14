@@ -29,12 +29,13 @@ function LoginForm({login}) {
   } else {
     return (
       <Container>
+        <h1>Landing page</h1>
         <Row>
           <Col size="md-3"></Col>
           <Col size="md-6">
             <Card title="Login to React Reading List">
               <form style={{marginTop: 10}}>
-                <label htmlFor="email">email: </label>
+                <label htmlFor="email">Email: </label>
                 <Input
                   type="text"
                   name="email"
