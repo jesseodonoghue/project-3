@@ -6,7 +6,7 @@ import { Input, FormBtn } from '../../components/Form';
 
 function LoginForm({login}) {
   const [userObject, setUserObject] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [redirectTo, setRedirectTo] = useState(null);
@@ -20,7 +20,7 @@ function LoginForm({login}) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		login(userObject.username, userObject.password);
+		login(userObject.email, userObject.password);
 		setRedirectTo('/');
 	};
 
@@ -34,11 +34,11 @@ function LoginForm({login}) {
           <Col size="md-6">
             <Card title="Login to React Reading List">
               <form style={{marginTop: 10}}>
-                <label htmlFor="username">Username: </label>
+                <label htmlFor="email">email: </label>
                 <Input
                   type="text"
-                  name="username"
-                  value={userObject.username}
+                  name="email"
+                  value={userObject.email}
                   onChange={handleChange}
                 />
                 <label htmlFor="password">Password: </label>
