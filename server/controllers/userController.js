@@ -31,6 +31,32 @@ module.exports = {
       });
     });
   },
+  updateProfile: (req, res) => {
+    const { image, bio, linkedin, github, jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentore, expressStudent, reactMentor, reactStudent, mongodbMentor, mongobdStudent, mysqlMentor, mysqlStudent } = req.body;
+    db.User.findOneAndUpdate({
+      _id: req.paramas.id
+    }, req.body
+    ).then(dbModel => res.json(dbModel)
+    ).catch(err => res.status(422).json(err));
+  },
+  findById: (req, res) => {
+    db.User
+    .findById(req.params.id)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+  findMentor: (req, res) => {
+    db.User
+    .find(req.query)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+  findStudent: (req, res) => {
+    db.User
+    .find(req.query)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
   logout: (req, res) => {
     if (req.user) {
       req.session.destroy();
