@@ -47,6 +47,7 @@ function SignupForm() {
   
   return (
     <Container>
+      <h1>Register page</h1>
       <Row>
         <Col size="md-3"></Col>
         <Col size="md-6">
@@ -66,7 +67,7 @@ function SignupForm() {
                 value={userObject.lastName}
                 onChange={handleChange}
               />
-              <label htmlFor="email">email: </label>
+              <label htmlFor="email">Email: </label>
               <Input
                 type="text"
                 name="email"

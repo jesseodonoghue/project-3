@@ -3,10 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
-import Books from './pages/Books';
-import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import ProfileDash from './pages/ProfileDash';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -60,9 +59,7 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={Books} />
-              <Route exact path="/books" component={Books} />
-              <Route exact path="/books/:id" component={Detail} />
+              <Route exact path="/" component={ProfileDash}/>
               <Route component={NoMatch} />
             </Switch>
           </div>
@@ -71,7 +68,6 @@ function App() {
       { !loggedIn && (
         <div className="auth-wrapper" style={{paddingTop:40}}>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
-          <Route exact path="/books" component={() => <LoginForm user={login} />} />
           <Route exact path="/signup" component={SignupForm} />
         </div>
       )}
