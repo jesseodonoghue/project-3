@@ -18,7 +18,7 @@ const navBar = (props) => {
     // we would put the nav module here and delete this stuff, then put in our own Link pages (Connections, Posts, Dashboard, Settings(this one has sub links))
     <Router>
 
-      <Navbar className="color-nav" collapseOnSelect expand="lg" variant="dark">
+      <Navbar className="color-nav" id="nav-grad" collapseOnSelect expand="lg" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
