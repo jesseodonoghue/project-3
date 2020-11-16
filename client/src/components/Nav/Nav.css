@@ -5,3 +5,8 @@
 .color-nav {
   background-color: rgb(136, 96, 208); 
 }
+
+#nav-grad {
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to left, #8860D0, #5680E9);
+}
