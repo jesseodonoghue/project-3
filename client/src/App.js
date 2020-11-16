@@ -6,6 +6,8 @@ import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 import ProfileDash from './pages/ProfileDash';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -60,13 +62,13 @@ function App() {
           <div className="main-view">
             <Switch>
               <Route exact path="/" component={ProfileDash}/>
-              <Route component={NoMatch} />
+              {/* <Route component={NoMatch} /> */}
             </Switch>
           </div>
         </div>
       )}
       { !loggedIn && (
-        <div className="auth-wrapper" style={{paddingTop:40}}>
+        <div>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/signup" component={SignupForm} />
         </div>

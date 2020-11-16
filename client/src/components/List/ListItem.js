@@ -1,7 +1,18 @@
 import React from "react";
+import './List.css';
 
-export const ListItem = props => (
+export default function ListItem (props){
+  return (
   <li className="list-group-item">
-    {props.children}
+    <div className="postTitle">
+    Post Title{props.children}
+    </div>
+    <div className="nameandImgContainer">
+      <div className="poster">
+      Poster's name{props.children}
+      </div>
+      <div className="posterImg"/>
+    </div>
   </li>
-);
+  );
+}
