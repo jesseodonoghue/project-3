@@ -51,7 +51,7 @@ function SignupForm() {
       <Row>
         <Col size="md-3"></Col>
         <Col size="md-6">
-          <Card title="Register for React Reading List">
+          <Card title="Create an Account">
             <form style={{marginTop: 10}}>
               <label htmlFor="firstName">First name: </label>
               <Input

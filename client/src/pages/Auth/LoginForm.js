@@ -3,6 +3,9 @@ import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
+import './login.css';
+import Logo from '../../assets/logo.svg';
+
 
 function LoginForm({login}) {
   const [userObject, setUserObject] = useState({
@@ -28,35 +31,47 @@ function LoginForm({login}) {
     return <Redirect to={{ pathname: redirectTo }} />
   } else {
     return (
-      <Container>
-        <h1>Landing page</h1>
-        <Row>
-          <Col size="md-3"></Col>
-          <Col size="md-6">
-            <Card title="Login to React Reading List">
-              <form style={{marginTop: 10}}>
-                <label htmlFor="email">Email: </label>
-                <Input
-                  type="text"
-                  name="email"
-                  value={userObject.email}
-                  onChange={handleChange}
-                />
-                <label htmlFor="password">Password: </label>
-                <Input
-                  type="password"
-                  name="password"
-                  value={userObject.password}
-                  onChange={handleChange}
-                />
-                <Link to="/signup">Register</Link>
-                <FormBtn onClick={handleSubmit}>Login</FormBtn>
-              </form>
-            </Card>
-          </Col>
-          <Col size="md-3"></Col>
-        </Row>
-      </Container>
+      <div className="signup_bg">
+        <Container>
+          <Row>
+            <Col size="md-3">
+              <img src={Logo} style={{ width: "100%" }}/>
+              <p className="mt-3">
+              Need some help coding? Whether you’re a fledging developer or have years of practice, DBUGME is here to help! Match with a mentor, participate in posts and get coding!
+              </p>
+            </Col>
+            <Col size="md-4"></Col>
+            <Col size="md-5">
+              <Card>
+                <form>
+                  <label htmlFor="email">Email: </label>
+                  <Input
+                    type="text"
+                    name="email"
+                    value={userObject.email}
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="password">Password: </label>
+                  <Input
+                    type="password"
+                    name="password"
+                    value={userObject.password}
+                    onChange={handleChange}
+                  />
+                  <FormBtn onClick={handleSubmit}>Login</FormBtn>
+                </form>
+              </Card>
+              <Row>
+                <div className="center">
+                  <p className="mt-5" style={{ color: "white" }}>
+                    Don't have an account? <strong><Link to="/signup" style={{ color: "white" }}>Sign Up</Link></strong>
+                  </p>
+                </div>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     )
   }
 }

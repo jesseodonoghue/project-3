@@ -1,0 +1,77 @@
+@import '../../components/List/List.css';
+
+.box {
+    display: flex;
+    width: 100%;
+    height: 100vh ;
+    background-color: #F9FAFB;
+    margin: 0px !important;
+    padding: 0px;
+    flex-direction: column;
+}
+
+.profileCard {
+    max-width: 430px;
+    max-height: 671px;
+    background-color: white;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: #E9E5DF;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.profileImg {
+    width: 200px;
+    height: 200px;
+    background: red;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profileContent {
+    max-width: fit-content;
+}
+
+.listContainerMain {
+    background:  #F9FAFB;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.listContainerInner {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    height: 350px;
+    width: 58%;
+    margin-top: 3em;
+    margin-right: 3em;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #E9E5DF;
+    border-radius: 20px;
+}
+
+.createPostBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    background-color: #5680E9;
+    height: 40px;
+    margin-top: auto;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
