@@ -1,0 +1,7 @@
+@import '../List/List.css';
+
+#userList {
+    border-color: white !important;
+    background-color: transparent !important;
+    color: white !important;
+}
