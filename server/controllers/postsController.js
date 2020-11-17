@@ -12,6 +12,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllByUserId: function(req, res) {
+    
+    db.Post
+    // .find({ createdby: req.params.id })
+    // .then(post => {
+    //   res.json(post);
+    // })
+    // .catch(err => res.status(422).json(err));
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
@@ -25,6 +32,13 @@ module.exports = {
     }
   },
   findByPostId: function(req, res) {
+
+    // db.Post
+    // .find({ _id: req.params.id })
+    // .then(post => {
+    //   res.json(post);
+    // })
+    // .catch(err => res.status(422).json(err));
     if (req.user) {
       db.User
         .find({ _id: req.user._id })
@@ -52,7 +66,7 @@ module.exports = {
   },
   update: function(req, res) {
     db.Post
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
       .then(dbModel => {
         console.log(dbModel);
         res.json(dbModel);

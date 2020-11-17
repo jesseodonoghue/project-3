@@ -13,6 +13,7 @@ router
   .put(postsController.update)
   // .delete(postsController.remove);
 
+// Matches with "/api/posts/userPosts/:id"
 router
   .route("/userPosts/:id")
   .get(postsController.findAllByUserId)
