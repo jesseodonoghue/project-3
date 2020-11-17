@@ -30,7 +30,7 @@
 .profileImg {
     width: 200px;
     height: 200px;
-    background: red;
+    background: #2B4584;
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -74,4 +74,24 @@
     margin-top: auto;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+
+#createPostBtn {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+}
+
+.modal-header {
+    background-image: linear-gradient(to left, #67C7F6, #3B69DA) !important;
+    color: white !important;
+}
+
+.modal-header .close {
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.modal-footer {
+    justify-content: space-between !important;
 }
