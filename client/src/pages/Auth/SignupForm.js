@@ -4,6 +4,7 @@ import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
+import './login.css';
 
 function SignupForm() {
   const [userObject, setUserObject] = useState({
@@ -46,7 +47,7 @@ function SignupForm() {
   }
   
   return (
-    <Container>
+    <Container className="register"> 
       <h1>Register page</h1>
       <Row>
         <Col size="md-3"></Col>
