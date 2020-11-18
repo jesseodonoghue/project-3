@@ -3,7 +3,9 @@
     height: 100vh;
     width: 100%;
     font-family: 'Raleway', sans-serif;
+    
 }
+
 .yourPostsContainer {
     display: flex;
     height: 100vh;
@@ -11,7 +13,6 @@
     background-image: url('../../assets/postspagebg.svg');
     background-size: cover;
     padding: 3em !important;
-
 
 }
 
@@ -29,4 +30,8 @@
 .userarrowbtn {
     background-color: transparent;
     border-style: none;
+}
+
+.label {
+   font-color:white !important;
 }

@@ -47,7 +47,7 @@ function SignupForm() {
   }
   
   return (
-    <Container className="register"> 
+    <Container> 
       <h1>Register page</h1>
       <Row>
         <Col size="md-3"></Col>
