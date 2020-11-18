@@ -17,8 +17,7 @@ export default function Posts() {
                 </Form>
                 <h3 style={{ marginTop: "1em"}}>Your Posts</h3>
                 <div className="listItems overflow-auto">
-                    <UserList>
-                    </UserList>
+                    <UserList />
                     <UserList />
                     <UserList />
                     <UserList />
