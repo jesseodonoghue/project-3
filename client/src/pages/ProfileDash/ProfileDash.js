@@ -99,7 +99,7 @@ export default function ProfileDash() {
                             <ListItem/>
                             <ListItem/>
                         </div>
-                        <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create Post +</Button>
+                        <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
                         <MyVerticallyCenteredModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
