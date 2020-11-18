@@ -2,17 +2,31 @@
     display: flex;
     height: 100vh;
     width: 100%;
+    font-family: 'Raleway', sans-serif;
 }
 .yourPostsContainer {
     display: flex;
-    background-color: grey;
     height: 100vh;
     width: 100%;
+    background-image: url('../../assets/postspagebg.svg');
+    background-size: cover;
+    padding: 3em !important;
+
+
 }
+
 .featuredContainer {
     display: flex;
     flex-direction: column;
     background-color:white;
     height: 100vh;
     width: 100%;
+    padding-top: 3em;
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+}
+
+.userarrowbtn {
+    background-color: transparent;
+    border-style: none;
 }
