@@ -11,12 +11,17 @@ export default function Posts() {
             <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Search</Form.Label>
+                        <Form.Label style={{ color: "white" }}>Search</Form.Label>
                         <Form.Control type="search" placeholder="Enter search" />
                     </Form.Group>
                 </Form>
-                <h3 style={{ marginTop: "1em"}}>Your Posts</h3>
+                <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
                 <div className="listItems overflow-auto">
+                    <UserList />
+                    <UserList />
+                    <UserList />
+                    <UserList />
+                    <UserList />
                     <UserList />
                     <UserList />
                     <UserList />
@@ -32,8 +37,13 @@ export default function Posts() {
                         <Form.Control type="search" placeholder="Enter search" />
                     </Form.Group>
                 </Form>
-                <h3 style={{ marginTop: "1em"}}>Featured Posts</h3>
+                <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
                 <div className="listItems overflow-auto">
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
                     <FeaturedList/>
                     <FeaturedList/>
                     <FeaturedList/>
