@@ -5,3 +5,11 @@
     background-color: transparent !important;
     color: white !important;
 }
+
+.userListBtn {
+    border-style: none !important;
+    background-color: transparent !important;
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}

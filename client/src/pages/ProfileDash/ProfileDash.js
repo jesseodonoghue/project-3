@@ -8,6 +8,7 @@ import bgImg from '../../assets/profilebg.svg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
+import ProfilePic from '../../assets/defaultprofilepic.svg'
 import API from "../../utils/API";
 
 
@@ -16,58 +17,58 @@ export default function ProfileDash() {
 
     // User information is not being pulled :(
     const [user, setUser] = useState("");
-    let skillsArr = [];
+    // let skillsArr = [];
 
-    useEffect(() => {
-        loadUser();
-    }, []);
+    // useEffect(() => {
+    //     loadUser();
+    // }, []);
 
 
-    function loadUser() {
-        API.getUser()
-            .then(res => {
-                setUser(res.user);
-                console.log(res.user);
-            })
-            .then(() => {
-                skillsArr = getSkills();
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
+    // function loadUser() {
+    //     API.getUser()
+    //         .then(res => {
+    //             setUser(res.user);
+    //             console.log(res.user);
+    //         })
+    //         .then(() => {
+    //             skillsArr = getSkills();
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }
 
-    function getSkills() {
-        const tempArr = [];
+    // function getSkills() {
+    //     const tempArr = [];
 
-        if(user.jsMentor === true) {
-            tempArr.push("JavaScript");
-        }
-        if(user.htmlMentor === true) {
-            tempArr.push("HTML");
-        } 
-        if(user.cssMentor === true) {
-            tempArr.push("CSS");
-        }
-        if(user.nodejsMentor === true) {
-            tempArr.push("Node.js");
-        }
-        if(user.expressMentor === true) {
-            tempArr.push("Express");
-        }
-        if(user.reactMentor === true) {
-            tempArr.push("React");
-        }
-        if(user.mongodbMentor === true) {
-            tempArr.push("MongoDB");
-        }
-        if(user.mysqlMentor === true) {
-            tempArr.push("mySQL");
-        }
+    //     if(user.jsMentor === true) {
+    //         tempArr.push("JavaScript");
+    //     }
+    //     if(user.htmlMentor === true) {
+    //         tempArr.push("HTML");
+    //     } 
+    //     if(user.cssMentor === true) {
+    //         tempArr.push("CSS");
+    //     }
+    //     if(user.nodejsMentor === true) {
+    //         tempArr.push("Node.js");
+    //     }
+    //     if(user.expressMentor === true) {
+    //         tempArr.push("Express");
+    //     }
+    //     if(user.reactMentor === true) {
+    //         tempArr.push("React");
+    //     }
+    //     if(user.mongodbMentor === true) {
+    //         tempArr.push("MongoDB");
+    //     }
+    //     if(user.mysqlMentor === true) {
+    //         tempArr.push("mySQL");
+    //     }
 
-        console.log(tempArr);
-        return tempArr;
-    }
+    //     console.log(tempArr);
+    //     return tempArr;
+    // }
 
    
 
@@ -137,7 +138,7 @@ export default function ProfileDash() {
                             <p>GitHub: {user.github}</p>
                             <hr/>
                             <h3>Skills</h3>
-                            {skillsArr.length ? (
+                            {/* {skillsArr.length ? (
                                 <ul>
                                     {skillsArr.map(skill => (
                                         <li>{skill}</li>
@@ -145,7 +146,7 @@ export default function ProfileDash() {
                                 </ul>
                             ) : (
                             <p>No skills added yet</p>
-                            )}
+                            )} */}
                         </div>
                     </div>
                 </Jumbotron>
