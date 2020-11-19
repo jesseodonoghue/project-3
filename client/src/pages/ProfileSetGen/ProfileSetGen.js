@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../../components/Sidebar';
-import Profile from '../../pages/ProfileSetGen';
+import ProfileSetNet from '../../pages/ProfileSetNet';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Container, Row, Col } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
@@ -12,26 +12,22 @@ export default function ProfileSetGen() {
        
         <Router>
             <div className="container-flex">
-                <Sidebar width={450} height={'100vh'}>
-                <Container>
-                    <div className="md-3">
-                        <h1 className="setting-heading">Settings</h1>
-                    </div>
-                    <div>
-                        <Row>
-                            <h4>GENERAL</h4>
-                        </Row>
-                        <Row>
-                            <h6>Personal Info</h6>
-                        </Row> 
-                                
-                        <Row>
-                            <h4>NETWORKING</h4>
-                        </Row>
-                        <Row>       
-                            <h6>Skills</h6>
-                        </Row>
-                    </div>
+                <Sidebar width={450} height={'170vh'}>
+                    <Container>
+                        <Col size="md-3">
+                            <h4 style={{ color: 'white' }}>SETTINGS</h4>
+                        </Col>
+                        <Col  className="text-right" size="md-4" style={{ marginTop: "3em", color: 'white'}}>
+                            {/* using short syntax for React fragment with <></> */}
+                            <> <h5>GENERAL</h5>
+                                <hr/>
+                                <h6>Personal Info</h6>
+                            </>
+                            <><h5 style={{ marginTop: "1em"}}>NETWORKING</h5>
+                                <hr/>
+                                <h6>Skills Page</h6>
+                            </>
+                         </Col>
                     </Container>
                 </Sidebar>
                 <div className='infoContainer col-md-9'>
@@ -43,49 +39,3 @@ export default function ProfileSetGen() {
         
     )
 }
-
-
-// import React from 'react'
-// import Sidebar from '../../components/Sidebar';
-// import Profile from '../../pages/ProfileSetGen';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import {Container, Row, Col } from 'react-bootstrap';
-// import ProfileCard from '../../components/ProfileCard';
-
-
-// export default function ProfileSetGen() {
-//     return (
-       
-//         <Router>
-            
-//             <Sidebar width={450} height={'100vh'}>
-//             <Container>
-//                 <Col className="md-3">
-//                 <h1 className="setting-heading">Settings</h1>
-//                 </Col>
-//                 <Col className="md-5">
-//                     <Row>
-//                         <h4>GENERAL</h4>
-//                     </Row>
-//                     <Row>
-//                         <h6>Personal Info</h6>
-//                     </Row> 
-                            
-//                     <Row>
-//                         <h4>NETWORKING</h4>
-//                     </Row>
-//                     <Row>       
-//                         <h6>Skills</h6>
-//                     </Row>
-//                  </Col>
-//                 </Container>
-//             </Sidebar>
-//             <Container>
-//                 <ProfileCard/>
-//             </Container>
-            
-//         </Router>
-            
-        
-//     )
-// }

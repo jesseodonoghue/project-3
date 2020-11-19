@@ -4,5 +4,5 @@
   
   #color-grad {
     background-color: red; /* For browsers that do not support gradients */
-    background-image: linear-gradient(to left, #8860D0, #5680E9);
+    background-image: linear-gradient(#5680e9, #8860D0);
   }
