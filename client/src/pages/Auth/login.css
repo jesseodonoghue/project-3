@@ -5,10 +5,24 @@
     background-size: cover;
     display: flex;
     align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
 }
 
 .center {
     display: flex;
     justify-content: center;
     width: 100%;
+    font-weight: 400;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #5680E9;
 }

@@ -6,6 +6,13 @@ import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 import ProfileDash from './pages/ProfileDash';
+import Connections from './pages/Matching';
+import Posts from './pages/Posts';
+import Profile from './pages/ProfileSetGen';
+import PostSelect from './pages/PostSelect';
+
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -61,8 +68,13 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={ProfileDash}/>
+              <Route exact path="/" component={() => <ProfileDash/>}/>
               {/* <Route component={NoMatch} /> */}
+              {/* <Route exact path="/matching" component={Connections} />
+              <Route exact path="/posts" component={Posts} />
+              <Route exact path="/dashboard" component={ProfileDash} />
+              <Route exact path="/profilesetgen" component={Profile} />
+              <Route exact path="/postselect" component={PostSelect} /> */}
             </Switch>
           </div>
         </div>
@@ -71,6 +83,13 @@ function App() {
         <div>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/dashboard" component={() => <LoginForm user={login} />} />
+          <Route exact path="/postselect" component={() => <LoginForm user={login} />} />
+          <Route exact path="/posts" component={() => <LoginForm user={login} />} />
+          <Route exact path="/dashboard" component={() => <LoginForm user={login} />} />
+          <Route exact path="/matching" component={() => <LoginForm user={login} />} />
+          <Route exact path="/profilesetgen" component={() => <LoginForm user={login} />} />
+          <Route exact path="/profilesetnet" component={() => <LoginForm user={login} />} />
         </div>
       )}
     </div>

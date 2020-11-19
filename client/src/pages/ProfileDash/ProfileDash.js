@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './profileDash.css';
 import ListItem from '../../components/List/ListItem.js';
@@ -8,11 +8,69 @@ import bgImg from '../../assets/profilebg.svg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
+import ProfilePic from '../../assets/defaultprofilepic.svg'
+import API from "../../utils/API";
+
 
 export default function ProfileDash() {
     //get routes and stuff here
 
+    // User information is not being pulled :(
+    const [user, setUser] = useState("");
+    // let skillsArr = [];
 
+    // useEffect(() => {
+    //     loadUser();
+    // }, []);
+
+
+    // function loadUser() {
+    //     API.getUser()
+    //         .then(res => {
+    //             setUser(res.user);
+    //             console.log(res.user);
+    //         })
+    //         .then(() => {
+    //             skillsArr = getSkills();
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }
+
+    // function getSkills() {
+    //     const tempArr = [];
+
+    //     if(user.jsMentor === true) {
+    //         tempArr.push("JavaScript");
+    //     }
+    //     if(user.htmlMentor === true) {
+    //         tempArr.push("HTML");
+    //     } 
+    //     if(user.cssMentor === true) {
+    //         tempArr.push("CSS");
+    //     }
+    //     if(user.nodejsMentor === true) {
+    //         tempArr.push("Node.js");
+    //     }
+    //     if(user.expressMentor === true) {
+    //         tempArr.push("Express");
+    //     }
+    //     if(user.reactMentor === true) {
+    //         tempArr.push("React");
+    //     }
+    //     if(user.mongodbMentor === true) {
+    //         tempArr.push("MongoDB");
+    //     }
+    //     if(user.mysqlMentor === true) {
+    //         tempArr.push("mySQL");
+    //     }
+
+    //     console.log(tempArr);
+    //     return tempArr;
+    // }
+
+   
 
     function MyVerticallyCenteredModal(props) {
         return (
@@ -74,17 +132,21 @@ export default function ProfileDash() {
                     <div className="profileCard"style={{ zIndex: "1" }}>
                         <div className="profileContent">
                             <div className="profileImg"></div>
-                            <h3>John Doe</h3>
-                            <p>Bio about person</p>
-                            <p>LinkedIn:</p>
-                            <p>GitHub:</p>
+                            <h3>{user.firstName} {user.lastName}</h3>
+                            <p>{user.bio}</p>
+                            <p>LinkedIn: {user.linkedin}</p>
+                            <p>GitHub: {user.github}</p>
                             <hr/>
                             <h3>Skills</h3>
-                            <ul>
-                                <li>Javascript</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul>
+                            {/* {skillsArr.length ? (
+                                <ul>
+                                    {skillsArr.map(skill => (
+                                        <li>{skill}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                            <p>No skills added yet</p>
+                            )} */}
                         </div>
                     </div>
                 </Jumbotron>
@@ -99,7 +161,7 @@ export default function ProfileDash() {
                             <ListItem/>
                             <ListItem/>
                         </div>
-                        <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create Post +</Button>
+                        <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
                         <MyVerticallyCenteredModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
