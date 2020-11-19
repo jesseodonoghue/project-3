@@ -12,8 +12,8 @@ function ProfileCard() {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
-    confirmPassword: '',
+    github: '',
+    linkedin: '',
     // redirectTo: null
   });
 //   const [redirectTo, setRedirectTo] = useState(null);
