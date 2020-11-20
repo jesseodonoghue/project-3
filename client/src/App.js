@@ -70,13 +70,13 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={() => <ProfileDash/>}/>
-              {/* <Route component={NoMatch} /> */}
-              {/* <Route exact path="/matching" component={Connections} />
-              <Route exact path="/posts" component={Posts} />
-              <Route exact path="/dashboard" component={ProfileDash} />
-              <Route exact path="/profilesetgen" component={Profile} />
-              <Route exact path="/postselect" component={PostSelect} /> */}
+              <Route exact path="/" component={ProfileDash}/>
+              {/* <Route exact path="/matching" component={() => <Connections/>} />
+              <Route exact path="/posts" component={() => <Posts />} />
+              <Route exact path="/dashboard" component={() => <ProfileDash />} />
+              <Route exact path="/profilesetgen" component={() => <Profile />} />
+              <Route exact path="/postselect" component={() => <PostSelect />} />
+              <Route component={NoMatch} /> */}
             </Switch>
           </div>
         </div>
