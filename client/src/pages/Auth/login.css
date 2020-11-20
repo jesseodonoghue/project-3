@@ -1,4 +1,4 @@
-.signup_bg {
+.login_bg {
     background-image: url('../../assets/bg.svg');
     width: 100%;
     height: 100vh;
@@ -7,6 +7,7 @@
     align-items: center;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
+    justify-content: center;
 }
 
 .center {
@@ -26,3 +27,49 @@ label {
     font-weight: bold;
     color: #5680E9;
 }
+
+.signupBody {
+    background-image: url('../../assets/signupbg.svg') !important;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh !important;
+    width: 100% !important;
+}
+
+.signupCard {
+    border-radius: 20px !important;
+    background-color: white !important;
+    padding: 2em;
+    width: 600px;
+    max-width: 600px;
+    max-height: 770px;
+}
+    
+.purpletxt {
+    color: #8860D0;
+}
+
+.whitetxt {
+    color: white;
+}
+
+.loginCard {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .login_bg {
+        background-image: url('../../assets/loginbgmobile.svg');
+        background-position: 50% 400% !important;
+    }
+
+    .loginCard {
+        margin-top: 5em;
+    }
+  }

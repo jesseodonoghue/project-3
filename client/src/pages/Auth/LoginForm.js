@@ -31,27 +31,27 @@ function LoginForm({login}) {
     return <Redirect to={{ pathname: redirectTo }} />
   } else {
     return (
-      <div className="signup_bg">
+      <div className="login_bg">
         <Container>
-          <Row>
-            <Col size="md-3">
+          <div className="row">
+            <div className="col-md-4">
               <img src={Logo} style={{ width: "100%" }}/>
-              <p className="mt-3">
+              <p className="mt-3" style={{ fontSize: "16px"}}>
               Need some help coding? Whether you’re a fledging developer or have years of practice, DBUGME is here to help! Match with a mentor, participate in posts and get coding!
               </p>
-            </Col>
-            <Col size="md-4"></Col>
-            <Col size="md-5">
-              <Card>
-                <form>
-                  <label htmlFor="email">Email: </label>
+            </div>
+            <div className="col-md-3"></div>
+            <div className="col-md-5">
+              <div className="loginCard">
+                <form style={{ width: "100%"}}>
+                  <label className="whitetxt" htmlFor="email">Email: </label>
                   <Input
                     type="text"
                     name="email"
                     value={userObject.email}
                     onChange={handleChange}
                   />
-                  <label htmlFor="password">Password: </label>
+                  <label className="whitetxt" htmlFor="password">Password: </label>
                   <Input
                     type="password"
                     name="password"
@@ -60,16 +60,16 @@ function LoginForm({login}) {
                   />
                   <FormBtn onClick={handleSubmit}>Login</FormBtn>
                 </form>
-              </Card>
-              <Row>
+              </div>
+              <div className="row">
                 <div className="center">
                   <p className="mt-5" style={{ color: "white" }}>
                     Don't have an account? <strong><Link to="/signup" style={{ color: "white" }}>Sign Up</Link></strong>
                   </p>
                 </div>
-              </Row>
-            </Col>
-          </Row>
+              </div>
+            </div>
+          </div>
         </Container>
       </div>
     )
