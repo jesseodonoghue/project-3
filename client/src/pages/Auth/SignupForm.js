@@ -5,6 +5,7 @@ import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
 import './login.css';
+import { ArrowLeftCircle } from 'react-bootstrap-icons';
 
 function SignupForm() {
   const [userObject, setUserObject] = useState({
@@ -47,56 +48,50 @@ function SignupForm() {
   }
   
   return (
-    <Container> 
-      <h1>Register page</h1>
-      <Row>
-        <Col size="md-3"></Col>
-        <Col size="md-6">
-          <Card title="Create an Account">
-            <form style={{marginTop: 10}}>
-              <label htmlFor="firstName">First name: </label>
-              <Input
-                type="text"
-                name="firstName"
-                value={userObject.firstName}
-                onChange={handleChange}
-              />
-              <label htmlFor="lastName">Last name: </label>
-              <Input
-                type="text"
-                name="lastName"
-                value={userObject.lastName}
-                onChange={handleChange}
-              />
-              <label htmlFor="email">Email: </label>
-              <Input
-                type="text"
-                name="email"
-                value={userObject.email}
-                onChange={handleChange}
-              />
-              <label htmlFor="password">Password: </label>
-              <Input
-                type="password"
-                name="password"
-                value={userObject.password}
-                onChange={handleChange}
-              />
-              <label htmlFor="confirmPassword">Confirm Password: </label>
-              <Input
-                type="password"
-                name="confirmPassword"
-                value={userObject.confirmPassword}
-                onChange={handleChange}
-              />
-              <Link to="/">Login</Link>
-              <FormBtn onClick={handleSubmit}>Register</FormBtn>
-            </form>
-          </Card>
-        </Col>
-        <Col size="md-3"></Col>
-      </Row>
-    </Container>
+    <div className="signupBody">
+      <div className="signupCard">
+              <h1 style={{color: "#5680E9", textAlign: "center"}}>Create an Account</h1>
+              <form style={{marginTop: 10}}>
+                <label className="purpletxt" htmlFor="firstName">First name: </label>
+                <Input
+                  type="text"
+                  name="firstName"
+                  value={userObject.firstName}
+                  onChange={handleChange}
+                />
+                <label className="purpletxt" htmlFor="lastName">Last name: </label>
+                <Input
+                  type="text"
+                  name="lastName"
+                  value={userObject.lastName}
+                  onChange={handleChange}
+                />
+                <label className="purpletxt" htmlFor="email">Email: </label>
+                <Input
+                  type="text"
+                  name="email"
+                  value={userObject.email}
+                  onChange={handleChange}
+                />
+                <label className="purpletxt" htmlFor="password">Password: </label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={userObject.password}
+                  onChange={handleChange}
+                />
+                <label className="purpletxt" htmlFor="confirmPassword">Confirm Password: </label>
+                <Input
+                  type="password"
+                  name="confirmPassword"
+                  value={userObject.confirmPassword}
+                  onChange={handleChange}
+                />
+                <Link to="/"><ArrowLeftCircle style={{ width: "30px", height: "30px"}}/></Link>
+                <FormBtn onClick={handleSubmit}>Register</FormBtn>
+              </form>
+      </div>
+    </div>
   )
 }
 
