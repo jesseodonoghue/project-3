@@ -6,6 +6,7 @@ import { Input, FormBtn } from '../../components/Form';
 import ProfileSetGen from '../../pages/ProfileSetGen';
 import './ProfileSetNet.css';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBFormInline, MDBForm } from "mdbreact";
+import { AlignBottom, ArrowLeftCircle } from 'react-bootstrap-icons';
 
 
 export default function ProfileSetNet() {
@@ -31,6 +32,9 @@ export default function ProfileSetNet() {
                                 <Link className='nav-link' to='/profilesetnet'>
                                     <h6 style={{ color: 'white' }}>Skills Page</h6>
                                 </Link>
+                                <div>
+                                    <ArrowLeftCircle className="arrowsize" />
+                                </div>
                             </>
                         </Col>
                     </Container>
@@ -47,37 +51,37 @@ export default function ProfileSetNet() {
                         <MDBRow>
                             <MDBCol className="skill-title" md="4">Whatever Skill</MDBCol>
                             <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox1" />
+                                <MDBInput type="checkbox" id="checkbox1" />
                             </MDBCol>
                             <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox2" />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="skill-title" md="4">Whatever Skill</MDBCol>
-                            <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox1" />
-                            </MDBCol>
-                            <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox2" />
+                                <MDBInput type="checkbox" id="checkbox2" />
                             </MDBCol>
                         </MDBRow>
                         <MDBRow>
                             <MDBCol className="skill-title" md="4">Whatever Skill</MDBCol>
                             <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox1" />
+                                <MDBInput type="checkbox" id="checkbox1" />
                             </MDBCol>
                             <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox2" />
+                                <MDBInput type="checkbox" id="checkbox2" />
                             </MDBCol>
                         </MDBRow>
                         <MDBRow>
                             <MDBCol className="skill-title" md="4">Whatever Skill</MDBCol>
                             <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox1" />
+                                <MDBInput type="checkbox" id="checkbox1" />
                             </MDBCol>
                             <MDBCol>
-                            <MDBInput  type="checkbox" id="checkbox2" />
+                                <MDBInput type="checkbox" id="checkbox2" />
+                            </MDBCol>
+                        </MDBRow>
+                        <MDBRow>
+                            <MDBCol className="skill-title" md="4">Whatever Skill</MDBCol>
+                            <MDBCol>
+                                <MDBInput type="checkbox" id="checkbox1" />
+                            </MDBCol>
+                            <MDBCol>
+                                <MDBInput type="checkbox" id="checkbox2" />
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>
