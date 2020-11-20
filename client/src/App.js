@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
@@ -10,6 +10,7 @@ import Connections from './pages/Matching';
 import Posts from './pages/Posts';
 import Profile from './pages/ProfileSetGen';
 import PostSelect from './pages/PostSelect';
+
 
 
 
@@ -62,6 +63,7 @@ function App() {
 	};
 
   return (
+    
     <div className="App">
       { loggedIn && (
         <div>
@@ -83,16 +85,17 @@ function App() {
         <div>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/signup" component={SignupForm} />
-          <Route exact path="/dashboard" component={() => <LoginForm user={login} />} />
-          <Route exact path="/postselect" component={() => <LoginForm user={login} />} />
-          <Route exact path="/posts" component={() => <LoginForm user={login} />} />
-          <Route exact path="/dashboard" component={() => <LoginForm user={login} />} />
-          <Route exact path="/matching" component={() => <LoginForm user={login} />} />
-          <Route exact path="/profilesetgen" component={() => <LoginForm user={login} />} />
-          <Route exact path="/profilesetnet" component={() => <LoginForm user={login} />} />
+          <Route exact path="/dashboard" component={() => <LoginForm login={login} />} />
+          <Route exact path="/postselect" component={() => <LoginForm login={login} />} />
+          <Route exact path="/posts" component={() => <LoginForm login={login} />} />
+          <Route exact path="/dashboard" component={() => <LoginForm login={login} />} />
+          <Route exact path="/matching" component={() => <LoginForm login={login} />} />
+          <Route exact path="/profilesetgen" component={() => <LoginForm login={login} />} />
+          <Route exact path="/profilesetnet" component={() => <LoginForm login={login} />} />
         </div>
       )}
     </div>
+   
   );
 }
 
