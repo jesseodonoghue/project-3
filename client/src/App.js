@@ -10,10 +10,6 @@ import Connections from './pages/Matching';
 import Posts from './pages/Posts';
 import Profile from './pages/ProfileSetGen';
 import PostSelect from './pages/PostSelect';
-
-
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -71,12 +67,6 @@ function App() {
           <div className="main-view">
             <Switch>
               <Route exact path="/" component={ProfileDash}/>
-              {/* <Route exact path="/matching" component={() => <Connections/>} />
-              <Route exact path="/posts" component={() => <Posts />} />
-              <Route exact path="/dashboard" component={() => <ProfileDash />} />
-              <Route exact path="/profilesetgen" component={() => <Profile />} />
-              <Route exact path="/postselect" component={() => <PostSelect />} />
-              <Route component={NoMatch} /> */}
             </Switch>
           </div>
         </div>
