@@ -8,8 +8,8 @@ import bgImg from '../../assets/profilebg.svg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
-import ProfilePic from '../../assets/defaultprofilepic.svg'
-import API from "../../utils/API";
+import ProfilePic from '../../assets/defaultprofilepic.svg';
+import AUTH from "../../utils/AUTH";
 
 
 export default function ProfileDash() {
@@ -17,58 +17,66 @@ export default function ProfileDash() {
 
     // User information is not being pulled :(
     const [user, setUser] = useState("");
-    // let skillsArr = [];
+    const [loading, setLoading] = useState(false);
+    const [skillsArr, setSkillsArr] = useState([]);
 
-    // useEffect(() => {
-    //     loadUser();
-    // }, []);
+    useEffect(() => {
+        loadUser();
+    }, []);
 
 
-    // function loadUser() {
-    //     API.getUser()
-    //         .then(res => {
-    //             setUser(res.user);
-    //             console.log(res.user);
-    //         })
-    //         .then(() => {
-    //             skillsArr = getSkills();
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // }
+    function loadUser() {
+        setLoading(true);
+        AUTH.getUser()
+            .then(res => {
+                setUser(res.data.user);
+                console.log(res.data.user);
+                return res.data.user;
+            })
+            .then((userData) => {
+                // console.log(userData);
+                setSkillsArr(getSkills(userData));
+                // console.log(skillsArr);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }
 
-    // function getSkills() {
-    //     const tempArr = [];
+    function getSkills(user) {
+        const tempArr = [];
 
-    //     if(user.jsMentor === true) {
-    //         tempArr.push("JavaScript");
-    //     }
-    //     if(user.htmlMentor === true) {
-    //         tempArr.push("HTML");
-    //     } 
-    //     if(user.cssMentor === true) {
-    //         tempArr.push("CSS");
-    //     }
-    //     if(user.nodejsMentor === true) {
-    //         tempArr.push("Node.js");
-    //     }
-    //     if(user.expressMentor === true) {
-    //         tempArr.push("Express");
-    //     }
-    //     if(user.reactMentor === true) {
-    //         tempArr.push("React");
-    //     }
-    //     if(user.mongodbMentor === true) {
-    //         tempArr.push("MongoDB");
-    //     }
-    //     if(user.mysqlMentor === true) {
-    //         tempArr.push("mySQL");
-    //     }
+        if(user.jsMentor === true) {
+            tempArr.push("JavaScript");
+        }
+        if(user.htmlMentor === true) {
+            tempArr.push("HTML");
+        } 
+        if(user.cssMentor === true) {
+            tempArr.push("CSS");
+        }
+        if(user.nodejsMentor === true) {
+            tempArr.push("Node.js");
+        }
+        if(user.expressMentor === true) {
+            tempArr.push("Express");
+        }
+        if(user.reactMentor === true) {
+            tempArr.push("React");
+        }
+        if(user.mongodbMentor === true) {
+            tempArr.push("MongoDB");
+        }
+        if(user.mysqlMentor === true) {
+            tempArr.push("mySQL");
+        }
 
-    //     console.log(tempArr);
-    //     return tempArr;
-    // }
+        // console.log(tempArr);
+        return tempArr;
+    }
 
    
 
@@ -127,48 +135,53 @@ export default function ProfileDash() {
 
     return (
         <div>
-            <div className="box">
-                <Jumbotron fluid style={{ height: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundImage: `url(${bgImg})`}}>
-                    <div className="profileCard"style={{ zIndex: "1" }}>
-                        <div className="profileContent">
-                            <div className="profileImg"></div>
-                            <h3>{user.firstName} {user.lastName}</h3>
-                            <p>{user.bio}</p>
-                            <p>LinkedIn: {user.linkedin}</p>
-                            <p>GitHub: {user.github}</p>
-                            <hr/>
-                            <h3>Skills</h3>
-                            {/* {skillsArr.length ? (
-                                <ul>
-                                    {skillsArr.map(skill => (
-                                        <li>{skill}</li>
-                                    ))}
-                                </ul>
-                            ) : (
-                            <p>No skills added yet</p>
-                            )} */}
+            {loading && (
+                <p>Loading...</p>
+            )}
+            {!loading && (
+                <div className="box">
+                    <Jumbotron fluid style={{ height: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundImage: `url(${bgImg})`}}>
+                        <div className="profileCard"style={{ zIndex: "1" }}>
+                            <div className="profileContent">
+                                <div className="profileImg"></div>
+                                <h3>{user.firstName} {user.lastName}</h3>
+                                <p>{user.bio}</p>
+                                <p>LinkedIn: {user.linkedin}</p>
+                                <p>GitHub: {user.github}</p>
+                                <hr/>
+                                <h3>Skills</h3>
+                                {skillsArr.length ? (
+                                    <ul>
+                                        {skillsArr.map((skill, i) => (
+                                            <li key={i}>{skill}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                <p>No skills added yet</p>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </Jumbotron>
-                <div className="listContainerMain">
-                    <div className="listContainerInner">
-                        <h3 style={{ margin: "10px"}}>Saved Posts</h3>
-                        <div className="listItems overflow-auto">
-                            <ListItem/>
-                            <ListItem/>
-                            <ListItem/>
-                            <ListItem/>
-                            <ListItem/>
-                            <ListItem/>
+                    </Jumbotron>
+                    <div className="listContainerMain">
+                        <div className="listContainerInner">
+                            <h3 style={{ margin: "10px"}}>Saved Posts</h3>
+                            <div className="listItems overflow-auto">
+                                <ListItem/>
+                                <ListItem/>
+                                <ListItem/>
+                                <ListItem/>
+                                <ListItem/>
+                                <ListItem/>
+                            </div>
+                            <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
+                            <MyVerticallyCenteredModal
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                            />
                         </div>
-                        <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
-                        <MyVerticallyCenteredModal
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                        />
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 

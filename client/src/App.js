@@ -10,9 +10,6 @@ import Connections from './pages/Matching';
 import Posts from './pages/Posts';
 import Profile from './pages/ProfileSetGen';
 import PostSelect from './pages/PostSelect';
-
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -68,7 +65,7 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={() => <ProfileDash/>}/>
+              <Route exact path="/" component={ProfileDash}/>
               {/* <Route component={NoMatch} /> */}
               {/* <Route exact path="/matching" component={Connections} />
               <Route exact path="/posts" component={Posts} />
