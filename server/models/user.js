@@ -27,19 +27,23 @@ const userSchema = new Schema({
 	},
 	image: {
 		type: String,
-		unique: false
+		unique: false,
+		default: ""
 	},
 	bio: {
 		type: String,
-		unique: false
+		unique: false,
+		default: ""
 	},
 	linkedin: {
 		type: String,
-		unique: false
+		unique: false,
+		default: ""
 	},
 	github: {
 		type: String,
-		unique: false
+		unique: false,
+		default: ""
 	},
 	likes: {
 		type: Number,
