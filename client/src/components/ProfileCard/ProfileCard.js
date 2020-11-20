@@ -80,14 +80,14 @@ function ProfileCard() {
                                     <Input
                                         type="text"
                                         name="email"
-                                        // value={userObject.email}
+                                        // value={userObject.github}
                                         // onChange={handleChange}
                                     />
                                         <label htmlFor="password">GitHub: </label>
                                     <Input
-                                        type="password"
-                                        name="password"
-                                        // value={userObject.password}
+                                        type="text"
+                                        name="github"
+                                        // value={userObject.linkedin}
                                         // onChange={handleChange}
                                     />
                                         <label htmlFor="confirmPassword">LinkedIn: </label>
@@ -101,6 +101,7 @@ function ProfileCard() {
                                 </form>
                             </Card>
                         </div>
+                        
                     {/* //// Password Change Form //// */}
 
                 <div style={{ marginTop: "3em"}}>

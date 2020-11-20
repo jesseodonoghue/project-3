@@ -1,16 +1,16 @@
 import React from 'react'
 import Sidebar from '../../components/Sidebar';
-import ProfileSetNet from '../../pages/ProfileSetNet';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Container, Row, Col } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
+import ProfileNet from '../../pages/ProfileSetNet';
 import './style.css';
 
 
 export default function ProfileSetGen() {
     return (
        
-        <Router>
+       <>
             <div className="container-flex">
                 <Sidebar width={450} height={'170vh'}>
                     <Container>
@@ -25,7 +25,9 @@ export default function ProfileSetGen() {
                             </>
                             <><h5 style={{ marginTop: "1em"}}>NETWORKING</h5>
                                 <hr/>
+                                <Link className='nav-link' to='/profilesetnet'>
                                 <h6>Skills Page</h6>
+                                </Link>
                             </>
                          </Col>
                     </Container>
@@ -34,8 +36,7 @@ export default function ProfileSetGen() {
                     <ProfileCard/>
                 </div>
             </div>
-        </Router>
             
-        
+        </>
     )
 }
