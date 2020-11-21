@@ -23,12 +23,9 @@ export default function ProfileSetNet() {
                             {/* using short syntax for React fragment with <></> */}
                             <> <h5>GENERAL</h5>
                                 <hr />
-                                {/* <Link className='nav-link' to='/profilesetgen'>
-                                    <h6 style={{ color: 'white' }}>Personal Info</h6>
-                                </Link> */}
-                                <div class='button' id='setGenBtn'>
-                                    <a href='/profilesetgen' style={{ color: 'white' }}>Personal Info</a>
-                                </div>
+                            <Link className='nav-link' to='/profilesetgen'>
+                                <h6 style={{ color: 'white' }}>Personal Info</h6>
+                            </Link>
                             </>
                             <><h5 style={{ marginTop: "1em" }}>NETWORKING</h5>
                                 <hr />
