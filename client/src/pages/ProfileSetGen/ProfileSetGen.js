@@ -3,7 +3,7 @@ import Sidebar from '../../components/Sidebar';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Container, Row, Col } from 'react-bootstrap';
 import ProfileCard from '../../components/ProfileCard';
-import ProfileNet from '../../pages/ProfileSetNet';
+
 import './style.css';
 
 

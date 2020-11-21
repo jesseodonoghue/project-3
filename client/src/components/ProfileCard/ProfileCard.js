@@ -4,8 +4,11 @@ import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 // import AUTH from '../../utils/AUTH';
-import bgImg from '../../assets/profilebg.svg';
+import ProfilePic from '../../assets/defaultprofilepic.svg'
+import Image from 'react-bootstrap/Image'
 import './style.css'
+
+
 
 function ProfileCard() {
   const [userObject, setUserObject] = useState({
@@ -51,12 +54,17 @@ function ProfileCard() {
     <Container>
          <Row>
             <Col size="md-1"></Col>
-                <Col size="md-8">
+                <Col size="md-12">
 
                         {/* //// Profile Photo Card //// */}
 
                     <h3 style={{ color: '#5680e9' }}>Profile Photo</h3>
-                    <Card className="profile-photo" style={{ background: '#5680e9'}}>
+                    <Card style={{backgroundColor:'blue'}} >
+                        
+                        <Col style={{backgroundColor:'blue'}} size='md-3'>
+                            <Image src={ProfilePic} alt="ProfilePic" fluid/>
+                        </Col>
+                 
                     </Card> 
                         <div style={{ marginTop: "3em"}}>
                             <h3 style={{ color: '#5680e9' }}>Personal</h3>
@@ -97,11 +105,13 @@ function ProfileCard() {
                                         // value={userObject.confirmPassword}
                                         // onChange={handleChange}
                                     />
-                                    <FormBtn >Change Info</FormBtn>
+                                    
+                                    <FormBtn style={{ color: "#5680E9", marginTop: ".5em" }}>Change Info</FormBtn>
+                                  
                                 </form>
                             </Card>
                         </div>
-                        
+
                     {/* //// Password Change Form //// */}
 
                 <div style={{ marginTop: "3em"}}>
@@ -129,7 +139,7 @@ function ProfileCard() {
                                 // value={userObject.email}
                                 // onChange={handleChange}
                             />
-                            <FormBtn style={{ color: '#5680e9' }}>Change Password</FormBtn>
+                            <FormBtn style={{ color: 'white' }}>Change Password</FormBtn>
                         </form>
                     </Card>
                 </div>
