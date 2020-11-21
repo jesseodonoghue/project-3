@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
+import Button from 'react-bootstrap/Button';
 // import AUTH from '../../utils/AUTH';
 import ProfilePic from '../../assets/defaultprofilepic.svg'
 import Image from 'react-bootstrap/Image'
@@ -59,17 +60,21 @@ function ProfileCard() {
                         {/* //// Profile Photo Card //// */}
 
                     <h3 style={{ color: '#5680e9' }}>Profile Photo</h3>
-                    <Card style={{backgroundColor:'blue'}} >
-                        
-                        <Col style={{backgroundColor:'blue'}} size='md-3'>
-                            <Image src={ProfilePic} alt="ProfilePic" fluid/>
-                        </Col>
+                    <Card>
+                        <Row>
+                            <Col size='md-4'>
+                                <Image src={ProfilePic} alt="ProfilePic" fluid/>
+                            </Col>
+                            <Col size="md-8">
+                                <FormBtn style={{ color: '#5680e9', marginTop: 30 }}>Edit/Upload Profile Picture</FormBtn>
+                            </Col>
+                        </Row>
                  
                     </Card> 
                         <div style={{ marginTop: "3em"}}>
                             <h3 style={{ color: '#5680e9' }}>Personal</h3>
                             <Card title="Profile settings">
-                                <form style={{marginTop: 10}}>
+                                <form a>
                                         <label htmlFor="firstName">First name: </label>
                                     <Input
                                         type="text"
@@ -106,7 +111,7 @@ function ProfileCard() {
                                         // onChange={handleChange}
                                     />
                                     
-                                    <FormBtn style={{ color: "#5680E9", marginTop: ".5em" }}>Change Info</FormBtn>
+                                    <FormBtn style={{ color: '#5680e9' }}>Save Changes</FormBtn>
                                   
                                 </form>
                             </Card>

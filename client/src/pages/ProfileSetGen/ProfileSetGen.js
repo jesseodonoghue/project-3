@@ -12,7 +12,7 @@ export default function ProfileSetGen() {
        
        <>
             <div className="container-flex">
-                <Sidebar width={450} height={'170vh'}>
+                <Sidebar width={450} height={'220vh'}>
                     <Container>
                         <Col size="md-3">
                             <h4 style={{ color: 'white' }}>SETTINGS</h4>
@@ -26,7 +26,7 @@ export default function ProfileSetGen() {
                             <><h5 style={{ marginTop: "1em"}}>NETWORKING</h5>
                                 <hr/>
                                 <Link className='nav-link' to='/profilesetnet'>
-                                <h6>Skills Page</h6>
+                                <h6 style={{ color: 'white' }}>Skills Page</h6>
                                 </Link>
                             </>
                          </Col>
