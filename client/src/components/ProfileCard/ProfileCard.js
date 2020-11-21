@@ -20,7 +20,6 @@ function ProfileCard() {
 
     useEffect(() => {
         loadUser();
-        console.log(user);
     }, []);
 
 
