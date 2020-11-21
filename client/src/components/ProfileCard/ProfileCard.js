@@ -52,27 +52,23 @@ function ProfileCard() {
 //   }
   
   return (
-    <Container>
-         <Row>
-            <Col size="md-1"></Col>
+        <Container>
+             <Row>
                 <Col size="md-12">
-
                         {/* //// Profile Photo Card //// */}
-
-                    <h3 style={{ color: '#5680e9' }}>Profile Photo</h3>
-                    <Card>
+                    <h1 style={{ color: '#5680e9' }}>Profile Photo</h1>
+                    <Card style={{ backgroundColor: '#5680e9'}}>
                         <Row>
                             <Col size='md-4'>
                                 <Image src={ProfilePic} alt="ProfilePic" fluid/>
                             </Col>
-                            <Col size="md-8">
-                                <FormBtn style={{ color: '#5680e9', marginTop: 30 }}>Edit/Upload Profile Picture</FormBtn>
+                            <Col size="md-6">
+                                <FormBtn style={{ color: '#5680e9'}}>Edit/Upload Profile Picture</FormBtn>
                             </Col>
                         </Row>
-                 
                     </Card> 
                         <div style={{ marginTop: "3em"}}>
-                            <h3 style={{ color: '#5680e9' }}>Personal</h3>
+                            <h1 style={{ color: '#5680e9' }}>Personal</h1>
                             <Card title="Profile settings">
                                 <form a>
                                         <label htmlFor="firstName">First name: </label>
@@ -119,39 +115,38 @@ function ProfileCard() {
 
                     {/* //// Password Change Form //// */}
 
-                <div style={{ marginTop: "3em"}}>
-                        <h3 style={{ color: '#5680e9' }}>Change Password</h3>
-                    <Card title="Create an Account">
-                        <form style={{marginTop: 10}}>
-                            <label htmlFor="firstName">Current Password </label>
-                            <Input
-                                type="text"
-                                name="firstName"
-                                // value={userObject.firstName}
-                                // onChange={handleChange}
-                            />
-                            <label htmlFor="lastName">New Password </label>
-                            <Input
-                                type="text"
-                                name="lastName"
-                                // value={userObject.lastName}
-                                // onChange={handleChange}
-                            />
-                            <label htmlFor="email">Confirm Password </label>
-                            <Input
-                                type="text"
-                                name="email"
-                                // value={userObject.email}
-                                // onChange={handleChange}
-                            />
-                            <FormBtn style={{ color: 'white' }}>Change Password</FormBtn>
-                        </form>
-                    </Card>
-                </div>
-            </Col>
-        <Col size="md-1"></Col>
-      </Row>
-    </Container>
+                        <div style={{ marginTop: "3em"}}>
+                                <h1 style={{ color: '#5680e9' }}>Change Password</h1>
+                            <Card title="Create an Account">
+                                <form style={{marginTop: 10}}>
+                                    <label htmlFor="firstName">Current Password </label>
+                                    <Input
+                                        type="text"
+                                        name="firstName"
+                                        // value={userObject.firstName}
+                                        // onChange={handleChange}
+                                    />
+                                    <label htmlFor="lastName">New Password </label>
+                                    <Input
+                                        type="text"
+                                        name="lastName"
+                                        // value={userObject.lastName}
+                                        // onChange={handleChange}
+                                    />
+                                    <label htmlFor="email">Confirm Password </label>
+                                    <Input
+                                        type="text"
+                                        name="email"
+                                        // value={userObject.email}
+                                        // onChange={handleChange}
+                                    />
+                                    <FormBtn style={{ color: 'white' }}>Change Password</FormBtn>
+                                </form>
+                            </Card>
+                        </div>
+                    </Col>
+                </Row>
+        </Container>
   )
 }
 
