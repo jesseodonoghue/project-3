@@ -29,7 +29,8 @@
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   font-size: 18px;
-  }
+}
+  
 
   .skill-title {
     color: black !important; 
@@ -70,4 +71,12 @@
 
 h5 {
   font-family: 'Raleway', sans-serif;
+}
+
+#checkbox1 {
+  box-shadow: none;
+}
+
+#checkbox2 {
+  box-shadow: none;
 }
