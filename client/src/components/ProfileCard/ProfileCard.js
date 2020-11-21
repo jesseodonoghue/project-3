@@ -5,7 +5,8 @@ import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
 import API from "../../utils/API";
-import bgImg from '../../assets/profilebg.svg';
+import ProfilePic from '../../assets/defaultprofilepic.svg'
+import Image from 'react-bootstrap/Image'
 import './style.css'
 
 
@@ -103,8 +104,10 @@ function ProfileCard() {
             {!loading && (
                 <div style={{ display: "flex", flexDirection: "column", height: "100%"}}>
                     {/* //// Profile Photo Card //// */}
-                    <h3 style={{ color: '#5680e9' }}>Profile Photo</h3>
+                    <h3 style={{ color: '#5680E9' }}>Profile Photo</h3>
                     <Card className="profile-photo" style={{ background: '#5680e9'}}>
+                        <Image src={ProfilePic} alt="ProfilePic" fluid/>
+                        <FormBtn style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
                     </Card> 
                         <div style={{ marginTop: "3em"}}>
                             <h3 style={{ color: '#5680e9' }}>Personal</h3>
