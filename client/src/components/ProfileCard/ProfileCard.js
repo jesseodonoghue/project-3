@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
-import { Input, FormBtn } from '../../components/Form';
+import { Input, FormBtn, TextArea } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
 import API from "../../utils/API";
 import ProfilePic from '../../assets/defaultprofilepic.svg'
@@ -135,6 +135,13 @@ function ProfileCard() {
                                         type="text"
                                         name="email"
                                         placeholder={user.email}
+                                        onChange={handleInputChange}
+                                    />
+                                        <label htmlFor="bio">Bio: </label>
+                                    <TextArea
+                                        type="text"
+                                        name="bio"
+                                        placeholder={user.bio}
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="github">GitHub: </label>
