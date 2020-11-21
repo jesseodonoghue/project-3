@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './profileDash.css';
 import ListItem from '../../components/List/ListItem.js';
@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import AUTH from "../../utils/AUTH";
+import API from "../../utils/API";
 
 
 export default function ProfileDash() {
@@ -19,6 +20,8 @@ export default function ProfileDash() {
     const [user, setUser] = useState("");
     const [loading, setLoading] = useState(false);
     const [skillsArr, setSkillsArr] = useState([]);
+    let formObject = {};
+    const formEl = useRef(null);
 
     useEffect(() => {
         loadUser();
@@ -78,26 +81,49 @@ export default function ProfileDash() {
         return tempArr;
     }
 
-   
+    function handleInputChange(event) {
+        event.preventDefault();
+        const { name, value } = event.target;
+        formObject = {...formObject, [name]: value};
+        console.log(formObject);
+    };
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        if (formObject.title && formObject.body && formObject.tag && formObject.tag !== "Choose a tag..") {
+            API.createPost({
+                tag: formObject.tag,
+                title: formObject.title,
+                body: formObject.body,
+                createdby: user._id
+            })
+            .then(res => {
+                formEl.current.reset();
+                setModalShow(false);
+            })
+            .catch(err => console.log(err));
+        }
+    };
 
     function MyVerticallyCenteredModal(props) {
         return (
-          <Modal
+            <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-          >
+            >
             <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title id="contained-modal-title-vcenter">
                 Create New Post
-              </Modal.Title>
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
+                <Form ref={formEl}>
                     <Form.Group controlId="tagSelect">
                         <Form.Label>Select Tag</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" name="tag" onChange={handleInputChange} >
+                        <option>Choose a tag..</option>
                         <option>Javascript</option>
                         <option>JQuery</option>
                         <option>Ajax</option>
@@ -108,12 +134,12 @@ export default function ProfileDash() {
 
                     <Form.Group controlId="postTitle">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="post" placeholder="Post Title" />
+                        <Form.Control type="post" placeholder="Post Title" name="title" onChange={handleInputChange} />
                     </Form.Group>
 
                     <Form.Group controlId="postContent">
                         <Form.Label>Post Content</Form.Label>
-                        <Form.Control as="textarea" rows={5} />
+                        <Form.Control as="textarea" rows={5} name="body" onChange={handleInputChange} />
                     </Form.Group>
                 </Form>
             </Modal.Body>
@@ -123,15 +149,15 @@ export default function ProfileDash() {
                     Attach File
                 </Button>
                 
-                <Button onClick={props.onHide}>Submit Post</Button>
+                <Button onClick={handleFormSubmit}>Submit Post</Button>
             </Modal.Footer>
-          </Modal>
+        </Modal>
         );
-      }
+    }
 
     //states for modal  
     const [modalShow, setModalShow] = React.useState(false);
-      
+    
 
     return (
         <div>

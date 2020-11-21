@@ -5,7 +5,10 @@ const postSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  },  
+  },
+  tag: {
+    type: String,
+  },
   title: {
     type: String,
     required: true
