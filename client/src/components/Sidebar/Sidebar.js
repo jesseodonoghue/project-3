@@ -12,7 +12,6 @@ const Sidebar = ({width, height, children}) => {
             {children}
         </div>
         
-        
     );
 };
 
