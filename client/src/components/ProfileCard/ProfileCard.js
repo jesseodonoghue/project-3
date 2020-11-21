@@ -10,7 +10,6 @@ import './style.css'
 
 
 function ProfileCard() {
-<<<<<<< HEAD
 
     const [user, setUser] = useState("");
     const [loading, setLoading] = useState(false);
@@ -181,7 +180,7 @@ function ProfileCard() {
                     </div>
                 </div>
             )}
-            
+
         </>
     )
 }
