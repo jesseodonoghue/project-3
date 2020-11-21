@@ -10,6 +10,7 @@ import './style.css'
 
 
 function ProfileCard() {
+<<<<<<< HEAD
 
     const [user, setUser] = useState("");
     const [loading, setLoading] = useState(false);
@@ -95,97 +96,93 @@ function ProfileCard() {
     // };
 
     return (
-        <Container>
+
+        <>
             {loading && (
                 <p>Loading...</p>
             )}
             {!loading && (
-                <Row>
-                    <Col size="md-1"></Col>
-                        <Col size="md-8">
+                <div style={{ display: "flex", flexDirection: "column", height: "100%"}}>
+                    {/* //// Profile Photo Card //// */}
+                    <h3 style={{ color: '#5680e9' }}>Profile Photo</h3>
+                    <Card className="profile-photo" style={{ background: '#5680e9'}}>
+                    </Card> 
+                        <div style={{ marginTop: "3em"}}>
+                            <h3 style={{ color: '#5680e9' }}>Personal</h3>
+                            <Card title="Profile settings">
+                                <form style={{marginTop: 10}} ref={formEl}>
+                                        <label htmlFor="firstName">First name: </label>
+                                    <Input
+                                        type="text"
+                                        name="firstName"
+                                        placeholder={user.firstName}
+                                        onChange={handleInputChange}
+                                    />
+                                        <label htmlFor="lastName">Last name: </label>
+                                    <Input
+                                        type="text"
+                                        name="lastName"
+                                        placeholder={user.lastName}
+                                        onChange={handleInputChange}
+                                    />
+                                        <label htmlFor="email">Email: </label>
+                                    <Input
+                                        type="text"
+                                        name="email"
+                                        placeholder={user.email}
+                                        onChange={handleInputChange}
+                                    />
+                                        <label htmlFor="github">GitHub: </label>
+                                    <Input
+                                        type="text"
+                                        name="github"
+                                        placeholder={user.github}
+                                        onChange={handleInputChange}
+                                    />
+                                        <label htmlFor="linkedin">LinkedIn: </label>
+                                    <Input
+                                        type="text"
+                                        name="linkedin"
+                                        placeholder={user.linkedin}
+                                        onChange={handleInputChange}
+                                    />
+                                    <FormBtn onClick={handleFormSubmit}>Change Info</FormBtn>
+                                </form>
+                            </Card>
+                        </div>
+                        
+                    {/* //// Password Change Form //// */}
 
-                                {/* //// Profile Photo Card //// */}
-
-                            <h3 style={{ color: '#5680e9' }}>Profile Photo</h3>
-                            <Card className="profile-photo" style={{ background: '#5680e9'}}>
-                            </Card> 
-                            <div style={{ marginTop: "3em"}}>
-                                <h3 style={{ color: '#5680e9' }}>Personal</h3>
-                                <Card title="Profile settings">
-                                    <form style={{marginTop: 10}} ref={formEl}>
-                                            <label htmlFor="firstName">First name: </label>
-                                        <Input
-                                            type="text"
-                                            name="firstName"
-                                            placeholder={user.firstName}
-                                            onChange={handleInputChange}
-                                        />
-                                            <label htmlFor="lastName">Last name: </label>
-                                        <Input
-                                            type="text"
-                                            name="lastName"
-                                            placeholder={user.lastName}
-                                            onChange={handleInputChange}
-                                        />
-                                            <label htmlFor="email">Email: </label>
-                                        <Input
-                                            type="text"
-                                            name="email"
-                                            placeholder={user.email}
-                                            onChange={handleInputChange}
-                                        />
-                                            <label htmlFor="github">GitHub: </label>
-                                        <Input
-                                            type="text"
-                                            name="github"
-                                            placeholder={user.github}
-                                            onChange={handleInputChange}
-                                        />
-                                            <label htmlFor="linkedin">LinkedIn: </label>
-                                        <Input
-                                            type="text"
-                                            name="linkedin"
-                                            placeholder={user.linkedin}
-                                            onChange={handleInputChange}
-                                        />
-                                        <FormBtn onClick={handleFormSubmit}>Change Info</FormBtn>
-                                    </form>
-                                </Card>
-                            </div>
-                                
-                            {/* //// Password Change Form //// */}
-
-                            <div style={{ marginTop: "3em"}}>
-                                <h3 style={{ color: '#5680e9' }}>Change Password</h3>
-                                <Card title="Create an Account">
-                                    <form style={{marginTop: 10}}>
-                                        <label htmlFor="password">Current Password </label>
-                                        <Input
-                                            type="password"
-                                            name="currPass"
-                                            onChange={handlePassChange}
-                                        />
-                                        <label htmlFor="newPass">New Password </label>
-                                        <Input
-                                            type="password"
-                                            name="newPass"
-                                            onChange={handlePassChange}
-                                        />
-                                        <label htmlFor="confPass">Confirm Password </label>
-                                        <Input
-                                            type="password"
-                                            name="confPass"
-                                            onChange={handlePassChange}
-                                        />
-                                        <FormBtn style={{ color: '#5680e9' }}>Change Password</FormBtn>
-                                    </form>
-                                </Card>
-                            </div>
-                        </Col>
-                    <Col size="md-1"></Col>
-                </Row>
+                    <div style={{ marginTop: "3em"}}>
+                            <h3 style={{ color: '#5680e9' }}>Change Password</h3>
+                        <Card title="Create an Account">
+                            <form style={{marginTop: 10}}>
+                                <label htmlFor="password">Current Password </label>
+                                <Input
+                                    type="password"
+                                    name="currPass"
+                                    onChange={handlePassChange}
+                                />
+                                <label htmlFor="newPass">New Password </label>
+                                <Input
+                                    type="password"
+                                    name="newPass"
+                                    onChange={handlePassChange}
+                                />
+                                <label htmlFor="confPass">Confirm Password </label>
+                                <Input
+                                    type="password"
+                                    name="confPass"
+                                    onChange={handlePassChange}
+                                />
+                                <FormBtn style={{ color: '#5680e9' }}>Change Password</FormBtn>
+                            </form>
+                        </Card>
+                    </div>
+                </div>
             )}
-        </Container>
+            
+        </>
     )
 }
 
