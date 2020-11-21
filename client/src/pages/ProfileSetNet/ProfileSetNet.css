@@ -35,4 +35,35 @@
     font-weight: 400;
   }
 
+  .checklistGrid {
+    margin: 2em; 
+  }
  
+  #skill-btn {
+    display: flex;
+    float: right; 
+    margin: 6em;
+  }
+
+  #setGenBtn {
+  
+	text-decoration: none;
+	color: #e7dd84;
+
+}
+
+.button:hover a
+{
+	text-decoration: none;
+	color: white;
+
+}
+
+.button:hover
+{
+	color: #8860D0;
+  background-color: #8860D0;
+	border-color:#8860D0;
+	transition: 0.35s;
+}
+  
