@@ -17,6 +17,7 @@ function ProfileCard() {
     let formObject = {};
     let formPass = {};
     const formEl = useRef(null);
+    const formPassEl = useRef(null);
 
 
     useEffect(() => {
@@ -78,21 +79,24 @@ function ProfileCard() {
         
     };
 
-    // function handlePassSubmit(event) {
-    //     event.preventDefault();
-    //     if (formObject.title && formObject.body && formObject.tag && formObject.tag !== "Choose a tag..") {
-    //         API.createPost({
-    //             tag: formObject.tag,
-    //             title: formObject.title,
-    //             body: formObject.body,
-    //             createdby: user._id
-    //         })
-    //         .then(res => {
-    //             formEl.current.reset();
-    //         })
-    //         .catch(err => console.log(err));
-    //     }
-    // };
+    function handlePassSubmit(event) {
+        event.preventDefault();
+
+        if (!formPass.currPass) {
+            formPass.firstName = user.firstName;
+        }
+
+        
+        const userID = user._id;
+
+        API.updateProfile(userID, formObject)
+        .then(res => {
+            formEl.current.reset();
+            setUser(res.data);
+            console.log(user);
+        })
+        .catch(err => console.log(err));
+    };
 
     return (
 
@@ -157,7 +161,7 @@ function ProfileCard() {
                     <div style={{ marginTop: "3em"}}>
                             <h3 style={{ color: '#5680e9' }}>Change Password</h3>
                         <Card title="Create an Account">
-                            <form style={{marginTop: 10}}>
+                            <form style={{marginTop: 10}} ref={formPassEl}>
                                 <label htmlFor="password">Current Password </label>
                                 <Input
                                     type="password"
@@ -176,7 +180,7 @@ function ProfileCard() {
                                     name="confPass"
                                     onChange={handlePassChange}
                                 />
-                                <FormBtn style={{ color: '#5680e9' }}>Change Password</FormBtn>
+                                <FormBtn style={{ color: '#5680e9' }} onClick={handlePassSubmit}>Change Password</FormBtn>
                             </form>
                         </Card>
                     </div>
