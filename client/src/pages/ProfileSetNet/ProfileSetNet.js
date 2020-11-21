@@ -14,10 +14,10 @@ export default function ProfileSetNet() {
 
         <>
             <div className="container-flex">
-                <Sidebar width={450} height={'170vh'}>
+                <Sidebar width={300} height={'100vh'}>
                     <Container>
                         <Col size="md-3">
-                            <h4 style={{ color: 'white' }}>SETTINGS</h4>
+                            <h4 style={{ color: 'white', marginTop: '2em' }}>SETTINGS</h4>
                         </Col>
                         <Col className="text-right" size="md-4" style={{ marginTop: "3em", color: 'white' }}>
                             {/* using short syntax for React fragment with <></> */}
@@ -30,19 +30,16 @@ export default function ProfileSetNet() {
                             <><h5 style={{ marginTop: "1em" }}>NETWORKING</h5>
                                 <hr />
                                 <Link className='nav-link' to='/profilesetnet'>
-                                    <h6 style={{ color: 'white' }}>Skills Page</h6>
+                                    <h6 style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>Skills Page</h6>
                                 </Link>
-                                <div>
-                                    <ArrowLeftCircle className="arrowsize" />
-                                </div>
                             </>
                         </Col>
                     </Container>
                 </Sidebar>
                 <div className="updateSkills">
-                    <h1 style={{ color: '#8860D0' }}>Update Your Skills</h1>
+                    <h1 style={{ color: '#5680E9' }}>Update Your Skills</h1>
 
-                    <MDBContainer className="checklistGrid">
+                    <MDBContainer className="checklistGrid" >
                         <MDBRow>
                             <MDBCol md="4">Skill</MDBCol>
                             <MDBCol md="4">Mentor</MDBCol>
@@ -85,7 +82,9 @@ export default function ProfileSetNet() {
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>
-                    <FormBtn style={{ color: '#5680e9' }}>Save Changes</FormBtn>
+                    <div id='skill-btn'>
+                        <FormBtn style={{ color: '#5680e9' }}>Save Changes</FormBtn>
+                    </div>
                 </div>
             </div>
 
