@@ -34,7 +34,7 @@ function SignupForm() {
       email: userObject.email,
       password: userObject.password
     }).then(response => {
-      // console.log(response);
+      console.log(response);
       if (!response.data.errmsg) {
         setRedirectTo('/');
       } else {
