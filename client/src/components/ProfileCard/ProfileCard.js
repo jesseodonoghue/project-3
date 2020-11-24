@@ -8,7 +8,8 @@ import API from "../../utils/API";
 import ProfilePic from '../../assets/defaultprofilepic.svg'
 import Image from 'react-bootstrap/Image'
 import './style.css'
-
+import { ShopWindow } from 'react-bootstrap-icons';
+import Notification from '../Notification/index'
 
 function ProfileCard() {
 
@@ -18,6 +19,9 @@ function ProfileCard() {
     let formPass = {};
     const formEl = useRef(null);
 
+    //Toast Alert hook
+    const [show, setShow] = useState(false);
+    
 
     useEffect(() => {
         loadUser();
@@ -66,6 +70,7 @@ function ProfileCard() {
             formObject.email = user.email;
         }
         
+        
         const userID = user._id;
 
         API.updateProfile(userID, formObject)
@@ -73,10 +78,14 @@ function ProfileCard() {
             formEl.current.reset();
             setUser(res.data);
             console.log(user);
+            setShow(true);
         })
         .catch(err => console.log(err));
         
+        
     };
+
+    
 
     // function handlePassSubmit(event) {
     //     event.preventDefault();
@@ -148,14 +157,22 @@ function ProfileCard() {
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="linkedin">LinkedIn: </label>
+                               
                                     <Input
                                         type="text"
                                         name="linkedin"
                                         placeholder={user.linkedin}
                                         onChange={handleInputChange}
                                     />
-                                    <FormBtn onClick={handleFormSubmit}>Change Info</FormBtn>
+
+                                    <FormBtn onClick={handleFormSubmit}>Save Info</FormBtn>
                                 </form>
+                                <Notification
+                                        action={() => setShow(true)}
+                                        close={() => setShow(false)}
+                                        show={show}
+                                        delay={3000}
+                                />
                             </Card>
                         </div>
                         
