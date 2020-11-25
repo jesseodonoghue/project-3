@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Sidebar from '../../components/Sidebar';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Container, Row, Col } from 'react-bootstrap';
