@@ -189,21 +189,26 @@ export default function ProfileDash() {
                         </div>
                     </Jumbotron>
                     <div className="listContainerMain">
-                        <div className="listContainerInner col-md-7">
-                            <h3 style={{ margin: "10px"}}>Saved Posts</h3>
-                            <div className="listItems overflow-auto">
-                                <ListItem/>
-                                <ListItem/>
-                                <ListItem/>
-                                <ListItem/>
-                                <ListItem/>
-                                <ListItem/>
+                        <div className="row" style={{ width: "100%"}}>
+                            <div className="col-md-5" id="placeholderbox"></div>
+                            <div className="col-md-7">
+                                <div className="listContainerInner">
+                                    <h3 style={{ margin: "10px"}}>Saved Posts</h3>
+                                    <div className="listItems overflow-auto">
+                                        <ListItem/>
+                                        <ListItem/>
+                                        <ListItem/>
+                                        <ListItem/>
+                                        <ListItem/>
+                                        <ListItem/>
+                                    </div>
+                                    <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
+                                    <MyVerticallyCenteredModal
+                                        show={modalShow}
+                                        onHide={() => setModalShow(false)}
+                                    />
+                                </div>
                             </div>
-                            <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
-                            <MyVerticallyCenteredModal
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
-                            />
                         </div>
                     </div>
                 </div>
