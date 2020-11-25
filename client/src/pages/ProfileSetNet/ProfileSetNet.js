@@ -5,7 +5,6 @@ import { Container, Row, Col, } from 'react-bootstrap';
 import { Input, FormBtn } from '../../components/Form';
 import './ProfileSetNet.css';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBFormInline, MDBForm } from "mdbreact";
-import { AlignBottom, ArrowLeftCircle } from 'react-bootstrap-icons';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
 

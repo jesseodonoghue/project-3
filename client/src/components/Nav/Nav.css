@@ -12,3 +12,7 @@
   background-color: red; /* For browsers that do not support gradients */
   background-image: linear-gradient(to left, #8860D0, #5680E9);
 }
+
+#ProfileTitle {
+  color: black; 
+}
