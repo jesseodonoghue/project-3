@@ -1,5 +1,11 @@
 @import-normalize;
-@import './components/List/List.css'
+@import './components/List/List.css';
 
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 100%;
+        margin: 0px;
+        max-width: 1400px;
+    }
 
-
+}
