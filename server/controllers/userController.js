@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
-    console.log(`Current user: ${req.user.firstName} ${req.user.lastName}`);
+    console.log('getUser:', req.user);
     if (req.user) {
       return res.json({ user: req.user });
     } else {
