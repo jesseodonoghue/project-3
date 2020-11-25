@@ -54,19 +54,9 @@
 
 }
 
-.button:hover a
-{
-	text-decoration: none;
-	color: white;
-
-}
-
-.button:hover
-{
-	color: #8860D0;
-  background-color: #8860D0;
-	border-color:#8860D0;
-	transition: 0.35s;
+/* visited link */
+a:visited {
+  color: white;
 }
 
 h5 {
