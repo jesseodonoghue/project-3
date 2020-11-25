@@ -7,7 +7,7 @@ export default function UserList(props) {
     return (
         <li className="list-group-item" id="userList">
             <div className="postTitle" style={{ color: "white" }}>
-             Post Title  {props.children}
+             {props.title}  {props.children}
              <ArrowRightCircle style={{ color: "white" }}/>
             </div>
         </li>
