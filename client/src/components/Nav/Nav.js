@@ -27,7 +27,7 @@ const navBar = (props) => {
             <Link className="nav-link" to="/posts" >Posts</Link>
             <Link className="nav-link" to="/dashboard" >Dashboard</Link>
             <NavDropdown title="Settings" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/profilesetgen">Profile</NavDropdown.Item>
+              <NavDropdown.Item id="ProfileTitle" href="/profilesetgen">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item to="#" className="logout" onClick={props.logout}>Logout</NavDropdown.Item>
             </NavDropdown>

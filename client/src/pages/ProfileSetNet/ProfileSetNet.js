@@ -5,7 +5,6 @@ import { Container, Row, Col, } from 'react-bootstrap';
 import { Input, FormBtn } from '../../components/Form';
 import './ProfileSetNet.css';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBFormInline, MDBForm } from "mdbreact";
-import { AlignBottom, ArrowLeftCircle } from 'react-bootstrap-icons';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
 
@@ -24,9 +23,9 @@ export default function ProfileSetNet() {
         setLoading(true);
         AUTH.getUser()
             .then(res => {
-                const { data: { user: { jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongodbStudent, mysqlMentor, mysqlStudent }}} = res;
+                const { data: { user: { jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, jqueryMentor, jqueryStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongodbStudent, mysqlMentor, mysqlStudent }}} = res;
                 setUser(res.data.user);
-                setFormObject({ jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongodbStudent, mysqlMentor, mysqlStudent });
+                setFormObject({ jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, jqueryMentor, jqueryStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongodbStudent, mysqlMentor, mysqlStudent });
                 return res.data.user;
             })
             .catch(err => {
@@ -118,6 +117,15 @@ export default function ProfileSetNet() {
                             </MDBCol>
                             <MDBCol>
                                 <MDBInput type="checkbox" id="checkbox2" name="cssStudent" onChange={handleInputChange} checked={formObject.cssStudent} />
+                            </MDBCol>
+                        </MDBRow>
+                        <MDBRow>
+                            <MDBCol className="jquery" md="4">jQuery</MDBCol>
+                            <MDBCol>
+                                <MDBInput type="checkbox" id="checkbox1" name="jqueryMentor" onChange={handleInputChange} checked={formObject.jqueryMentor} />
+                            </MDBCol>
+                            <MDBCol>
+                                <MDBInput type="checkbox" id="checkbox2" name="jqueryStudent" onChange={handleInputChange} checked={formObject.jqueryStudent} />
                             </MDBCol>
                         </MDBRow>
                         <MDBRow>

@@ -14,7 +14,7 @@ function ProfileCard() {
 
     const [user, setUser] = useState("");
     const [loading, setLoading] = useState(false);
-    let formObject = {};
+    const [formObject, setFormObject] = useState({});
     let formPass = {};
     const formEl = useRef(null);
     const formPassEl = useRef(null);
@@ -29,6 +29,8 @@ function ProfileCard() {
         setLoading(true);
         AUTH.getUser()
             .then(res => {
+                const { data: { user: { firstName, lastName, email, bio, linkedin, github }}} = res;
+                setFormObject({ firstName, lastName, email, bio, linkedin, github });
                 setUser(res.data.user);
                 return res.data.user;
             })
@@ -43,31 +45,22 @@ function ProfileCard() {
     function handleInputChange(event) {
         event.preventDefault();
         const { name, value } = event.target;
-        formObject = {...formObject, [name]: value};
+        setFormObject({...formObject, [name]: value});
         console.log(formObject);
     };
 
-    function handlePassChange(event) {
-        event.preventDefault();
-        const { name, value } = event.target;
-        formPass = {...formPass, [name]: value};
-        console.log(formPass);
-    };
+    // function handlePassChange(event) {
+    //     event.preventDefault();
+    //     const { name, value } = event.target;
+    //     formPass = {...formPass, [name]: value};
+    //     console.log(formPass);
+    // };
 
     function handleFormSubmit(event) {
         event.preventDefault();
-
-        if (!formObject.firstName) {
-            formObject.firstName = user.firstName;
-        }
-        if (!formObject.lastName) {
-            formObject.lastName = user.lastName;
-        }
-        if (!formObject.email) {
-            formObject.email = user.email;
-        }
         
         const userID = user._id;
+        console.log(formObject);
 
         API.updateProfile(userID, formObject)
         .then(res => {
@@ -79,24 +72,24 @@ function ProfileCard() {
         
     };
 
-    function handlePassSubmit(event) {
-        event.preventDefault();
+    // function handlePassSubmit(event) {
+    //     event.preventDefault();
 
-        if (!formPass.currPass) {
-            formPass.firstName = user.firstName;
-        }
+    //     if (!formPass.currPass) {
+    //         formPass.firstName = user.firstName;
+    //     }
 
         
-        const userID = user._id;
+    //     const userID = user._id;
 
-        API.updateProfile(userID, formObject)
-        .then(res => {
-            formEl.current.reset();
-            setUser(res.data);
-            console.log(user);
-        })
-        .catch(err => console.log(err));
-    };
+    //     API.updateProfile(userID, formObject)
+    //     .then(res => {
+    //         formEl.current.reset();
+    //         setUser(res.data);
+    //         console.log(user);
+    //     })
+    //     .catch(err => console.log(err));
+    // };
 
     return (
 
@@ -120,42 +113,42 @@ function ProfileCard() {
                                     <Input
                                         type="text"
                                         name="firstName"
-                                        placeholder={user.firstName}
+                                        value={formObject.firstName}
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="lastName">Last name: </label>
                                     <Input
                                         type="text"
                                         name="lastName"
-                                        placeholder={user.lastName}
+                                        value={formObject.lastName}
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="email">Email: </label>
                                     <Input
                                         type="text"
                                         name="email"
-                                        placeholder={user.email}
+                                        value={formObject.email}
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="bio">Bio: </label>
                                     <TextArea
                                         type="text"
                                         name="bio"
-                                        placeholder={user.bio}
+                                        value={formObject.bio}
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="github">GitHub: </label>
                                     <Input
                                         type="text"
                                         name="github"
-                                        placeholder={user.github}
+                                        value={formObject.github}
                                         onChange={handleInputChange}
                                     />
                                         <label htmlFor="linkedin">LinkedIn: </label>
                                     <Input
                                         type="text"
                                         name="linkedin"
-                                        placeholder={user.linkedin}
+                                        value={formObject.linkedin}
                                         onChange={handleInputChange}
                                     />
                                     <FormBtn onClick={handleFormSubmit}>Change Info</FormBtn>
@@ -165,7 +158,7 @@ function ProfileCard() {
                         
                     {/* //// Password Change Form //// */}
 
-                    <div style={{ marginTop: "3em"}}>
+                    {/* <div style={{ marginTop: "3em"}}>
                             <h3 style={{ color: '#5680e9' }}>Change Password</h3>
                         <Card title="Create an Account">
                             <form style={{marginTop: 10}} ref={formPassEl}>
@@ -190,7 +183,7 @@ function ProfileCard() {
                                 <FormBtn style={{ color: '#5680e9' }} onClick={handlePassSubmit}>Change Password</FormBtn>
                             </form>
                         </Card>
-                    </div>
+                    </div> */}
                 </div>
             )}
 
