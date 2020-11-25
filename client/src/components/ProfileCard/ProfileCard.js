@@ -19,7 +19,7 @@ function ProfileCard() {
     let formPass = {};
     const formEl = useRef(null);
 
-    //Toast Alert hook
+    //Toast Alert Hook
     const [show, setShow] = useState(false);
     
 
@@ -167,12 +167,13 @@ function ProfileCard() {
 
                                     <FormBtn onClick={handleFormSubmit}>Save Info</FormBtn>
                                 </form>
-                                <Notification
+                                
+                                    <Notification
                                         action={() => setShow(true)}
                                         close={() => setShow(false)}
                                         show={show}
                                         delay={3000}
-                                />
+                                    />
                             </Card>
                         </div>
                         
