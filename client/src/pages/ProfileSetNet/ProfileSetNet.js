@@ -72,7 +72,7 @@ export default function ProfileSetNet() {
                             <> <h5>GENERAL</h5>
                                 <hr />
                                 <div className='button' id='setGenBtn'>
-                                    <a href='/profilesetgen' style={{ color: 'white' }}>Personal Info</a>
+                                    <Link className='nav-link' to ='/profilesetgen'> Personal Info </Link>
                                 </div>
                             </>
                             <><h5 style={{ marginTop: "1em" }}>NETWORKING</h5>
