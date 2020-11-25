@@ -18,6 +18,7 @@ function ProfileCard() {
     let formObject = {};
     let formPass = {};
     const formEl = useRef(null);
+    const formPassEl = useRef(null);
 
     //Toast Alert Hook
     const [show, setShow] = useState(false);
@@ -85,6 +86,7 @@ function ProfileCard() {
         
     };
 
+<<<<<<< HEAD
     
 
     // function handlePassSubmit(event) {
@@ -102,6 +104,26 @@ function ProfileCard() {
     //         .catch(err => console.log(err));
     //     }
     // };
+=======
+    function handlePassSubmit(event) {
+        event.preventDefault();
+
+        if (!formPass.currPass) {
+            formPass.firstName = user.firstName;
+        }
+
+        
+        const userID = user._id;
+
+        API.updateProfile(userID, formObject)
+        .then(res => {
+            formEl.current.reset();
+            setUser(res.data);
+            console.log(user);
+        })
+        .catch(err => console.log(err));
+    };
+>>>>>>> 87c17aaef8544702f3a28e4631711abb26a7a203
 
     return (
 
@@ -182,7 +204,7 @@ function ProfileCard() {
                     <div style={{ marginTop: "3em"}}>
                             <h3 style={{ color: '#5680e9' }}>Change Password</h3>
                         <Card title="Create an Account">
-                            <form style={{marginTop: 10}}>
+                            <form style={{marginTop: 10}} ref={formPassEl}>
                                 <label htmlFor="password">Current Password </label>
                                 <Input
                                     type="password"
@@ -201,7 +223,7 @@ function ProfileCard() {
                                     name="confPass"
                                     onChange={handlePassChange}
                                 />
-                                <FormBtn style={{ color: '#5680e9' }}>Change Password</FormBtn>
+                                <FormBtn style={{ color: '#5680e9' }} onClick={handlePassSubmit}>Change Password</FormBtn>
                             </form>
                         </Card>
                     </div>
