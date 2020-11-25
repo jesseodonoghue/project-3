@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 
 export default function Posts() {
     return (
-        <div className="container-flex">
+        <div className="container-flex" id="postboxes">
             <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
                 <Form>
                     <Form.Group controlId="formBasicEmail">

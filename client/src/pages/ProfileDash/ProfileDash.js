@@ -166,7 +166,7 @@ export default function ProfileDash() {
             )}
             {!loading && (
                 <div className="box">
-                    <Jumbotron fluid style={{ height: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundImage: `url(${bgImg})`}}>
+                    <Jumbotron fluid style={{ height: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})`}}>
                         <div className="profileCard"style={{ zIndex: "1" }}>
                             <div className="profileContent">
                                 <div className="profileImg"></div>
@@ -189,7 +189,7 @@ export default function ProfileDash() {
                         </div>
                     </Jumbotron>
                     <div className="listContainerMain">
-                        <div className="listContainerInner">
+                        <div className="listContainerInner col-md-7">
                             <h3 style={{ margin: "10px"}}>Saved Posts</h3>
                             <div className="listItems overflow-auto">
                                 <ListItem/>

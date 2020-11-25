@@ -35,3 +35,9 @@
 .label {
    color:white !important;
 }
+
+@media only screen and (max-width: 950px) {
+    .postboxes {
+        flex-direction: column;
+    }
+}
