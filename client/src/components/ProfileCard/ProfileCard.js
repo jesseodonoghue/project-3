@@ -9,7 +9,7 @@ import ProfilePic from '../../assets/defaultprofilepic.svg'
 import Image from 'react-bootstrap/Image'
 import './style.css'
 import { ShopWindow } from 'react-bootstrap-icons';
-import Notification from '../Notification/index'
+import Notification from '../Notification/index';
 
 function ProfileCard() {
 
@@ -170,7 +170,9 @@ function ProfileCard() {
                                     <FormBtn onClick={handleFormSubmit}>Save Info</FormBtn>
                                 </form>
                                 
-                                    <Notification
+                                    <Notification style={{
+                                        top: 300
+                                    }}
                                         action={() => setShow(true)}
                                         close={() => setShow(false)}
                                         show={show}

@@ -8,6 +8,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBFormInline, MDBForm } from "
 import { AlignBottom, ArrowLeftCircle } from 'react-bootstrap-icons';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
+import Notification from '../../components/Notification/index';
 
 
 export default function ProfileSetNet() {
@@ -15,6 +16,10 @@ export default function ProfileSetNet() {
     const [user, setUser] = useState("");
     const [loading, setLoading] = useState(false);
     const [formObject, setFormObject ] = useState({});
+
+    //Toast Alert Hook
+    const [show, setShow] = useState(false);
+
 
     useEffect(() => {
         loadUser();
@@ -53,6 +58,7 @@ export default function ProfileSetNet() {
             API.updateProfile(userID, formObject)
                 .then(res => {
                     setUser(res.data);
+                    setShow(true);
                 })
                 .catch(err => console.log(err));            
         }    
@@ -166,6 +172,17 @@ export default function ProfileSetNet() {
                             </MDBCol>
                         </MDBRow>                        
                     </MDBContainer>
+                    <Notification 
+                        style={{
+                                top: 400,
+                               
+                            }}
+                                action={() => setShow(true)}
+                                close={() => setShow(false)}
+                                show={show}
+                                delay={3000}
+                            />
+
                     <div id='skill-btn'>
                         <FormBtn style={{ color: '#5680e9' }} onClick={handleFormSubmit}>Save Changes</FormBtn>
                     </div>

@@ -12,8 +12,8 @@ function Success(props) {
         <Toast style={{
                 zIndex: '4',
                 position: 'absolute',
-                top: 535,
-                right: 30,
+                top: props.top, 
+                right: 60,
                 minHeight: '100px',
             }} 
                 onClick={props. action} 
