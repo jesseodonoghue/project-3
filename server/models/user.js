@@ -79,6 +79,16 @@ const userSchema = new Schema({
 		unique: false,
 		default: false
 	},
+	jqueryMentor:{
+		type: Boolean,
+		unique: false,
+		default: false
+	},
+	jqueryStudent:{
+		type: Boolean,
+		unique: false,
+		default: false
+	},
 	nodejsMentor: {
 		type: Boolean,
 		unique: false,
