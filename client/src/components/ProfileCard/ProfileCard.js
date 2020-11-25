@@ -86,25 +86,6 @@ function ProfileCard() {
         
     };
 
-<<<<<<< HEAD
-    
-
-    // function handlePassSubmit(event) {
-    //     event.preventDefault();
-    //     if (formObject.title && formObject.body && formObject.tag && formObject.tag !== "Choose a tag..") {
-    //         API.createPost({
-    //             tag: formObject.tag,
-    //             title: formObject.title,
-    //             body: formObject.body,
-    //             createdby: user._id
-    //         })
-    //         .then(res => {
-    //             formEl.current.reset();
-    //         })
-    //         .catch(err => console.log(err));
-    //     }
-    // };
-=======
     function handlePassSubmit(event) {
         event.preventDefault();
 
@@ -123,7 +104,6 @@ function ProfileCard() {
         })
         .catch(err => console.log(err));
     };
->>>>>>> 87c17aaef8544702f3a28e4631711abb26a7a203
 
     return (
 
