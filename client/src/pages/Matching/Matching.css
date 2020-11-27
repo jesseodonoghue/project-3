@@ -34,3 +34,24 @@
     height: 2em !important;
     width: 2em !important;
 }
+
+@media only screen and (max-width: 767px) {
+    .findStudentBox {
+        background-image: url('../../assets/matchingstudentmobilebg.svg');
+    }
+
+    #studentbox {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    #mentorbox {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    #matchingrow {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+}

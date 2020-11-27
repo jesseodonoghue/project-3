@@ -3,6 +3,7 @@
     height: 100vh;
     width: 100%;
     font-family: 'Raleway', sans-serif;
+    flex-wrap: wrap;
     
 }
 
@@ -40,4 +41,22 @@
     .postboxes {
         flex-direction: column;
     }
+}
+
+@media only screen and (max-width: 1214px) {
+
+    #postboxes {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    #featuredboxes {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .yourPostsContainer {
+        background-image: url('../../assets/postspagebgmobile.svg');
+    }
+
 }

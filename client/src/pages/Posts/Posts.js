@@ -51,43 +51,49 @@ function onInputChange(event) {
 }
 
     return (
-        <div className="container-flex" id="postboxes">
-            <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label style={{ color: "white" }}>Search</Form.Label>
-                        <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
-                    </Form.Group>
-                </Form>
-                <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
-                <div className="listItems overflow-auto">
-                    {filteredUserPosts.map(postInfo => (
-                        <UserList title={postInfo.title} />
-                        // Error in console: Each child in a list
-                        // should have a unique "key" prop.
-                    ))}
+        <div className="container-flex" style={{ overflowX: "hidden", height: "auto", maxWidth: "100%"}}>
+            <div className="row" style={{ width: "100%", margin: "0px"}}>
+                <div className="col-md-5 col-sm-12" style={{width: "100%", padding: "0px"}} id="postboxes">
+                    <div className="yourPostsContainer" style={{ flexDirection: "column"}}>
+                        <Form>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label style={{ color: "white" }}>Search</Form.Label>
+                                <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
+                            </Form.Group>
+                        </Form>
+                        <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
+                        <div className="listItems overflow-auto">
+                            {filteredUserPosts.map(postInfo => (
+                                <UserList title={postInfo.title} />
+                                // Error in console: Each child in a list
+                                // should have a unique "key" prop.
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div className="featuredContainer col-md-7">
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Search</Form.Label>
-                        <Form.Control type="search" placeholder="Enter search" />
-                    </Form.Group>
-                </Form>
-                <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
-                <div className="listItems overflow-auto">
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
+                
+                <div className="col-md-7 col-sm-12" id="featuredboxes">
+                    <div className="featuredContainer">
+                        <Form>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Search</Form.Label>
+                                <Form.Control type="search" placeholder="Enter search" />
+                            </Form.Group>
+                        </Form>
+                        <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
+                        <div className="listItems overflow-auto">
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                            <FeaturedList/>
+                        </div>
+                    </div>
                 </div>
             </div>
             

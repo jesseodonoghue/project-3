@@ -1,5 +1,6 @@
 import React from 'react';
 import './FeaturedList.css';
+import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 
 export default function FeaturedList(props) {
     return (
@@ -11,7 +12,7 @@ export default function FeaturedList(props) {
                 <div className="poster">
                     Poster's name{props.children}
                 </div>
-                <div className="posterImg"/>
+                <img src={ProfilePicL} className="posterImg"/>
             </div>
         </li>
     );
