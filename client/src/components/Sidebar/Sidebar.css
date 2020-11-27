@@ -2,8 +2,28 @@
     background-color: rgb(136, 96, 208); 
     height: 100%;
   }
+
+  .side-bar a {
+    color: white;
+  }
+
+  .side-bar a:hover {
+    color: white;
+    opacity: .5;
+  }
+
+  .selected {
+    font-weight: bold;
+  }
+
   
   #color-grad {
     background-color: red; /* For browsers that do not support gradients */
     background-image: linear-gradient(#5680e9, #8860D0);
+  }
+
+  #sidebarNav {
+    margin-top: 3em !important;
+    color: white !important;
+    text-align: right !important;
   }

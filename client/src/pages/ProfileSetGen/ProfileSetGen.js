@@ -6,13 +6,13 @@ import './style.css';
 
 export default function ProfileSetGen() {
     return (
-        <div className="container-flex" style={{ height: "100%"}}>
-            <div className="row" style={{ width: "100%"}}>
-                <div className="col-md-5">
+        <div className="container-flex" style={{ height: "100%", overflowX: "hidden"}}>
+            <div className="row" style={{ width: "100%", margin: "0px"}}>
+                <div className="col-md-3" id="sidebarContainer" style={{ padding: "0px"}}>
                     <Sidebar/>
                 </div>    
-                <div className="col-md-7">
-                    <div className='infoContainer' style={{ height: "100%", marginBottom: "3em", marginLeft: "1em"}}>
+                <div className="col-md-9" id="formContainer">
+                    <div className='infoContainer' style={{ height: "100%", paddingLeft: "0px"}}>
                         <ProfileCard/>
                     </div>
                 </div>

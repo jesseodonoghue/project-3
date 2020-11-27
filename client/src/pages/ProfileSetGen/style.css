@@ -18,3 +18,21 @@
 .nav-link:hover span{
     font-weight: bold !important;
 }
+
+
+
+@media only screen and (max-width: 1214px) {
+    #sidebarContainer {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #formContainer {
+        margin-left: 0px !important;
+    }
+
+    #sidebarNav {
+        text-align: left !important;
+        padding-bottom: 20px;
+    }
+}

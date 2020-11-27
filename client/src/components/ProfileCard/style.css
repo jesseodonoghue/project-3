@@ -1,3 +1,11 @@
 .profile-photo {
-    background-color: #5680e9!important; 
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.card {
+    width: 100% !important;
+    max-width: 700px !important;
 }
