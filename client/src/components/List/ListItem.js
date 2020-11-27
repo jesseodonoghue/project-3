@@ -1,5 +1,6 @@
 import React from "react";
 import './List.css';
+import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 
 export default function ListItem (props){
   return (
@@ -11,7 +12,7 @@ export default function ListItem (props){
       <div className="poster">
       Poster's name{props.children}
       </div>
-      <div className="posterImg"/>
+      <img src={ProfilePicL} className="posterImg"/>
     </div>
   </li>
   );

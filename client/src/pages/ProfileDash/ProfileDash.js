@@ -8,9 +8,10 @@ import bgImg from '../../assets/profilebg.svg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
-import ProfilePic from '../../assets/defaultprofilepic.svg';
+import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
+
 
 
 export default function ProfileDash() {
@@ -169,11 +170,11 @@ export default function ProfileDash() {
                     <Jumbotron fluid style={{ height: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})`}}>
                         <div className="profileCard"style={{ zIndex: "1" }}>
                             <div className="profileContent">
-                                <div className="profileImg"></div>
+                                <img src={ProfilePicL} className="profileImg"/>
                                 <h3>{user.firstName} {user.lastName}</h3>
-                                <p>{user.bio}</p>
-                                <p>LinkedIn: {user.linkedin}</p>
-                                <p>GitHub: {user.github}</p>
+                                <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
+                                <p style={{ wordWrap: "break-word" }}>LinkedIn: {user.linkedin}</p>
+                                <p style={{ wordWrap: "break-word" }}>GitHub: {user.github}</p>
                                 <hr/>
                                 <h3>Skills</h3>
                                 {skillsArr.length ? (
@@ -202,12 +203,12 @@ export default function ProfileDash() {
                                         <ListItem/>
                                         <ListItem/>
                                     </div>
-                                    <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
+                                </div>
+                                <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
                                     <MyVerticallyCenteredModal
                                         show={modalShow}
                                         onHide={() => setModalShow(false)}
                                     />
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn, TextArea } from '../../components/Form';
 import AUTH from '../../utils/AUTH';
@@ -8,7 +6,6 @@ import API from "../../utils/API";
 import ProfilePic from '../../assets/defaultprofilepic.svg'
 import Image from 'react-bootstrap/Image'
 import './style.css'
-import { ShopWindow } from 'react-bootstrap-icons';
 import Notification from '../Notification/index';
 
 function ProfileCard() {

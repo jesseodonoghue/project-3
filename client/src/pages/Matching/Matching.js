@@ -12,8 +12,8 @@ import MentorCard from '../../components/MentorCard/MentorCard';
 export default function Matching() {
     return (
         <div className="matchingbox">
-            <div className="row" style={{ width: "100%"}}>
-                <div className="col-md-6">
+            <div className="row" id="matchingrow" style={{ width: "100%"}}>
+                <div className="col-md-6" id="studentbox">
                     <div className="findStudentBox">
                         <h1 style={{ color: "White", marginTop: ".5em" }}> Find a Student! </h1>
                         <Form style={{ maxWidth: "300px"}}>
@@ -36,7 +36,7 @@ export default function Matching() {
                     </div> 
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-md-6" id="mentorbox">
                     <div className="findMentorBox">
                         <h1 style={{ color: "#5680E9", marginTop: ".5em" }}>Find a Mentor!</h1>
                         <Form style={{ maxWidth: "300px"}}>
