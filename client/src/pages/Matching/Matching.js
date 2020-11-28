@@ -149,11 +149,16 @@ export default function Matching() {
                                 </Form.Control>
                             </Form.Group>
                         </Form>
-                        <div className="cardandArrowBox">
+                        {student.length > 0 && (
+                            <div className="cardandArrowBox">
                             <ArrowLeftCircle className="arrowsize" data-value="back" onClick={handleBtnClickStudent} />
-                            <StudentCard />
+                            <StudentCard currentStudent= {student[userIndexStudent]} />
                             <ArrowRightCircle className="arrowsize" data-value="next" onClick={handleBtnClickStudent} />
                         </div>
+                        )}
+                        {!student.length > 0 && (
+                            <h2>Select a language to search for Students.</h2>
+                        )}
                     </div> 
                 </div>
 
@@ -177,11 +182,16 @@ export default function Matching() {
                                 </Form.Control>
                             </Form.Group>
                         </Form>
+                        {mentor.length > 0 && (
                         <div className="cardandArrowBox">
-                            <ArrowLeftCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="back" onClick={handleBtnClickMentor} />
-                            <MentorCard />
-                            <ArrowRightCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="next" onClick={handleBtnClickMentor} />
-                        </div>
+                        <ArrowLeftCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="back" onClick={handleBtnClickMentor} />
+                        <MentorCard currentMentor= {mentor[userIndexMentor]}/>
+                        <ArrowRightCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="next" onClick={handleBtnClickMentor} />
+                    </div>
+                        )}
+                        {!mentor.length > 0 && (
+                            <h2>Select a language to search for Mentors.</h2>
+                        )}
                     </div> 
                 </div>
             </div>
