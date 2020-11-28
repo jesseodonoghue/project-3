@@ -105,71 +105,73 @@ function ProfileCard() {
                 <div style={{ display: "flex", flexDirection: "column", height: "100%"}}>
                     {/* //// Profile Photo Card //// */}
                     <h3 style={{ color: '#5680E9' }}>Profile Photo</h3>
-                    <Card className="profile-photo" style={{ background: '#5680e9'}}>
-                        <Image src={ProfilePic} alt="ProfilePic" fluid/>
-                        <FormBtn style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
-                    </Card> 
-                        <div style={{ marginTop: "3em"}}>
-                            <h3 style={{ color: '#5680e9' }}>Personal</h3>
-                            <Card title="Profile settings">
-                                <form style={{marginTop: 10}} ref={formEl}>
-                                        <label htmlFor="firstName">First name: </label>
-                                    <Input
-                                        type="text"
-                                        name="firstName"
-                                        value={formObject.firstName}
-                                        onChange={handleInputChange}
-                                    />
-                                        <label htmlFor="lastName">Last name: </label>
-                                    <Input
-                                        type="text"
-                                        name="lastName"
-                                        value={formObject.lastName}
-                                        onChange={handleInputChange}
-                                    />
-                                        <label htmlFor="email">Email: </label>
-                                    <Input
-                                        type="text"
-                                        name="email"
-                                        value={formObject.email}
-                                        onChange={handleInputChange}
-                                    />
-                                        <label htmlFor="bio">Bio: </label>
-                                    <TextArea
-                                        type="text"
-                                        name="bio"
-                                        value={formObject.bio}
-                                        onChange={handleInputChange}
-                                    />
-                                        <label htmlFor="github">GitHub: </label>
-                                    <Input
-                                        type="text"
-                                        name="github"
-                                        value={formObject.github}
-                                        onChange={handleInputChange}
-                                    />
-                                        <label htmlFor="linkedin">LinkedIn: </label>
-                               
-                                    <Input
-                                        type="text"
-                                        name="linkedin"
-                                        value={formObject.linkedin}
-                                        onChange={handleInputChange}
-                                    />
-
-                                    <FormBtn onClick={handleFormSubmit}>Save Info</FormBtn>
-                                </form>
-                                
-                                    <Notification style={{
-                                        top: 300
-                                    }}
-                                        action={() => setShow(true)}
-                                        close={() => setShow(false)}
-                                        show={show}
-                                        delay={3000}
-                                    />
-                            </Card>
+                    <Card>
+                        <div className="profile-photo">
+                            <Image src={ProfilePic} alt="ProfilePic" fluid/>
+                            <FormBtn style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
                         </div>
+                    </Card> 
+                    <div style={{ marginTop: "3em", marginBottom: "3em"}}>
+                        <h3 style={{ color: '#5680e9' }}>Personal</h3>
+                        <Card title="Profile settings">
+                            <form style={{marginTop: 10}} ref={formEl}>
+                                    <label htmlFor="firstName">First name: </label>
+                                <Input
+                                    type="text"
+                                    name="firstName"
+                                    value={formObject.firstName}
+                                    onChange={handleInputChange}
+                                />
+                                    <label htmlFor="lastName">Last name: </label>
+                                <Input
+                                    type="text"
+                                    name="lastName"
+                                    value={formObject.lastName}
+                                    onChange={handleInputChange}
+                                />
+                                    <label htmlFor="email">Email: </label>
+                                <Input
+                                    type="text"
+                                    name="email"
+                                    value={formObject.email}
+                                    onChange={handleInputChange}
+                                />
+                                    <label htmlFor="bio">Bio: </label>
+                                <TextArea
+                                    type="text"
+                                    name="bio"
+                                    value={formObject.bio}
+                                    onChange={handleInputChange}
+                                />
+                                    <label htmlFor="github">GitHub: </label>
+                                <Input
+                                    type="text"
+                                    name="github"
+                                    value={formObject.github}
+                                    onChange={handleInputChange}
+                                />
+                                    <label htmlFor="linkedin">LinkedIn: </label>
+                            
+                                <Input
+                                    type="text"
+                                    name="linkedin"
+                                    value={formObject.linkedin}
+                                    onChange={handleInputChange}
+                                />
+
+                                <FormBtn onClick={handleFormSubmit}>Save Info</FormBtn>
+                            </form>
+                            
+                                <Notification style={{
+                                    top: 300
+                                }}
+                                    action={() => setShow(true)}
+                                    close={() => setShow(false)}
+                                    show={show}
+                                    delay={3000}
+                                />
+                        </Card>
+                    </div>
                         
                     {/* //// Password Change Form //// */}
 

@@ -65,139 +65,122 @@ export default function ProfileSetNet() {
 
     return (
 
-        <>
-            <div className="container-flex">
-                <Sidebar width={300} height={'100vh'}>
-                    <Container>
-                        <Col size="md-3">
-                            <h4 style={{ color: 'white', marginTop: '2em' }}>SETTINGS</h4>
-                        </Col>
-                        <Col className="text-right" size="md-4" style={{ marginTop: "3em", color: 'white' }}>
-                            {/* using short syntax for React fragment with <></> */}
-                            <> <h5>GENERAL</h5>
-                                <hr />
-                                <div className='button' id='setGenBtn'>
-                                    <Link className='nav-link' to ='/profilesetgen'> Personal Info </Link>
-                                </div>
-                            </>
-                            <><h5 style={{ marginTop: "1em" }}>NETWORKING</h5>
-                                <hr />
-                                <Link className='nav-link' to='/profilesetnet'>
-                                    <h6 style={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}>Skills Page</h6>
-                                </Link>
-                            </>
-                        </Col>
-                    </Container>
-                </Sidebar>
-                <div className="updateSkills">
-                    <h1 style={{ color: '#5680E9' }}>Update Your Skills</h1>
+        <div className="container-flex" style={{ height: "100%", overflowX: "hidden"}}>
+            <div className="row" style={{ width: "100%", margin: "0px"}}>
+                <div className="col-md-3" id="sidebarContainer" style={{ padding: "0px"}}>
+                    <Sidebar/>
+                </div>    
 
-                    <MDBContainer className="checklistGrid" >
-                        <MDBRow>
-                            <MDBCol md="4">Skill</MDBCol>
-                            <MDBCol md="4">Mentor</MDBCol>
-                            <MDBCol md="4">Student</MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="javascript" md="4">JavaScript</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="jsMentor" onClick={handleInputChange} checked={formObject.jsMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="jsStudent" onClick={handleInputChange} checked={formObject.jsStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="html" md="4">HTML</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="htmlMentor" onChange={handleInputChange} checked={formObject.htmlMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="htmlStudent" onChange={handleInputChange} checked={formObject.htmlStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="css" md="4">CSS</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="cssMentor" onChange={handleInputChange} checked={formObject.cssMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="cssStudent" onChange={handleInputChange} checked={formObject.cssStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="jquery" md="4">jQuery</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="jqueryMentor" onChange={handleInputChange} checked={formObject.jqueryMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="jqueryStudent" onChange={handleInputChange} checked={formObject.jqueryStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="nodejs" md="4">Node.js</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="nodejsMentor" onChange={handleInputChange} checked={formObject.nodejsMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="nodejsStudent" onChange={handleInputChange} checked={formObject.nodejsStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="express" md="4">Express</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="expressMentor" onChange={handleInputChange} checked={formObject.expressMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="expressStudent" onChange={handleInputChange} checked={formObject.expressStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="react" md="4">React</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="reactMentor" onChange={handleInputChange} checked={formObject.reactMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="reactStudent" onChange={handleInputChange} checked={formObject.reactStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="mongodb" md="4">MongoDB</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="mongodbMentor" onChange={handleInputChange} checked={formObject.mongodbMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="mongodbStudent" onChange={handleInputChange} checked={formObject.mongodbStudent} />
-                            </MDBCol>
-                        </MDBRow>
-                        <MDBRow>
-                            <MDBCol className="mysql" md="4">mySQL</MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox1" name="mysqlMentor" onChange={handleInputChange} checked={formObject.mysqlMentor} />
-                            </MDBCol>
-                            <MDBCol>
-                                <MDBInput type="checkbox" id="checkbox2" name="mysqlStudent" onChange={handleInputChange} checked={formObject.mysqlStudent} />
-                            </MDBCol>
-                        </MDBRow>                        
-                    </MDBContainer>
-                    <Notification 
-                        style={{
-                                top: 400,
-                               
-                            }}
-                                action={() => setShow(true)}
-                                close={() => setShow(false)}
-                                show={show}
-                                delay={3000}
-                            />
+                <div className="col-md-9">
+                    <div className="updateSkills">
+                        <h3 style={{ color: '#5680E9', marginTop: "2em", marginBottom: "1.5em" }}>Update Your Skills</h3>
 
-                    <div id='skill-btn'>
-                        <FormBtn style={{ color: '#5680e9' }} onClick={handleFormSubmit}>Save Changes</FormBtn>
+                        <MDBContainer className="checklistGrid" >
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol md="4">Skill</MDBCol>
+                                <MDBCol md="4">Mentor</MDBCol>
+                                <MDBCol md="4">Student</MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="javascript" md="4">JavaScript</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="jsMentor" onClick={handleInputChange} checked={formObject.jsMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="jsStudent" onClick={handleInputChange} checked={formObject.jsStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="html" md="4">HTML</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="htmlMentor" onChange={handleInputChange} checked={formObject.htmlMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="htmlStudent" onChange={handleInputChange} checked={formObject.htmlStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="css" md="4">CSS</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="cssMentor" onChange={handleInputChange} checked={formObject.cssMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="cssStudent" onChange={handleInputChange} checked={formObject.cssStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="jquery" md="4">jQuery</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="jqueryMentor" onChange={handleInputChange} checked={formObject.jqueryMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="jqueryStudent" onChange={handleInputChange} checked={formObject.jqueryStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="nodejs" md="4">Node.js</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="nodejsMentor" onChange={handleInputChange} checked={formObject.nodejsMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="nodejsStudent" onChange={handleInputChange} checked={formObject.nodejsStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="express" md="4">Express</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="expressMentor" onChange={handleInputChange} checked={formObject.expressMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="expressStudent" onChange={handleInputChange} checked={formObject.expressStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="react" md="4">React</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="reactMentor" onChange={handleInputChange} checked={formObject.reactMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="reactStudent" onChange={handleInputChange} checked={formObject.reactStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="mongodb" md="4">MongoDB</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="mongodbMentor" onChange={handleInputChange} checked={formObject.mongodbMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="mongodbStudent" onChange={handleInputChange} checked={formObject.mongodbStudent} />
+                                </MDBCol>
+                            </MDBRow>
+                            <MDBRow style={{ flexDirection: "row", flexWrap: "nowrap"}}>
+                                <MDBCol className="mysql" md="4">mySQL</MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox1" name="mysqlMentor" onChange={handleInputChange} checked={formObject.mysqlMentor} />
+                                </MDBCol>
+                                <MDBCol md="4">
+                                    <MDBInput type="checkbox" id="checkbox2" name="mysqlStudent" onChange={handleInputChange} checked={formObject.mysqlStudent} />
+                                </MDBCol>
+                            </MDBRow>                        
+                        </MDBContainer>
+                        <Notification 
+                            style={{
+                                    top: 400,
+                                
+                                }}
+                                    action={() => setShow(true)}
+                                    close={() => setShow(false)}
+                                    show={show}
+                                    delay={3000}
+                                />
+
+                        <div id='skill-btn'>
+                            <FormBtn style={{ color: '#5680e9' }} onClick={handleFormSubmit}>Save Changes</FormBtn>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </>
+        </div>
     )
 }
 
