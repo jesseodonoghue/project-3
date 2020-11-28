@@ -8,3 +8,9 @@
 .card {
     width: 60% !important;
 }
+
+#mentorCardStyle {
+    max-width: 25rem !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
