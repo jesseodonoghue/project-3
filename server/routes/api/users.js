@@ -7,12 +7,12 @@ router.route("/:id")
     .put(userController.updateProfile);
     // .delete(userController.remove)
 
-// /api/users/mentor
-router.route("/mentor")
+// /api/users/mentor/language
+router.route("/mentor/:language")
     .get(userController.findMentor);
 
-// /api/users/student
-router.route("/student")
+// /api/users/student/language
+router.route("/student/:language")
     .get(userController.findStudent);
 
 module.exports = router;

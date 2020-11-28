@@ -9,5 +9,11 @@ export default {
     },
     updateProfile: function(id, userData) {
         return axios.put('/api/users/' + id, userData);
+    },
+    getMentors: function(language) {
+        return axios.get('/api/users/mentor/' + language);
+    },
+    getStudents: function(language) {
+        return axios.get('/api/users/student/' + language);
     }
 };
