@@ -9,6 +9,35 @@
     width: 60% !important;
 }
 
+.connect {
+    border-radius: 50%;
+    background-color: blue;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileconnectbtnbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.connectbtn {
+    border-radius: 50% !important;
+    width: 1.5em !important;
+    height: 1.5em !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0px !important;
+    color: #5680E9 !important;
+    border-style: none !important;
+    background-color: #5680E900 !important;
+}
+
 #studentCardStyle {
     max-width: 25rem !important;
     margin-left: 10px;

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './profileDash.css';
 import ListItem from '../../components/List/ListItem.js';
+import FollowList from '../../components/FollowList/FollowList.js';
 import '../../components/List/List.css';
 import Modal from 'react-bootstrap/Modal';
 import bgImg from '../../assets/profilebg.svg';
@@ -209,6 +210,19 @@ export default function ProfileDash() {
                                         show={modalShow}
                                         onHide={() => setModalShow(false)}
                                     />
+                               <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
+                                    <h3 style={{ margin: "10px"}}>Connections</h3>
+                                    <div className="listItems overflow-auto">
+                                        <FollowList/>
+                                        <FollowList/>
+                                        <FollowList/>
+                                        <FollowList/>
+                                        <FollowList/>
+                                        <FollowList/>
+                                    </div>
+                               </div>
+
+
                             </div>
                         </div>
                     </div>
