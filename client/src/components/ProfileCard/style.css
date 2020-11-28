@@ -9,3 +9,7 @@
     width: 100% !important;
     max-width: 700px !important;
 }
+
+.hover a:hover {
+    opacity: 1;
+  }
