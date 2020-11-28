@@ -41,6 +41,14 @@ export default function ProfileSetNet() {
             });
     }
 
+    function MouseOver(event) {
+        event.target.style.background = '#5680E9';
+      }
+
+    function MouseOut(event) {
+        event.target.style.background='#8860D0';
+    }
+
     function handleInputChange(event) {
         console.log(event);
         const { name, checked } = event.target;
@@ -175,7 +183,7 @@ export default function ProfileSetNet() {
                                 />
 
                         <div id='skill-btn'>
-                            <FormBtn style={{ color: '#5680e9' }} onClick={handleFormSubmit}>Save Changes</FormBtn>
+                            <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} style={{ color: '#5680e9' }} onClick={handleFormSubmit}>Save Changes</FormBtn>
                         </div>
                     </div>
                 </div>
