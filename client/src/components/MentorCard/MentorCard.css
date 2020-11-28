@@ -9,6 +9,12 @@
     width: 60% !important;
 }
 
+.bulletsforCard {
+    display: flex;
+    text-align: left;
+    justify-content: center;
+}
+
 #mentorCardStyle {
     max-width: 25rem !important;
     margin-left: 10px;

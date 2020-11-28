@@ -12,8 +12,7 @@
 }
 
 .profileCard {
-    max-width: 430px;
-    max-height: 671px;
+    max-width: 600px;
     background-color: white;
     border-style: solid;
     border-radius: 20px;
@@ -121,6 +120,13 @@ h3 {
     color: #5680E9;
 }
 
+#cardplacement {
+    position: relative !important;
+    top: -150px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media only screen and (min-width: 768px) {
 
@@ -129,29 +135,20 @@ h3 {
         
     }
 
-    #placeholderbox {
-        margin-bottom: 15em !important;
-    }
 }
 
-@media only screen and (max-width: 768px) {
-    #placeholderbox {
-        margin-bottom: 15em !important;
-    }
-
-}
-
-@media only screen and (max-width: 409px) {
-    #placeholderbox {
-        margin-bottom: 25em !important;
-    }
-
-}
-
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1214px) {
     .col-md-7 {
         min-width: 100% !important;
         margin-left: 15px !important;
+    }
+
+    #postsplacement {
+        margin-top: -150px !important;
+    }
+
+    .col-md-5 {
+        min-width: 100% !important;
     }
 
 }
