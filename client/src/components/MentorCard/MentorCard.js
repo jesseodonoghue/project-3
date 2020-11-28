@@ -59,7 +59,7 @@ export default function MentorCard({currentMentor}) {
                     </div>    
                 </Card.Title>
                 {/* <Card.Text> */}
-                      <div>
+                      <div className="bulletsforCard">
                      {getSkills(currentMentor)}
                     </div>
                 {/* </Card.Text> */}
