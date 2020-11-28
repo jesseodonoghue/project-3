@@ -157,7 +157,7 @@ export default function Matching() {
                         </div>
                         )}
                         {!student.length > 0 && (
-                            <h2>Select a language to search for Students.</h2>
+                            <h6>Select a language to search for Students.</h6>
                         )}
                     </div> 
                 </div>
@@ -190,7 +190,7 @@ export default function Matching() {
                     </div>
                         )}
                         {!mentor.length > 0 && (
-                            <h2>Select a language to search for Mentors.</h2>
+                            <h6>Select a language to search for Mentors.</h6>
                         )}
                     </div> 
                 </div>
