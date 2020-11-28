@@ -52,7 +52,7 @@ export default function MentorCard({currentMentor}) {
             <Card.Body>
                 <Card.Title>
                     <div className="profileconnectbtnbox">
-                    {currentMentor.firstName} {currentMentor.lastName}  
+                        <h3>{currentMentor.firstName} {currentMentor.lastName}</h3>
                         <Button variant="secondary" className="connectbtn">
                             <PersonPlusFill/>
                         </Button>

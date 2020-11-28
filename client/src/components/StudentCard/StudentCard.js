@@ -53,7 +53,7 @@ export default function StudentCard({currentStudent}) {
             <Card.Body>
                 <Card.Title>
                     <div className="profileconnectbtnbox">
-                        {currentStudent.firstName} {currentStudent.lastName} 
+                        <h3>{currentStudent.firstName} {currentStudent.lastName}</h3>
                         <Button variant="secondary" className="connectbtn">
                             <PersonPlusFill/>
                         </Button>
