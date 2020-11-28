@@ -19,7 +19,11 @@ function ProfileCard() {
 
     //Toast Alert Hook
     const [show, setShow] = useState(false);
-    
+
+    // //Button Hover
+    // const [buttonHover, setButtonHover] = useState(false);
+
+
 
     useEffect(() => {
         loadUser();
@@ -41,6 +45,15 @@ function ProfileCard() {
             .finally(() => {
                 setLoading(false);
             });
+    }
+
+
+    function MouseOver(event) {
+        event.target.style.background = '#5680E9';
+    }
+
+    function MouseOut(event) {
+        event.target.style.background='#8860D0';
     }
 
     function handleInputChange(event) {
@@ -76,6 +89,7 @@ function ProfileCard() {
         
     };
 
+
     // function handlePassSubmit(event) {
     //     event.preventDefault();
 
@@ -108,7 +122,7 @@ function ProfileCard() {
                     <Card>
                         <div className="profile-photo">
                             <Image src={ProfilePic} alt="ProfilePic" fluid/>
-                            <FormBtn style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
+                            <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
                         </div>
                     </Card> 
                     <div style={{ marginTop: "3em", marginBottom: "3em"}}>
@@ -159,11 +173,12 @@ function ProfileCard() {
                                     onChange={handleInputChange}
                                 />
 
-                                <FormBtn onClick={handleFormSubmit}>Save Info</FormBtn>
+                                <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleFormSubmit}>Save Info</FormBtn>
                             </form>
                             
                                 <Notification style={{
-                                    top: 300
+                                    top: 500,
+                                    left: 300
                                 }}
                                     action={() => setShow(true)}
                                     close={() => setShow(false)}

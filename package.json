@@ -23,6 +23,11 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "@types/react-stickynode": "^3.0.1",
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",

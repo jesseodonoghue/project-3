@@ -8,11 +8,21 @@ import Logo from '../../assets/logo.svg';
 
 
 function LoginForm({login}) {
+
+
   const [userObject, setUserObject] = useState({
     email: '',
     password: ''
   });
   const [redirectTo, setRedirectTo] = useState(null);
+
+    function MouseOver(event) {
+        event.target.style.background = '#5680E9';
+      }
+
+    function MouseOut(event) {
+        event.target.style.background='#8860D0';
+    }
 
 	const handleChange = (event) => {
 		setUserObject({
@@ -58,7 +68,7 @@ function LoginForm({login}) {
                     value={userObject.password}
                     onChange={handleChange}
                   />
-                  <FormBtn onClick={handleSubmit}>Login</FormBtn>
+                  <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Login</FormBtn>
                 </form>
               </div>
               <div className="row">
