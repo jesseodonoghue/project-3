@@ -32,7 +32,7 @@ module.exports = {
     });
   },
   updateProfile: (req, res) => {
-    const { firstName, lastName, email, image, bio, linkedin, github, jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentore, expressStudent, reactMentor, reactStudent, mongodbMentor, mongobdStudent, mysqlMentor, mysqlStudent } = req.body;
+    const { firstName, lastName, email, image, bio, linkedin, github, jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongobdStudent, mysqlMentor, mysqlStudent } = req.body;
     db.User.findOneAndUpdate({
       _id: req.params.id
     }, req.body, { new: true }
@@ -46,14 +46,78 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
   findMentor: (req, res) => {
+    let query = {};
+
+    switch (req.params.language) {
+      case "JavaScript":
+        query = {jsMentor: true};
+        break;
+      case "HTML":
+        query = {htmlMentor: true};
+        break;
+      case "CSS":
+        query = {cssMentor: true};
+        break;
+      case "jQuery":
+        query = {jqueryMentor: true};
+        break;
+      case "Nodejs":
+        query = {nodejsMentor: true};
+        break;
+      case "Express":
+        query = {expressMentor: true};
+        break;
+      case "React":
+        query = {reactMentor: true};
+        break;
+      case "MongoDB":
+        query = {mongodbMentor: true};
+        break;
+      case "mySQL":
+        query = {mysqlMentor: true};
+        break;      
+    }
+
     db.User
-    .find(req.query)
+    .find(query)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
   findStudent: (req, res) => {
+    let query = {};
+    
+    switch (req.params.language) {
+      case "JavaScript":
+        query = {jsStudent: true};
+        break;
+      case "HTML":
+        query = {htmlStudent: true};
+        break;
+      case "CSS":
+        query = {cssStudent: true};
+        break;
+      case "jQuery":
+        query = {jqueryStudent: true};
+        break;
+      case "Nodejs":
+        query = {nodejsStudent: true};
+        break;
+      case "Express":
+        query = {expressStudent: true};
+        break;
+      case "React":
+        query = {reactStudent: true};
+        break;
+      case "MongoDB":
+        query = {mongodbStudent: true};
+        break;
+      case "mySQL":
+        query = {mysqlStudent: true};
+        break;      
+    }
+
     db.User
-    .find(req.query)
+    .find(query)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
