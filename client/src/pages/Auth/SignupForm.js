@@ -18,6 +18,14 @@ function SignupForm() {
   });
   const [redirectTo, setRedirectTo] = useState(null);
 
+function MouseOver(event) {
+    event.target.style.background = '#5680E9';
+}
+
+function MouseOut(event) {
+    event.target.style.background='#8860D0';
+}
+
   const handleChange = (event) => {
 		setUserObject({
       ...userObject,
@@ -88,7 +96,7 @@ function SignupForm() {
                   onChange={handleChange}
                 />
                 <Link to="/"><ArrowLeftCircle style={{ width: "30px", height: "30px"}}/></Link>
-                <FormBtn onClick={handleSubmit}>Register</FormBtn>
+                <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Register</FormBtn>
               </form>
       </div>
     </div>

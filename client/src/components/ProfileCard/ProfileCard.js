@@ -50,7 +50,7 @@ function ProfileCard() {
 
     function MouseOver(event) {
         event.target.style.background = '#5680E9';
-      }
+    }
 
     function MouseOut(event) {
         event.target.style.background='#8860D0';
