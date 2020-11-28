@@ -130,28 +130,32 @@ h3 {
     }
 
     #placeholderbox {
-        margin-bottom: 15em !important;
+        margin-bottom: 25em !important;
     }
 }
 
 @media only screen and (max-width: 768px) {
     #placeholderbox {
-        margin-bottom: 15em !important;
+        margin-bottom: 30em !important;
     }
 
 }
 
 @media only screen and (max-width: 409px) {
     #placeholderbox {
-        margin-bottom: 25em !important;
+        margin-bottom: 28em !important;
     }
 
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1214px) {
     .col-md-7 {
         min-width: 100% !important;
         margin-left: 15px !important;
+    }
+
+    #placeholderbox {
+        margin-bottom: 30em !important;
     }
 
 }
