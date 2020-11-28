@@ -27,3 +27,19 @@
     color: white !important;
     text-align: right !important;
   }
+
+  h4 {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  h6 {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .side-bar a>.active {
+    font-weight: 900 !important;
+  }
+  
+  hr {
+    background-color: white !important;
+  }

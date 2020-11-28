@@ -29,7 +29,7 @@ const navBar = (props) => {
             <NavDropdown title="Settings" id="collasible-nav-dropdown">
               <NavDropdown.Item id="ProfileTitle" href="/profilesetgen">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item to="#" className="logout" onClick={props.logout}>Logout</NavDropdown.Item>
+              <NavDropdown.Item to="#" className="logout" onClick={props.logout} style={{ color: 'black'}}>Logout</NavDropdown.Item>
             </NavDropdown>
             <Navbar.Brand href="/">DBUGME</Navbar.Brand>
           </Nav>
