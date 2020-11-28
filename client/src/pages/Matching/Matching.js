@@ -14,40 +14,92 @@ import API from "../../utils/API";
 export default function Matching() {
     const [user, setUser] = useState({});
     const [users, setUsers] = useState([]);
-    const [userIndex, setUserIndex] = useState(0);
+    const [userIndexStudent, setUserIndexStudent] = useState(0);
+    const [userIndexMentor, setUserIndexMentor] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [student, setStudent] = useState([]);
+    const [mentor, setMentor] = useState([]);
 
     useEffect(() => {
         loadUser();
     }, []);
 
-
-    function nextUser(userIndex) {
-        // Ensure that the user index stays within our range of users
-        if (userIndex >= users.length) {
-        userIndex = 0;
-        }
-        setUser(users[userIndex]);
-        setUserIndex(userIndex);
-    }
-
-    function previousUser(userIndex) {
-        // Ensure that the user index stays within our range of users
-        if (userIndex < 0) {
-        userIndex = users.length - 1;
-        }
-        setUser(users[userIndex]);
-        setUserIndex(userIndex);
-    }
-
-    function handleBtnClick(event) {
+    
+    function handleBtnClickStudent(event) {
         const btnName = event.target.getAttribute("data-value");
         if (btnName === "next") {
-            const newUserIndex = userIndex + 1;
-            nextUser(newUserIndex);
+            if (userIndexStudent === student.length - 1) {
+                setUserIndexStudent(0);
+            } else {
+                setUserIndexStudent(userIndexStudent + 1);
+            }
+            console.log(userIndexStudent);
         } else {
-            const newUserIndex = userIndex - 1;
-            previousUser(newUserIndex);
+            if (userIndexStudent === 0) {
+                setUserIndexStudent(student.length - 1);
+            } else {
+                setUserIndexStudent(userIndexStudent - 1);
+            }
+            console.log(userIndexStudent);
+        }
+    }
+
+    function handleBtnClickMentor(event) {
+        const btnName = event.target.getAttribute("data-value");
+        if (btnName === "next") {
+            if (userIndexMentor === mentor.length - 1) {
+                setUserIndexMentor(0);
+            } else {
+                setUserIndexMentor(userIndexMentor + 1);
+            }
+            console.log(userIndexMentor);
+        } else {
+            if (userIndexMentor === 0) {
+                setUserIndexMentor(mentor.length - 1);
+            } else {
+                setUserIndexMentor(userIndexMentor - 1);
+            }
+            console.log(userIndexMentor);
+        }
+    }
+
+    function getMentors(event) {
+        if (event.target.value === "Node.js") {
+            let data = "Nodejs";
+            API.getMentors(data)
+                .then((mentors) => {
+                    let tempArr = [];
+                    tempArr = mentors.data;
+                setMentor(tempArr);
+            }) 
+        } else {
+            API.getMentors(event.target.value)
+            .then((mentors) => {
+                let tempArr = [];
+                tempArr = mentors.data;
+                console.log(tempArr);
+                setMentor(tempArr);
+            }) 
+        }
+    }
+
+    function getStudents(event) {
+        if (event.target.value === "Node.js") {
+            let data = "Nodejs";
+            API.getStudents(data)
+                .then((students) => {
+                    let tempArr = [];
+                tempArr = students.data;
+                setStudent(tempArr);
+            })
+        } else {
+            API.getStudents(event.target.value)
+            .then((students) => {
+                let tempArr = [];
+                tempArr = students.data;
+                console.log(tempArr);
+                setStudent(tempArr);
+            }) 
         }
     }
 
@@ -83,9 +135,9 @@ export default function Matching() {
                         <Form style={{ maxWidth: "300px"}}>
                             <Form.Group controlId="studentSelect">
                                 <Form.Label style={{ color: "white" }}>Filter</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control as="select" onChange= {getStudents}>
                                     <option>Choose option...</option>
-                                    <option>Javascript</option>
+                                    <option>JavaScript</option>
                                     <option>HTML</option>
                                     <option>CSS</option>
                                     <option>jQuery</option>
@@ -98,9 +150,9 @@ export default function Matching() {
                             </Form.Group>
                         </Form>
                         <div className="cardandArrowBox">
-                            <ArrowLeftCircle className="arrowsize" data-value="back" onClick={handleBtnClick} />
+                            <ArrowLeftCircle className="arrowsize" data-value="back" onClick={handleBtnClickStudent} />
                             <StudentCard />
-                            <ArrowRightCircle className="arrowsize" data-value="next" onClick={handleBtnClick} />
+                            <ArrowRightCircle className="arrowsize" data-value="next" onClick={handleBtnClickStudent} />
                         </div>
                     </div> 
                 </div>
@@ -111,9 +163,9 @@ export default function Matching() {
                         <Form style={{ maxWidth: "300px"}}>
                             <Form.Group controlId="studentSelect">
                                 <Form.Label style={{ color: "#8860D0" }}>Filter</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control as="select"  onChange= {getMentors}>
                                     <option>Choose option...</option>
-                                    <option>Javascript</option>
+                                    <option>JavaScript</option>
                                     <option>HTML</option>
                                     <option>CSS</option>
                                     <option>jQuery</option>
@@ -126,9 +178,9 @@ export default function Matching() {
                             </Form.Group>
                         </Form>
                         <div className="cardandArrowBox">
-                            <ArrowLeftCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="back" onClick={handleBtnClick} />
+                            <ArrowLeftCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="back" onClick={handleBtnClickMentor} />
                             <MentorCard />
-                            <ArrowRightCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="next" onClick={handleBtnClick} />
+                            <ArrowRightCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="next" onClick={handleBtnClickMentor} />
                         </div>
                     </div> 
                 </div>
