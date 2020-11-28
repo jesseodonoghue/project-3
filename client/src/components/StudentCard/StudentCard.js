@@ -59,11 +59,9 @@ export default function StudentCard({currentStudent}) {
                         </Button>
                     </div>
                 </Card.Title>
-                {/* <Card.Text> */}
                     <div>
-                     {getSkills(currentStudent)}
+                        {getSkills(currentStudent)}
                     </div>
-                {/* </Card.Text> */}
             </Card.Body>
             <Button variant="primary" className="profileBtn">Go to Profile</Button>
         </Card>

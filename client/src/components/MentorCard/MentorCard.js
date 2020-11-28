@@ -58,11 +58,9 @@ export default function MentorCard({currentMentor}) {
                         </Button>
                     </div>    
                 </Card.Title>
-                {/* <Card.Text> */}
-                      <div>
-                     {getSkills(currentMentor)}
+                    <div>
+                        {getSkills(currentMentor)}
                     </div>
-                {/* </Card.Text> */}
             </Card.Body>
             <Button variant="primary" className="profileBtn">Go to Profile</Button>
         </Card>
