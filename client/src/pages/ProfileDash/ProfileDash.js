@@ -9,6 +9,8 @@ import bgImg from '../../assets/profilebg.svg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
+import { BugFill } from 'react-bootstrap-icons';
+import { BookmarkHeartFill } from 'react-bootstrap-icons';
 import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
@@ -168,34 +170,35 @@ export default function ProfileDash() {
             )}
             {!loading && (
                 <div className="box">
-                    <Jumbotron fluid style={{ height: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})`}}>
-                        <div className="profileCard"style={{ zIndex: "1" }}>
-                            <div className="profileContent">
-                                <img src={ProfilePicL} className="profileImg"/>
-                                <h3>{user.firstName} {user.lastName}</h3>
-                                <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
-                                <p style={{ wordWrap: "break-word" }}>LinkedIn: {user.linkedin}</p>
-                                <p style={{ wordWrap: "break-word" }}>GitHub: {user.github}</p>
-                                <hr/>
-                                <h3>Skills</h3>
-                                {skillsArr.length ? (
-                                    <ul>
-                                        {skillsArr.map((skill, i) => (
-                                            <li key={i}>{skill}</li>
-                                        ))}
-                                    </ul>
-                                ) : (
-                                <p>No skills added yet</p>
-                                )}
-                            </div>
-                        </div>
+                    <Jumbotron fluid style={{ minHeight: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})`}}>
                     </Jumbotron>
                     <div className="listContainerMain">
                         <div className="row" style={{ width: "100%"}}>
-                            <div className="col-md-5" id="placeholderbox"></div>
-                            <div className="col-md-7">
+                            <div className="col-md-5" id="cardplacement">
+                                <div className="profileCard"style={{ }}>
+                                    <div className="profileContent">
+                                        <img src={ProfilePicL} className="profileImg"/>
+                                        <h3>{user.firstName} {user.lastName}</h3>
+                                        <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
+                                        <p style={{ wordWrap: "break-word" }}>LinkedIn: {user.linkedin}</p>
+                                        <p style={{ wordWrap: "break-word" }}>GitHub: {user.github}</p>
+                                        <hr/>
+                                        <h3>Skills</h3>
+                                        {skillsArr.length ? (
+                                            <ul>
+                                                {skillsArr.map((skill, i) => (
+                                                    <li key={i}>{skill}</li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                        <p>No skills added yet</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-7" id="postsplacement">
                                 <div className="listContainerInner">
-                                    <h3 style={{ margin: "10px"}}>Saved Posts</h3>
+                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BookmarkHeartFill style={{ marginRight: "10px"}} /> Saved Posts</h3>
                                     <div className="listItems overflow-auto">
                                         <ListItem/>
                                         <ListItem/>
@@ -211,7 +214,7 @@ export default function ProfileDash() {
                                         onHide={() => setModalShow(false)}
                                     />
                                <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
-                                    <h3 style={{ margin: "10px"}}>Connections</h3>
+                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/> Connections</h3>
                                     <div className="listItems overflow-auto">
                                         <FollowList/>
                                         <FollowList/>
