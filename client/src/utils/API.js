@@ -1,11 +1,14 @@
 import axios from "axios";
 
 export default {
-    getUserPosts: function() {
-        return axios.get('/api/posts')
+    getUserPosts: function(id) {
+        return axios.get('/api/posts/userPosts/' + id)
     },
     createPost: function(postData) {
         return axios.post('/api/posts', postData);
+    },
+    getSinglePost: function(id) {
+        return axios.get('/api/posts/' + id)
     },
     updateProfile: function(id, userData) {
         return axios.put('/api/users/' + id, userData);

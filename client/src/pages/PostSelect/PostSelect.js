@@ -1,25 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
 import './PostSelect.css';
 import Button from 'react-bootstrap/Button';
+import API from '../../utils/API';
 
-export default function PostSelect() {
+
+export default function PostSelect(props) {
+
+
+const [userPost, setUserPost] = useState({});
+const [loading, setLoading] = useState(false);
+
+
+useEffect(() => {
+    loadUserPost();
+}, []);
+
+function loadUserPost() {
+    setLoading(true);
+    API.getSinglePost(props.location.state.postInfo._id)
+        .then(res => {
+            setUserPost(res.data[0]);
+            // console.log(res.data[0]);
+            return res.data;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+}
+
+    console.log(userPost)
+    
     return (
         <div className="box" style={{ height: "100%" }}>
             <div className="postContainer">
                 <div className="postNameDate">
                     <div className="nameImg">
                         <div className="posterImg"></div>
-                        <div>Posters Name</div>
+                        <div>Poster's Name</div>
                     </div>
                     <div className="date">
-                        00/00/0000
+                        date goes here
                     </div>
                 </div>
-                <h1  className="postTitle">Post Title</h1>
+                <h1  className="postTitle">{userPost.title}</h1>
                 <div className="postCopyContainer">
                     <p>
-                        Duis lobortis nunc sed urna sollicitudin congue. Cras sed elit enim. Pellentesque sagittis, ex non pellentesque dapibus, dolor mauris laoreet tellus, ut finibus erat lacus sed orci. Quisque at lacinia dolor. Aenean tempus maximus nisl placerat dapibus. Curabitur fringilla lectus sit amet sapien tempor tempus. Sed placerat in mi a tincidunt.
-                        Sed vehicula augue a auctor dictum. Sed aliquam, libero sed tristique faucibus, augue nisl mollis nibh, eu porttitor metus augue ut nunc. Pellentesque imperdiet elit nibh, sit amet varius lorem accumsan nec. Mauris sodales urna vitae vestibulum imperdiet. Phasellus vestibulum maximus dolor. Donec id vehicula felis, congue blandit ex. Cras efficitur vehicula rhoncus. Sed eget lacus mattis quam congue volutpat. Duis sagittis et dui a sollicitudin. Vestibulum eu egestas dolor. Nam vestibulum purus ut justo viverra, non blandit ante dapibus. Proin sodales consequat ante, at dignissim ante. Etiam eleifend orci nec felis luct
+                        {userPost.body}
                     </p>
                 </div>
             </div>

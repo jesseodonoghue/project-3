@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext, createContext } from 'react'
 import './posts.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import FeaturedList from '../../components/FeaturedList/FeaturedList.js';
@@ -10,30 +10,60 @@ import API from "../../utils/API";
 
 export default function Posts() {
 
+const [user, setUser] = useState("");
 const [userPosts, setUserPosts] = useState([]);
 const [filteredUserPosts, setFilteredUserPosts] = useState([]);
 const [searchTerm, setSearchTerm] = useState("");
 const [loading, setLoading] = useState(false);
 
+let postArr = [];
+let testVar = "";
 
+// Need to add validation if any posts have been created for a user
 useEffect(() => {
-    loadUserPosts();
+    loadUser();
 }, []);
 
-function loadUserPosts() {
+function loadUser() {
     setLoading(true);
-    API.getUserPosts()
+    AUTH.getUser()
         .then(res => {
-            setUserPosts(res.data);
-            setFilteredUserPosts(res.data);
-            console.log(res.data);
-            return res.data;
+            setUser(res.data.user);
+            console.log(res.data.user);
+            return res.data.user;
+        })
+        .then((currentUser) => {
+            loadUserPosts(currentUser);
         })
         .catch(err => {
             console.log(err);
         })
         .finally(() => {
             setLoading(false);
+        });
+}
+
+function loadUserPosts(currentUser) {
+    setLoading(true);
+    console.log(currentUser);
+    API.getUserPosts(currentUser._id)
+        .then(res => {
+            postArr = res.data.posts;
+            // setUserPosts(postArr);
+            // setFilteredUserPosts(postArr);
+            return res.data.posts;
+        })
+        .then(() => {
+            testVar = postArr[0].title;
+            console.log(testVar);
+            console.log(postArr);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+        .finally(() => {
+            setLoading(false);
+            console.log(testVar);
         });
 }
 
@@ -51,54 +81,57 @@ function onInputChange(event) {
 }
 
     return (
-        <div className="container-flex" style={{ overflowX: "hidden", height: "auto", maxWidth: "100%"}}>
-            <div className="row" style={{ width: "100%", margin: "0px"}}>
-                <div className="col-md-5 col-sm-12" style={{width: "100%", padding: "0px"}} id="postboxes">
-                    <div className="yourPostsContainer" style={{ flexDirection: "column"}}>
-                        <Form>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label style={{ color: "white" }}>Search</Form.Label>
-                                <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
-                            </Form.Group>
-                        </Form>
-                        <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
-                        <div className="listItems overflow-auto">
-                            {filteredUserPosts.map(postInfo => (
-                                <UserList title={postInfo.title} />
-                                // Error in console: Each child in a list
-                                // should have a unique "key" prop.
-                            ))}
-                        </div>
-                    </div>
+        <div className="container-flex">
+            <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label style={{ color: "white" }}>Search</Form.Label>
+                        <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
+                    </Form.Group>
+                </Form>
+                <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
+                <div className="listItems overflow-auto">
+                    {loading && (
+                        <p>Loading...</p>
+                    )}
+                    {!loading && (
+                        <p>{console.log(testVar)}</p>
+                        // postArr.map((postInfo, index) => (
+                        //     <Link to={{
+                        //         pathname: "/postselect",
+                        //         state: {
+                        //             postInfo: postInfo
+                        //         }
+                        //         }}>
+                        //     <UserList key={index} title={postInfo.title} />
+                        //     </Link>
+                        // ))
+                    )} 
                 </div>
-                
-                <div className="col-md-7 col-sm-12" id="featuredboxes">
-                    <div className="featuredContainer">
-                        <Form>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Search</Form.Label>
-                                <Form.Control type="search" placeholder="Enter search" />
-                            </Form.Group>
-                        </Form>
-                        <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
-                        <div className="listItems overflow-auto">
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                            <FeaturedList/>
-                        </div>
-                    </div>
+            </div>
+
+            <div className="featuredContainer col-md-7">
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Search</Form.Label>
+                        <Form.Control type="search" placeholder="Enter search" />
+                    </Form.Group>
+                </Form>
+                <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
+                <div className="listItems overflow-auto">
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
+                    <FeaturedList/>
                 </div>
             </div>
             
         </div>
     )
 }
-
-{/* <Link className="nav-link" to="/matching" >Connections</Link> */}
