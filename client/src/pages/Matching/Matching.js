@@ -7,6 +7,7 @@ import StudentCard from '../../components/StudentCard/StudentCard';
 import MentorCard from '../../components/MentorCard/MentorCard';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
+import Loading from '../../components/Loading/Loading';
 
 
 
@@ -123,7 +124,7 @@ export default function Matching() {
     return (
         <div>
             {loading && (
-                <p>Loading...</p>
+                <Loading />
             )}
             {!loading && (
 
