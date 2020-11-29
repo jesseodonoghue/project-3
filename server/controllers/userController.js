@@ -1,5 +1,6 @@
 const db = require("../models");
 
+
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
@@ -32,7 +33,7 @@ module.exports = {
     });
   },
   updateProfile: (req, res) => {
-    const { firstName, lastName, email, image, bio, linkedin, github, jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongobdStudent, mysqlMentor, mysqlStudent } = req.body;
+    const { firstName, lastName, email, bio, linkedin, github, jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongobdStudent, mysqlMentor, mysqlStudent } = req.body;
     db.User.findOneAndUpdate({
       _id: req.params.id
     }, req.body, { new: true }
@@ -143,5 +144,5 @@ module.exports = {
 			delete cleanUser.password;
 		}
 		res.json({ user: cleanUser });
-	}
+  }
 };
