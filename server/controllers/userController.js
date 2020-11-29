@@ -34,6 +34,16 @@ module.exports = {
   },
   updateProfile: (req, res) => {
     const { firstName, lastName, email, bio, linkedin, github, jsMentor, jsStudent, htmlMentor, htmlStudent, cssMentor, cssStudent, nodejsMentor, nodejsStudent, expressMentor, expressStudent, reactMentor, reactStudent, mongodbMentor, mongobdStudent, mysqlMentor, mysqlStudent } = req.body;
+    // console.log(req.body);
+    db.User.findOneAndUpdate({
+      _id: req.params.id
+    }, req.body, { new: true }
+    ).then(dbModel => res.json(dbModel)
+    ).catch(err => res.status(422).json(err));
+  },
+  updateImage: (req, res) => {
+    const { image } = req.body;
+    // console.log(req.body);
     db.User.findOneAndUpdate({
       _id: req.params.id
     }, req.body, { new: true }

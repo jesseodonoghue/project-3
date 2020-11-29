@@ -15,4 +15,8 @@ router.route("/mentor/:language")
 router.route("/student/:language")
     .get(userController.findStudent);
 
+    // /api/users/image/id
+router.route("/image/:id")
+    .put(userController.updateImage);
+
 module.exports = router;

@@ -19,6 +19,17 @@ function ProfileCard() {
     let formPass = {};
     const formEl = useRef(null);
     const formPassEl = useRef(null);
+    let widget =  window.cloudinary.createUploadWidget({
+        cloud_name: "dpvjs2wig",
+        upload_preset: "gtdegmoh",
+        max_image_width: 200,
+        max_image_height: 200,
+        gravity: "faces",
+        crop: "fill"
+    },
+    function (error, result) {
+        imageUpload(result);
+    });
 
     //Toast Alert Hook
     const [show, setShow] = useState(false);
@@ -112,20 +123,24 @@ function ProfileCard() {
     //     .catch(err => console.log(err));
     // };
 
-    function imageUpload() {
-        cloudinary.openUploadWidget({
-            cloud_name: "dpvjs2wig",
-            upload_preset: "gtdegmoh",
-            max_image_width: 200,
-            max_image_height: 200,
-            gravity: "faces",
-            crop: "limit"
-        },
-        function (error, result) {
-            if (error) throw error;
-            console.log(result);
-            console.log(result[0].url);
-        });
+    function imageUpload(resultEvent) {
+        const userID = user._id;
+        if(resultEvent.event === "success") {
+            const imageURL = {
+                image: resultEvent.info.secure_url
+            };
+
+            API.updateImage(userID, imageURL)
+            .then((res) => {
+                console.log(res.data);
+                setUser(res.data);
+            })
+            // console.log(resultEvent.info.secure_url)
+        }
+    }
+
+    function showWidget() {
+        widget.open();
     }
 
     return (
@@ -140,8 +155,13 @@ function ProfileCard() {
                     <h3 style={{ color: '#5680E9' }}>Profile Photo</h3>
                     <Card>
                         <div className="profile-photo">
-                            <Image src={ProfilePic} alt="ProfilePic" fluid/>
-                            <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick= {imageUpload} style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
+                            {user.image === "" && (
+                                <Image src={ProfilePic} alt="ProfilePic" fluid/>
+                            )}
+                            {user.image !== "" && (
+                                <Image src={user.image} alt="ProfilePic" fluid/>
+                            )}
+                            <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick= {showWidget} style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
                         </div>
                     </Card> 
                     <div style={{ marginTop: "3em", marginBottom: "3em"}}>
