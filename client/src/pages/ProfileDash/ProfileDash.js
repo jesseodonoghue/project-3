@@ -180,7 +180,13 @@ export default function ProfileDash() {
                             <div className="col-md-5" id="cardplacement">
                                 <div className="profileCard"style={{ }}>
                                     <div className="profileContent">
+                                    {user.image === "" && (
                                         <img src={ProfilePicL} className="profileImg"/>
+                                    )}
+                                    {user.image !== "" && (
+                                        <img src={user.image} className="profileImg"/>
+                                    )}
+                                        {/* <img src={ProfilePicL} className="profileImg"/> */}
                                         <h3>{user.firstName} {user.lastName}</h3>
                                         <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
                                         <p style={{ wordWrap: "break-word" }}>LinkedIn: {user.linkedin}</p>
