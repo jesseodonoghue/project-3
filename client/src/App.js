@@ -82,6 +82,8 @@ function App() {
           <Route exact path="/matching" component={() => <LoginForm login={login} />} />
           <Route exact path="/profilesetgen" component={() => <LoginForm login={login} />} />
           <Route exact path="/profilesetnet" component={() => <LoginForm login={login} />} />
+          <Route exact path="/user" component={() => <LoginForm login={login} />} />
+
         </div>
       )}
     </div>
