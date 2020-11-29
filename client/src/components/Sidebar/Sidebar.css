@@ -7,7 +7,7 @@
     color: white;
   }
 
-  .side-bar a:hover {
+  #navLinks a:hover {
     color: white;
     opacity: .5;
   }
@@ -43,3 +43,5 @@
   hr {
     background-color: white !important;
   }
+
+  

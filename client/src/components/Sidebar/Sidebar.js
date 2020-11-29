@@ -28,7 +28,7 @@ export default function Sidebar() {
                     <ul>
                         <h5 style={{ paddingLeft: ".5rem", marginLeft: "2em" }}>GENERAL</h5>
                         <hr />
-                        <a>
+                        <a id="navLinks">
                             <NavLink to='/profilesetgen' activeClassName="active" style={{ marginLeft: "3em", paddingRight: "0px" }}>Personal Info</NavLink>
                             <h5 style={{ marginTop: "1em", marginLeft: "2em", paddingLeft: ".5rem" }}>NETWORKING</h5>
                             <hr />
