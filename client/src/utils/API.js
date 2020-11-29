@@ -21,5 +21,8 @@ export default {
     },
     getStudents: function(language) {
         return axios.get('/api/users/student/' + language);
+    },
+    updateImage: function(id, image) {
+        return axios.put("/api/users/image/" + id, image);
     }
 };
