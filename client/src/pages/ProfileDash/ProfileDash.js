@@ -16,6 +16,7 @@ import { BookmarkHeartFill } from 'react-bootstrap-icons';
 import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
+import Loading from '../../components/Loading/Loading';
 
 
 
@@ -168,7 +169,7 @@ export default function ProfileDash() {
     return (
         <div>
             {loading && (
-                <p>Loading...</p>
+                <Loading />
             )}
             {!loading && (
                 <div className="box">
