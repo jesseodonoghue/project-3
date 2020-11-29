@@ -3,6 +3,7 @@ import './PostSelect.css';
 import Button from 'react-bootstrap/Button';
 import API from '../../utils/API';
 import Loading from '../../components/Loading/Loading';
+import Form from 'react-bootstrap/Form';
 
 
 export default function PostSelect(props) {
@@ -66,9 +67,9 @@ function loadUserPost() {
                 </div>
                 <div className="postContainer" style={{ marginTop: "1em", marginBottom: "0px", borderBottomLeftRadius: "0px", borderBottomRightRadius: "0px" }}>
                     <div className="postCopyContainer">
-                        <p>
-                        Duis lobortis nunc sed urna sollicitudin congue. Cras sed elit enim. Pellentesque sagittis, ex non pellentesque dapibus, dolor mauris laoreet tellus, ut finibus erat lacus sed orci. Duis lobortis nunc sed urna sollicitudin congue. Cras sed elit enim. Pellentesque sagittis, ex non pellentesque dapibus, dolor mauris laoreet tellus, ut finibus erat lacus sed orci.
-                        </p>
+                    <Form.Group controlId="commentTextArea" style={{width: "100%"}}>
+                        <Form.Control as="textarea" rows={10} />
+                    </Form.Group>
                     </div>
                 </div>
                 <div className="submitCommentBox mlmr">
