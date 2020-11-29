@@ -3,7 +3,6 @@ import Sidebar from '../../components/Sidebar';
 import ProfileCard from '../../components/ProfileCard';
 import './style.css';
 
-
 export default function ProfileSetGen() {
     return (
         <div className="container-flex" style={{ height: "100%", overflowX: "hidden"}}>

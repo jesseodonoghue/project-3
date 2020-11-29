@@ -6,6 +6,7 @@ import UserList from '../../components/UserList/UserList.js';
 import Form from 'react-bootstrap/Form';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
+import Loading from '../../components/Loading/Loading';
 
 
 export default function Posts() {
@@ -81,57 +82,59 @@ function onInputChange(event) {
 }
 
     return (
-        <div className="container-flex">
-            <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label style={{ color: "white" }}>Search</Form.Label>
-                        <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
-                    </Form.Group>
-                </Form>
-                <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
-                <div className="listItems overflow-auto">
-                    {loading && (
-                        <p>Loading...</p>
-                    )}
-                    {!loading && (
-                        <p>{console.log(testVar)}</p>
-                        // postArr.map((postInfo, index) => (
-                        //     <Link to={{
-                        //         pathname: "/postselect",
-                        //         state: {
-                        //             postInfo: postInfo
-                        //         }
-                        //         }}>
-                        //     <UserList key={index} title={postInfo.title} />
-                        //     </Link>
-                        // ))
-                    )} 
-                </div>
-            </div>
+        <>
+            {loading && (
+                <Loading />
+            )}
+            {!loading && (
+            <div className="container-flex">
+                <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label style={{ color: "white" }}>Search</Form.Label>
+                            <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
+                        </Form.Group>
+                    </Form>
+                    <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
+                    <div className="listItems overflow-auto">
 
-            <div className="featuredContainer col-md-7">
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Search</Form.Label>
-                        <Form.Control type="search" placeholder="Enter search" />
-                    </Form.Group>
-                </Form>
-                <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
-                <div className="listItems overflow-auto">
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
+                            {/* <p>{console.log(testVar)}</p>
+                            // postArr.map((postInfo, index) => (
+                            //     <Link to={{
+                            //         pathname: "/postselect", */}
+                            {/* //         state: { */}
+                            {/* //             postInfo: postInfo
+                            //         }
+                            //         }}>
+                            //     <UserList key={index} title={postInfo.title} />
+                            //     </Link>
+                            // )) */}
+                    </div>
+                </div>
+
+                <div className="featuredContainer col-md-7">
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Search</Form.Label>
+                            <Form.Control type="search" placeholder="Enter search" />
+                        </Form.Group>
+                    </Form>
+                    <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
+                    <div className="listItems overflow-auto">
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                        <FeaturedList/>
+                    </div>
                 </div>
             </div>
-            
-        </div>
+            )} 
+        </>
     )
 }

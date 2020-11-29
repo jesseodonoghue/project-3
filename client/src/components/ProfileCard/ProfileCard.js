@@ -7,6 +7,8 @@ import ProfilePic from '../../assets/defaultprofilepic.svg'
 import Image from 'react-bootstrap/Image'
 import './style.css'
 import Notification from '../Notification/index';
+import Loading from '../../components/Loading/Loading';
+
 
 function ProfileCard() {
 
@@ -113,7 +115,7 @@ function ProfileCard() {
 
         <>
             {loading && (
-                <p>Loading...</p>
+                <Loading />
             )}
             {!loading && (
                 <div style={{ display: "flex", flexDirection: "column", height: "100%"}}>
