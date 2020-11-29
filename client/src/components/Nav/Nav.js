@@ -9,6 +9,8 @@ import Dashboard from '../../pages/ProfileDash';
 import Profile from '../../pages/ProfileSetGen';
 import PostSelect from '../../pages/PostSelect';
 import ProfileNet from '../../pages/ProfileSetNet';
+import ProfileUser from '../../pages/ProfileUser/ProfileUser';
+
 
 // we can import the bootstrap nav module here, then delete Link and Col from above
 
@@ -42,6 +44,8 @@ const navBar = (props) => {
     <Route path="/profilesetgen" exact component={Profile} />
     <Route path="/postselect" exact component={PostSelect} />
     <Route path='/profilesetnet' exact component={ProfileNet} />
+    <Route path='/user' exact component={ProfileUser} />
+
   </>
   );
 };

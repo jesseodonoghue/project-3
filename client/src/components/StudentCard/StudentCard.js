@@ -60,8 +60,8 @@ export default function StudentCard({currentStudent}) {
                     </div>
                 </Card.Title>
                 {/* <Card.Text> */}
-                    <div>
-                     {getSkills(currentStudent)}
+                    <div className="bulletsforCard">
+                       {getSkills(currentStudent)}
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
