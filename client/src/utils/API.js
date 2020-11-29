@@ -1,8 +1,11 @@
 import axios from "axios";
 
 export default {
+    getAllPosts: function() {
+        return axios.get('/api/posts');
+    },
     getUserPosts: function(id) {
-        return axios.get('/api/posts/userPosts/' + id)
+        return axios.get('/api/posts/userPosts/' + id);
     },
     createPost: function(postData) {
         return axios.post('/api/posts', postData);

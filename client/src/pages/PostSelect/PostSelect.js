@@ -12,7 +12,7 @@ const [loading, setLoading] = useState(false);
 
 
 useEffect(() => {
-    loadUserPost();
+        loadUserPost();
 }, []);
 
 function loadUserPost() {

@@ -6,7 +6,7 @@ export default function FeaturedList(props) {
     return (
         <li className="list-group-item" id="featuredList">
             <div className="postTitle">
-            Post Title{props.children}
+            {props.title} {props.children}
             </div>
             <div className="nameandImgContainer">
                 <div className="poster">
