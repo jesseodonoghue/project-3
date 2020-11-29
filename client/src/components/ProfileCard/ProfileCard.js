@@ -10,6 +10,7 @@ import Notification from '../Notification/index';
 import Loading from '../../components/Loading/Loading';
 
 
+
 function ProfileCard() {
 
     const [user, setUser] = useState("");
@@ -111,6 +112,22 @@ function ProfileCard() {
     //     .catch(err => console.log(err));
     // };
 
+    function imageUpload() {
+        cloudinary.openUploadWidget({
+            cloud_name: "dpvjs2wig",
+            upload_preset: "gtdegmoh",
+            max_image_width: 200,
+            max_image_height: 200,
+            gravity: "faces",
+            crop: "limit"
+        },
+        function (error, result) {
+            if (error) throw error;
+            console.log(result);
+            console.log(result[0].url);
+        });
+    }
+
     return (
 
         <>
@@ -124,7 +141,7 @@ function ProfileCard() {
                     <Card>
                         <div className="profile-photo">
                             <Image src={ProfilePic} alt="ProfilePic" fluid/>
-                            <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
+                            <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick= {imageUpload} style={{ color: "#5680E9", marginTop: ".5em" }}>Edit/Update Profile Picture</FormBtn>
                         </div>
                     </Card> 
                     <div style={{ marginTop: "3em", marginBottom: "3em"}}>
