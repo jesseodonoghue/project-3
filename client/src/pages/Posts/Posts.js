@@ -17,7 +17,7 @@ const [searchTerm, setSearchTerm] = useState("");
 const [loading, setLoading] = useState(false);
 
 let postArr = [];
-let testVar = "";
+
 
 // Need to add validation if any posts have been created for a user
 useEffect(() => {
@@ -54,8 +54,8 @@ function loadUserPosts(currentUser) {
             return res.data.posts;
         })
         .then(() => {
-            testVar = postArr[0].title;
-            console.log(testVar);
+            setUserPosts(postArr);
+            setFilteredUserPosts(postArr);
             console.log(postArr);
         })
         .catch(err => {
@@ -63,13 +63,14 @@ function loadUserPosts(currentUser) {
         })
         .finally(() => {
             setLoading(false);
-            console.log(testVar);
+            console.log(postArr[0].title);
         });
 }
 
 function onInputChange(event) {
+
     const value = event.target.value;
-    const name = event.target.name
+    const name = event.target.name;
 
     setSearchTerm(value)
 
@@ -95,17 +96,17 @@ function onInputChange(event) {
                         <p>Loading...</p>
                     )}
                     {!loading && (
-                        <p>{console.log(testVar)}</p>
-                        // postArr.map((postInfo, index) => (
-                        //     <Link to={{
-                        //         pathname: "/postselect",
-                        //         state: {
-                        //             postInfo: postInfo
-                        //         }
-                        //         }}>
-                        //     <UserList key={index} title={postInfo.title} />
-                        //     </Link>
-                        // ))
+                        // <p>{console.log(userPosts)}</p>
+                        filteredUserPosts.map((postInfo, index) => (
+                            <Link key={index} to={{
+                                pathname: "/postselect",
+                                state: {
+                                    postInfo: postInfo
+                                }
+                                }}>
+                            <UserList key={index} title={postInfo.title} />
+                            </Link>
+                        ))
                     )} 
                 </div>
             </div>
