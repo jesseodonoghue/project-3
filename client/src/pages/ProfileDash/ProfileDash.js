@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './profileDash.css';
 import ListItem from '../../components/List/ListItem.js';
-import FollowList from '../../components/FollowList/FollowList.js';
+import FollowListMentor from '../../components/FollowListMentor/FollowListMentor.js';
+import FollowListStudent from '../../components/FollowListMentor/FollowListMentor.js';
 import '../../components/List/List.css';
 import Modal from 'react-bootstrap/Modal';
 import bgImg from '../../assets/profilebg.svg';
@@ -10,6 +11,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Paperclip } from 'react-bootstrap-icons';
 import { BugFill } from 'react-bootstrap-icons';
+import { Bug } from 'react-bootstrap-icons';
 import { BookmarkHeartFill } from 'react-bootstrap-icons';
 import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 import AUTH from "../../utils/AUTH";
@@ -213,17 +215,35 @@ export default function ProfileDash() {
                                         show={modalShow}
                                         onHide={() => setModalShow(false)}
                                     />
-                               <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
-                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/> Connections</h3>
-                                    <div className="listItems overflow-auto">
-                                        <FollowList/>
-                                        <FollowList/>
-                                        <FollowList/>
-                                        <FollowList/>
-                                        <FollowList/>
-                                        <FollowList/>
-                                    </div>
-                               </div>
+
+                               <div className="row">
+                                   <div className="col-md-6">
+                                        <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
+                                                <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/>Your Mentors</h3>
+                                                <div className="listItems overflow-auto">
+                                                    <FollowListMentor/>
+                                                    <FollowListMentor/>
+                                                    <FollowListMentor/>
+                                                    <FollowListMentor/>
+                                                    <FollowListMentor/>
+                                                    <FollowListMentor/>
+                                                </div>
+                                        </div>
+                                    </div>    
+                                    <div className="col-md-6">
+                                        <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
+                                                <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><Bug style={{ marginRight: "10px"}}/>Your Students</h3>
+                                                <div className="listItems overflow-auto">
+                                                    <FollowListStudent/>
+                                                    <FollowListStudent/>
+                                                    <FollowListStudent/>
+                                                    <FollowListStudent/>
+                                                    <FollowListStudent/>
+                                                    <FollowListStudent/>
+                                                </div>
+                                        </div>
+                                    </div>    
+                                </div> 
 
 
                             </div>
