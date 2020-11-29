@@ -13,15 +13,17 @@ export default function Posts() {
 const [user, setUser] = useState("");
 const [userPosts, setUserPosts] = useState([]);
 const [filteredUserPosts, setFilteredUserPosts] = useState([]);
+const [featuredPosts, setFeaturedPosts] = useState([]);
 const [searchTerm, setSearchTerm] = useState("");
 const [loading, setLoading] = useState(false);
 
 let postArr = [];
-
+let featuredPostArr = [];
 
 // Need to add validation if any posts have been created for a user
 useEffect(() => {
     loadUser();
+    loadFeaturedPosts();
 }, []);
 
 function loadUser() {
@@ -49,8 +51,6 @@ function loadUserPosts(currentUser) {
     API.getUserPosts(currentUser._id)
         .then(res => {
             postArr = res.data.posts;
-            // setUserPosts(postArr);
-            // setFilteredUserPosts(postArr);
             return res.data.posts;
         })
         .then(() => {
@@ -64,6 +64,25 @@ function loadUserPosts(currentUser) {
         .finally(() => {
             setLoading(false);
             console.log(postArr[0].title);
+        });
+}
+
+function loadFeaturedPosts() {
+    setLoading(true);
+    API.getAllPosts()
+        .then(res => {
+            featuredPostArr = res.data;
+            console.log(res.data);
+        })
+        .then(() => {
+            setFeaturedPosts(featuredPostArr);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+        .finally(() => {
+            setLoading(false);
+            console.log(featuredPosts);
         });
 }
 
@@ -120,16 +139,21 @@ function onInputChange(event) {
                 </Form>
                 <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
                 <div className="listItems overflow-auto">
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
-                    <FeaturedList/>
+                {loading && (
+                        <p>Loading...</p>
+                    )}
+                    {!loading && (
+                        featuredPosts.map((postInfo, index) => (
+                            <Link key={index} to={{
+                                pathname: "/postselect",
+                                state: {
+                                    postInfo: postInfo
+                                }
+                                }}>
+                            <FeaturedList key={index} title={postInfo.title} />
+                            </Link>
+                        ))
+                    )} 
                 </div>
             </div>
             
