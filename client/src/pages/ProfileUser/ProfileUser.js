@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import './profileUser.css';
 import '../../components/List/List.css';
 import bgImg from '../../assets/profilebg.svg';
@@ -6,10 +6,19 @@ import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
 import Loading from '../../components/Loading/Loading';
+import { useSpring, animated as a, interpolate } from 'react-spring';
 
 
 
 export default function ProfileUser() {
+
+    //react spring interpolate
+    const [{ st, xy }, set] = useSpring(() => ({ st: 0, xy: [0, 0] }));
+    const interpBg = xy.interpolate((x, y) => `perspective(400px) rotateY(${x / 60}deg) rotateX(${-y / 60}deg) translate3d(0%, 0%, 0)`);
+    const onMove = useCallback(({ clientX: x, clientY: y }) => set({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }), []);
+    const onScroll = useCallback(e => set({ st: e.target.scrollTop / 30 }), []);
+
+
     //get routes and stuff here
 
     // User information is not being pulled :(
@@ -78,15 +87,15 @@ export default function ProfileUser() {
     }
 
     return (
-        <div>
+        <>
             {loading && (
                 <Loading />
             )}
             {!loading && (
-                <div className="box" style={{backgroundSize: "cover", backgroundImage: `url(${bgImg})`, justifyContent:"center", alignItems:"center"}}>
+                <div className="box" style={{backgroundSize: "cover", backgroundImage: `url(${bgImg})`, justifyContent:"center", alignItems:"center"}} onMouseMove={onMove} onScroll={onScroll}>
                     <div className="row" style={{ display: "flex", width: "100%", marginLeft: "0px", marginRight: "0px", justifyContent:"center", alignItems:"center"}}>
                         <div className="col-md-12" id="flexfix" style={{ padding: "0px", justifyContent:"center", alignItems:"center", display: "flex"}}>
-                            <div className="profileCard" style={{ width: "100%", maxWidth: "500px"}}>
+                            <a.div className="profileCard" style={{ width: "100%", maxWidth: "500px", transform: interpBg, boxShadow: "0px 0px 10px black"}}>
                                 <div className="profileContent">
                                     <img src={ProfilePicL} className="profileImg"/>
                                     <h3>{user.firstName} {user.lastName}</h3>
@@ -105,12 +114,12 @@ export default function ProfileUser() {
                                     <p>No skills added yet</p>
                                     )}
                                 </div>
-                            </div>
+                            </a.div>
                         </div>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     )
 
 }
