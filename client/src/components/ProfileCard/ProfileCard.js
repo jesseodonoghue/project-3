@@ -22,10 +22,10 @@ function ProfileCard() {
     let widget =  window.cloudinary.createUploadWidget({
         cloud_name: "dpvjs2wig",
         upload_preset: "gtdegmoh",
-        max_image_width: 200,
-        max_image_height: 200,
-        gravity: "faces",
-        crop: "fill"
+        cropping: true,
+        croppingCoordinatesMode: "custom",
+        croppingAspectRatio: 1,
+        showSkipCropButton: false
     },
     function (error, result) {
         imageUpload(result);
@@ -77,13 +77,6 @@ function ProfileCard() {
         console.log(formObject);
     };
 
-    // function handlePassChange(event) {
-    //     event.preventDefault();
-    //     const { name, value } = event.target;
-    //     formPass = {...formPass, [name]: value};
-    //     console.log(formPass);
-    // };
-
     function handleFormSubmit(event) {
         event.preventDefault();
         
@@ -104,25 +97,6 @@ function ProfileCard() {
     };
 
 
-    // function handlePassSubmit(event) {
-    //     event.preventDefault();
-
-    //     if (!formPass.currPass) {
-    //         formPass.firstName = user.firstName;
-    //     }
-
-        
-    //     const userID = user._id;
-
-    //     API.updateProfile(userID, formObject)
-    //     .then(res => {
-    //         formEl.current.reset();
-    //         setUser(res.data);
-    //         console.log(user);
-    //     })
-    //     .catch(err => console.log(err));
-    // };
-
     function imageUpload(resultEvent) {
         const userID = user._id;
         if(resultEvent.event === "success") {
@@ -135,7 +109,6 @@ function ProfileCard() {
                 console.log(res.data);
                 setUser(res.data);
             })
-            // console.log(resultEvent.info.secure_url)
         }
     }
 
@@ -226,35 +199,6 @@ function ProfileCard() {
                                 />
                         </Card>
                     </div>
-                        
-                    {/* //// Password Change Form //// */}
-
-                    {/* <div style={{ marginTop: "3em"}}>
-                            <h3 style={{ color: '#5680e9' }}>Change Password</h3>
-                        <Card title="Create an Account">
-                            <form style={{marginTop: 10}} ref={formPassEl}>
-                                <label htmlFor="password">Current Password </label>
-                                <Input
-                                    type="password"
-                                    name="currPass"
-                                    onChange={handlePassChange}
-                                />
-                                <label htmlFor="newPass">New Password </label>
-                                <Input
-                                    type="password"
-                                    name="newPass"
-                                    onChange={handlePassChange}
-                                />
-                                <label htmlFor="confPass">Confirm Password </label>
-                                <Input
-                                    type="password"
-                                    name="confPass"
-                                    onChange={handlePassChange}
-                                />
-                                <FormBtn style={{ color: '#5680e9' }} onClick={handlePassSubmit}>Change Password</FormBtn>
-                            </form>
-                        </Card>
-                    </div> */}
                 </div>
             )}
 
