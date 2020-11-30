@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Redirect, Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
@@ -75,10 +75,17 @@ function App() {
         <div>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/signup" component={SignupForm} />
+          {/* <Route exact path="/dashboard"> <Redirect to="/" /></Route>
+          <Route exact path="/postselect"> <Redirect to="/" /></Route>
+          <Route exact path="/posts"> <Redirect to="/" /></Route>
+          <Route exact path="/matching"><Redirect to="/" /></Route>
+          <Route exact path="/profilesetgen"><Redirect to="/" /></Route>
+          <Route exact path="/profilesetnet"><Redirect to="/" /></Route>
+          <Route exact path="/user"><Redirect to="/" /></Route> */}
+
           <Route exact path="/dashboard" component={() => <LoginForm login={login} />} />
           <Route exact path="/postselect" component={() => <LoginForm login={login} />} />
           <Route exact path="/posts" component={() => <LoginForm login={login} />} />
-          <Route exact path="/dashboard" component={() => <LoginForm login={login} />} />
           <Route exact path="/matching" component={() => <LoginForm login={login} />} />
           <Route exact path="/profilesetgen" component={() => <LoginForm login={login} />} />
           <Route exact path="/profilesetnet" component={() => <LoginForm login={login} />} />

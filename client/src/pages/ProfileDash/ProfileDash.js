@@ -184,13 +184,13 @@ export default function ProfileDash() {
                                         <img src={ProfilePicL} className="profileImg"/>
                                     )}
                                     {user.image !== "" && (
-                                        <img src={user.image} className="profileImg"/>
+                                         <img src={user.image} className="profileImg"/>
                                     )}
                                         {/* <img src={ProfilePicL} className="profileImg"/> */}
                                         <h3>{user.firstName} {user.lastName}</h3>
                                         <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
-                                        <p style={{ wordWrap: "break-word" }}>LinkedIn: {user.linkedin}</p>
-                                        <p style={{ wordWrap: "break-word" }}>GitHub: {user.github}</p>
+                                        <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a href={user.linkedin} target="blank">{user.linkedin}</a></p>
+                                        <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a href={user.github} target="blank">{user.github}</a></p>
                                         <hr/>
                                         <h3>Skills</h3>
                                         {skillsArr.length ? (
