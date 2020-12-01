@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import API from '../../utils/API';
 import Loading from '../../components/Loading/Loading';
 import Form from 'react-bootstrap/Form';
+import Moment from "moment";
 
 
 export default function PostSelect(props) {
@@ -49,7 +50,7 @@ function loadUserPost() {
                             <div>Poster's Name</div>
                         </div>
                         <div className="date">
-                            date goes here
+                        {Moment().format('MMMM Do YYYY')}
                         </div>
                     </div>
                     <h1  className="postTitle">{userPost.title}</h1>
