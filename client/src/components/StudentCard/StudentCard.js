@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './StudentCard.css';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
 import API from '../../utils/API';
 
@@ -66,7 +66,13 @@ export default function StudentCard({currentStudent, currentUser}) {
 
     return (
         <Card id="studentCardStyle" style={{ color: "black", textAlign: "center" }}>
-            <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+            {currentStudent.image === "" && (
+                <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+            )}
+            {currentStudent.image !== "" && (
+                <Card.Img variant="top" src={currentStudent.image} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+            )}
+            
             <Card.Body>
                 <Card.Title>
                     <div className="profileconnectbtnbox">                        

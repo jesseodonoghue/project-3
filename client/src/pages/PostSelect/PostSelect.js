@@ -74,7 +74,7 @@ export default function PostSelect(props) {
                 body: commentText,
                 createdby: userId,
                 likes: null
-              }]
+            }]
         })
         .then(res => {
             // loadUserPost();
