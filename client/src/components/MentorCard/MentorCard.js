@@ -75,13 +75,13 @@ export default function MentorCard( {currentMentor, currentUser} ) {
                     <div className="profileconnectbtnbox">
                         <h3>{currentMentor.firstName} {currentMentor.lastName}</h3>
                         {currentUser.learningFrom.indexOf(currentMentor._id) === -1 && (
-                            <Button variant="secondary" className="connectbtn" onClick={() => {connect()}} >
-                                <PersonPlusFill style={{ marginLeft: 10 }}/>
+                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" onClick={() => {connect()}} >
+                                <PersonPlusFill style={{ width: "100%", height: "100%"}}/>
                             </Button>
                         )}
                         {currentUser.learningFrom.indexOf(currentMentor._id) !== -1 && (
-                            <Button variant="secondary" className="connectbtn" >
-                                <PersonCheckFill style={{ color: "green", marginLeft: 10 }}/>
+                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" >
+                                <PersonCheckFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
                             </Button>
                         )}
                     </div>
