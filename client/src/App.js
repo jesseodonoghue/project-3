@@ -74,7 +74,7 @@ function App() {
       { !loggedIn && (
         <div>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
-          <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/signup" component={() => < SignupForm login={login}/>} />
           {/* <Route exact path="/dashboard"> <Redirect to="/" /></Route>
           <Route exact path="/postselect"> <Redirect to="/" /></Route>
           <Route exact path="/posts"> <Redirect to="/" /></Route>

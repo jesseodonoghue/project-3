@@ -7,7 +7,7 @@ import AUTH from '../../utils/AUTH';
 import './login.css';
 import { ArrowLeftCircle } from 'react-bootstrap-icons';
 
-function SignupForm() {
+function SignupForm({login}) {
   const [userObject, setUserObject] = useState({
     firstName: '',
     lastName: '',
@@ -44,6 +44,7 @@ function MouseOut(event) {
     }).then(response => {
       console.log(response);
       if (!response.data.errmsg) {
+        login(userObject.email, userObject.password)
         setRedirectTo('/');
       } else {
         console.log('duplicate');
