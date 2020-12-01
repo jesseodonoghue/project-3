@@ -7,6 +7,9 @@ export default {
     getUserPosts: function(id) {
         return axios.get('/api/posts/userPosts/' + id);
     },
+    addComment: function(id, comment) {
+        return axios.get('/api/posts/' + id, comment);
+    },
     createPost: function(postData) {
         return axios.post('/api/posts', postData);
     },
