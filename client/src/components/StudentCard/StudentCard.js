@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './StudentCard.css';
+import { BrowserRouter as Link } from 'react-router-dom';
 import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
 import API from '../../utils/API';
 
@@ -88,7 +89,14 @@ export default function StudentCard({currentStudent, currentUser}) {
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
-            <Button variant="primary" className="profileBtn">Go to Profile</Button>
+            <Link to={{
+                pathname: "/user",
+                state: {
+                    userInfo: currentStudent
+                }
+            }}>
+                <Button variant="primary" className="profileBtn">Go to Profile</Button>
+            </Link>
         </Card>
     )
 }
