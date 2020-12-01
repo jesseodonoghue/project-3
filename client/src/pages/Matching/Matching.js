@@ -14,7 +14,6 @@ import Loading from '../../components/Loading/Loading';
 
 export default function Matching() {
     const [user, setUser] = useState({});
-    const [users, setUsers] = useState([]);
     const [userIndexStudent, setUserIndexStudent] = useState(0);
     const [userIndexMentor, setUserIndexMentor] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -65,40 +64,64 @@ export default function Matching() {
     }
 
     function getMentors(event) {
+        const uID = user._id;
         if (event.target.value === "Node.js") {
             let data = "Nodejs";
             API.getMentors(data)
-                .then((mentors) => {
-                    let tempArr = [];
-                    tempArr = mentors.data;
+            .then((mentors) => {
+                let tempArr = [];                
+                for (let i = 0; i < mentors.data.length; i++) {
+                    if (mentors.data[i]._id === uID) {
+                        continue;
+                    } else {
+                        tempArr.push(mentors.data[i]);
+                    }
+                }
                 setMentor(tempArr);
             }) 
         } else {
             API.getMentors(event.target.value)
             .then((mentors) => {
-                let tempArr = [];
-                tempArr = mentors.data;
-                console.log(tempArr);
+                let tempArr = [];            
+                for (let i = 0; i < mentors.data.length; i++) {
+                    if (mentors.data[i]._id === uID) {
+                        continue;
+                    } else {
+                        tempArr.push(mentors.data[i]);
+                    }
+                }
                 setMentor(tempArr);
             }) 
         }
     }
 
     function getStudents(event) {
+        const uID = user._id;
         if (event.target.value === "Node.js") {
             let data = "Nodejs";
             API.getStudents(data)
-                .then((students) => {
-                    let tempArr = [];
-                tempArr = students.data;
+            .then((students) => {
+                let tempArr = [];            
+                for (let i = 0; i < students.data.length; i++) {
+                    if (students.data[i]._id === uID) {
+                        continue;
+                    } else {
+                        tempArr.push(students.data[i]);
+                    }
+                }
                 setStudent(tempArr);
             })
         } else {
             API.getStudents(event.target.value)
             .then((students) => {
-                let tempArr = [];
-                tempArr = students.data;
-                console.log(tempArr);
+                let tempArr = [];             
+                for (let i = 0; i < students.data.length; i++) {
+                    if (students.data[i]._id === uID) {
+                        continue;
+                    } else {
+                        tempArr.push(students.data[i]);
+                    }
+                }
                 setStudent(tempArr);
             }) 
         }
@@ -107,10 +130,9 @@ export default function Matching() {
     function loadUser() {
         setLoading(true);
         AUTH.getUser()
-            .then(users => {
-                setUsers(users.data);
-                setUser(users.data[0]);
-                return users.data;
+            .then(res => {
+                setUser(res.data.user);
+                return res.data.user;
             })
             .catch(err => {
                 console.log(err);
@@ -153,7 +175,7 @@ export default function Matching() {
                         {student.length > 0 && (
                             <div className="cardandArrowBox">
                             <ArrowLeftCircle className="arrowsize" data-value="back" onClick={handleBtnClickStudent} />
-                            <StudentCard currentStudent= {student[userIndexStudent]} />
+                            <StudentCard currentStudent= {student[userIndexStudent]} currentUser= {user} />
                             <ArrowRightCircle className="arrowsize" data-value="next" onClick={handleBtnClickStudent} />
                         </div>
                         )}
@@ -186,7 +208,7 @@ export default function Matching() {
                         {mentor.length > 0 && (
                         <div className="cardandArrowBox">
                         <ArrowLeftCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="back" onClick={handleBtnClickMentor} />
-                        <MentorCard currentMentor= {mentor[userIndexMentor]}/>
+                        <MentorCard currentMentor= {mentor[userIndexMentor]} currentUser= {user} />
                         <ArrowRightCircle className="arrowsize" style={{ color: "D8D8D8" }} data-value="next" onClick={handleBtnClickMentor} />
                     </div>
                         )}

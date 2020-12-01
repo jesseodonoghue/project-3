@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './StudentCard.css';
-import { PersonPlusFill } from 'react-bootstrap-icons';
+import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
+import API from '../../utils/API';
 
 
 
-export default function StudentCard({currentStudent}) {
+export default function StudentCard({currentStudent, currentUser}) {
+
+    const [user, setUser] = useState();
+
+    function connect() {
+        let tempObj = {
+            mentoring: []
+        };
+        tempObj.mentoring = currentUser.mentoring;
+        tempObj.mentoring.push(currentStudent._id);
+        API.updateProfile(currentUser._id, tempObj)
+        .then(res => {
+            setUser(res.data);
+            return res.data;
+        })
+    }
 
     function getSkills(user) {
         const tempArr = [];
@@ -52,16 +68,23 @@ export default function StudentCard({currentStudent}) {
             <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
             <Card.Body>
                 <Card.Title>
-                    <div className="profileconnectbtnbox">
+                    <div className="profileconnectbtnbox">                        
                         <h3>{currentStudent.firstName} {currentStudent.lastName}</h3>
-                        <Button variant="secondary" className="connectbtn">
-                            <PersonPlusFill/>
-                        </Button>
+                        {currentUser.mentoring.indexOf(currentStudent._id) === -1 && (
+                            <Button variant="secondary" className="connectbtn" onClick={() => {connect()}} >
+                                <PersonPlusFill style={{ marginLeft: 10 }}/>
+                            </Button>
+                        )}
+                        {currentUser.mentoring.indexOf(currentStudent._id) !== -1 && (
+                            <Button variant="secondary" className="connectbtn" >
+                                <PersonCheckFill style={{ color: "green", marginLeft: 10 }}/>
+                            </Button>
+                        )}
                     </div>
                 </Card.Title>
                 {/* <Card.Text> */}
                     <div className="bulletsforCard">
-                       {getSkills(currentStudent)}
+                        {getSkills(currentStudent)}
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
