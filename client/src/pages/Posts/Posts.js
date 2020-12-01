@@ -68,7 +68,6 @@ export default function Posts() {
             })
             .finally(() => {
                 setLoading(false);
-                console.log(postArr[0].title);
             });
     }
 
@@ -120,6 +119,7 @@ export default function Posts() {
         setFilteredFeaturedPosts(filteredFeaturedPosts);
     }
 
+
     return (
         <>
             {loading && (
@@ -136,17 +136,23 @@ export default function Posts() {
                         </Form>
                         <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
                         <div className="listItems overflow-auto">
+                            {userPosts.length > 0 && (
 
-                            {filteredUserPosts.map((postInfo, index) => (
-                                <Link key={index} to={{
-                                    pathname: "/postselect",
-                                    state: {
-                                        postInfo: postInfo
-                                    }
-                                    }}>
-                                <UserList key={index} title={postInfo.title} />
-                                </Link>
-                            ))}
+                                filteredUserPosts.map((postInfo, index) => (
+                                    <Link key={index} to={{
+                                        pathname: "/postselect",
+                                        state: {
+                                            postInfo: postInfo
+                                        }
+                                        }}>
+                                    <UserList key={index} title={postInfo.title} />
+                                    </Link>
+                                ))
+
+                            )}
+                            {!userPosts.length > 0 && (
+                                <h5 style={{ color: "white"}}>No user posts available. Create a post on the dashboard page.</h5>
+                            )}
                         </div>
                     </div>
 
