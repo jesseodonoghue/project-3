@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './MentorCard.css';
-import { PersonPlusFill } from 'react-bootstrap-icons';
+import { BrowserRouter as Link } from 'react-router-dom';
+import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
+import API from '../../utils/API';
 
 
 
-export default function MentorCard({currentMentor}) {
+export default function MentorCard( {currentMentor, currentUser} ) {
+
+    const [user, setUser] = useState();
+
+    function connect() {
+        // console.log(currentUser.learningFrom.indexOf(currentMentor._id));
+        // console.log(currentMentor);
+        let tempObj = {
+            learningFrom: []
+        };
+        tempObj.learningFrom = currentUser.learningFrom;
+        tempObj.learningFrom.push(currentMentor._id);
+        // console.log(tempObj);
+        API.updateProfile(currentUser._id, tempObj)
+        .then(res => {
+            setUser(res.data);
+            return res.data;
+        })
+    }
+    
     function getSkills(user) {
         const tempArr = [];
 
@@ -53,18 +74,32 @@ export default function MentorCard({currentMentor}) {
                 <Card.Title>
                     <div className="profileconnectbtnbox">
                         <h3>{currentMentor.firstName} {currentMentor.lastName}</h3>
-                        <Button variant="secondary" className="connectbtn">
-                            <PersonPlusFill/>
-                        </Button>
-                    </div>    
+                        {currentUser.learningFrom.indexOf(currentMentor._id) === -1 && (
+                            <Button variant="secondary" className="connectbtn" onClick={() => {connect()}} >
+                                <PersonPlusFill style={{ marginLeft: 10 }}/>
+                            </Button>
+                        )}
+                        {currentUser.learningFrom.indexOf(currentMentor._id) !== -1 && (
+                            <Button variant="secondary" className="connectbtn" >
+                                <PersonCheckFill style={{ color: "green", marginLeft: 10 }}/>
+                            </Button>
+                        )}
+                    </div>
                 </Card.Title>
                 {/* <Card.Text> */}
-                      <div className="bulletsforCard">
-                     {getSkills(currentMentor)}
+                    <div className="bulletsforCard">
+                        {getSkills(currentMentor)}
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
-            <Button variant="primary" className="profileBtn">Go to Profile</Button>
+            <Link to={{
+                pathname: "/user",
+                state: {
+                    userInfo: currentMentor
+                }
+            }}>
+                <Button variant="primary" className="profileBtn">Go to Profile</Button>
+            </Link>
         </Card>
     )
 }
