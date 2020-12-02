@@ -20,7 +20,7 @@ export default {
         return axios.get('/api/posts/' + id)
     },
     addComment: function(id, comment) {
-        return axios.get('/api/posts/' + id, comment);
+        return axios.put('/api/posts/' + id, comment);
     },
     createPost: function(postData) {
         return axios.post('/api/posts', postData);
