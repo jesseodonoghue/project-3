@@ -74,13 +74,16 @@ export default function PostSelect(props) {
         // const commentBody = comment;
     
         const commentText = comment;
-        const postReplies = userPost.replies;
-        console.log(postReplies);
-        postReplies.push({
+        const postReplies = {
+            replies: userPost.replies
+        }
+    
+        postReplies.replies.push({
             body: commentText,
             createdby: userId,
             likes: null
         });
+        console.log(postReplies);
     
         API.addComment(userPostId, postReplies)
         .then(res => {
