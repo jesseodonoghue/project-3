@@ -17,6 +17,7 @@ export default function PostSelect(props) {
     
     const [user, setUser] = useState("");
     const [userPost, setUserPost] = useState({});
+    const [postCreator, setPostCreator] = useState({});
     const [loading, setLoading] = useState(false);
     const [comment, setComment] = useState("");
     
@@ -34,9 +35,6 @@ export default function PostSelect(props) {
                 console.log(res.data.user);
                 return res.data.user;
             })
-            .then((currentUser) => {
-                loadUserPost(currentUser);
-            })
             .catch(err => {
                 console.log(err);
             })
@@ -51,7 +49,14 @@ export default function PostSelect(props) {
             .then(res => {
                 setUserPost(res.data[0]);
                 // console.log(res.data[0]);
-                return res.data;
+                return res.data[0];
+            })
+            .then((res) => {
+                API.getSingleUser(res.createdby)
+                .then((res) => {
+                    console.log(res.data);
+                    setPostCreator(res.data)
+                })
             })
             .catch(err => {
                 console.log(err);
@@ -68,14 +73,15 @@ export default function PostSelect(props) {
         // const commentBody = comment;
     
         const commentText = comment;
+        const postReplies = userPost.replies;
+        console.log(postReplies);
+        postReplies.push({
+            body: commentText,
+            createdby: userId,
+            likes: null
+        });
     
-        API.addComment(userPostId, {
-            replies: [{
-                body: commentText,
-                createdby: userId,
-                likes: null
-            }]
-        })
+        API.addComment(userPostId, postReplies)
         .then(res => {
             // loadUserPost();
             console.log(commentText);
@@ -86,8 +92,8 @@ export default function PostSelect(props) {
         })
         .finally(() => {
             loadUserPost();
-            loadUser();
-            console.log(userPost.replies[0].body);
+            // loadUser();
+            console.log(userPost);
         })
     }
     
@@ -98,7 +104,6 @@ export default function PostSelect(props) {
         setComment(value);
     }
     
-        
         return (
             <>
                 {loading && (
@@ -109,8 +114,8 @@ export default function PostSelect(props) {
                     <div className="postContainer">
                         <div className="postNameDate">
                             <div className="nameImg">
-                                <div className="posterImg"></div>
-                                <div>Poster's Name</div>
+                                <div className="posterImg"><img src={postCreator.image}></img></div>
+                                <div>{postCreator.firstName} {postCreator.lastName}</div>
                             </div>
                             <div className="date">
                             {Moment().format('MMMM Do YYYY')}
@@ -141,7 +146,7 @@ export default function PostSelect(props) {
                     </div>
                     <div className="postContainer">
                         <div className="commentBy">
-                            Comment by UserName
+                            Comment by user
                         </div>
                         <div className="time">
                             9:30pm
