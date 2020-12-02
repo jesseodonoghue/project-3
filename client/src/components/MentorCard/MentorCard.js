@@ -68,12 +68,12 @@ export default function MentorCard( {currentMentor, currentUser} ) {
     }
 
     return (
-        <Card id="mentorCardStyle" style={{color: "black", textAlign: "center" }}>
+        <Card id="mentorCardStyle" style={{color: "black", textAlign: "center", alignItems: "center" }}>
             {currentMentor.image === "" && (
-                <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+                <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "200px", marginTop: "1em", padding: "20px"}} />
             )}
             {currentMentor.image !== "" && (
-                <Card.Img variant="top" src={currentMentor.image} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+                <Card.Img variant="top" src={currentMentor.image} style={{ maxHeight: "200px", maxWidth: "200px", borderRadius: "50%", marginTop: "1em", padding: "20px"}} />
             )}
             <Card.Body>
                 <Card.Title>
@@ -97,7 +97,7 @@ export default function MentorCard( {currentMentor, currentUser} ) {
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
-            <Link to={{
+            <Link style={{width: "100%"}} to={{
                 pathname: "/user",
                 state: {
                     userInfo: currentMentor

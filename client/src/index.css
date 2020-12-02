@@ -10,6 +10,10 @@
 
 }
 
+hr {
+    margin: 0;
+    align-self: stretch;
+  }
 /* html, body {
     overflow-x: hidden;
     } */

@@ -179,7 +179,7 @@ export default function ProfileDash() {
                         <div className="row" style={{ width: "100%"}}>
                             <div className="col-md-5" id="cardplacement">
                                 <div className="profileCard"style={{ }}>
-                                    <div className="profileContent">
+                                    <div className="profileContent" style={{ alignItems:"flex-start"}}>
                                     {user.image === "" && (
                                         <img src={ProfilePicL} className="profileImg"/>
                                     )}
@@ -192,7 +192,7 @@ export default function ProfileDash() {
                                         <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a href={user.linkedin} target="blank">{user.linkedin}</a></p>
                                         <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a href={user.github} target="blank">{user.github}</a></p>
                                         <hr/>
-                                        <h3>Skills</h3>
+                                        <h3 style={{paddingTop: "15px"}}>Skills</h3>
                                         {skillsArr.length ? (
                                             <ul>
                                                 {skillsArr.map((skill, i) => (

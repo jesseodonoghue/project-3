@@ -40,6 +40,11 @@
 .profileContent {
     max-width: 100%;
     font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 
 .listContainerMain {
