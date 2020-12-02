@@ -102,8 +102,9 @@ export default function ProfileUser(props) {
                                     )}
                                     <h3>{profile.firstName} {profile.lastName}</h3>
                                     <p style={{ wordWrap: "break-word" }}>{profile.bio}</p>
-                                    <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a href={profile.linkedin} target="blank">{profile.linkedin}</a></p>
-                                    <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong><a href={profile.linkedin} target="blank">{profile.github}</a></p>
+                                    <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a id="LinkedText" href={profile.linkedin} target="blank">{profile.linkedin}</a></p>
+                                    <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong><a id="GitText" href={profile.linkedin} target="blank">{profile.github}</a></p>
+
                                     <hr/>
                                     <h3 style={{marginTop: "15px"}}>Skills</h3>
                                     {skillsArr.length ? (
