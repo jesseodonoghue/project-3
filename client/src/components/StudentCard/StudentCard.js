@@ -65,12 +65,12 @@ export default function StudentCard({currentStudent, currentUser}) {
     }
 
     return (
-        <Card id="studentCardStyle" style={{ color: "black", textAlign: "center" }}>
+        <Card id="studentCardStyle" style={{ color: "black", textAlign: "center", alignItems: "center" }}>
             {currentStudent.image === "" && (
-                <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+                <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "200px", marginTop: "1em", padding: "20px"}} />
             )}
             {currentStudent.image !== "" && (
-                <Card.Img variant="top" src={currentStudent.image} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+                <Card.Img variant="top" src={currentStudent.image} style={{ maxHeight: "200px", maxWidth: "200px", borderRadius: "50%", marginTop: "1em", padding: "20px"}} />
             )}
             
             <Card.Body>
@@ -95,7 +95,7 @@ export default function StudentCard({currentStudent, currentUser}) {
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
-            <Link to={{
+            <Link style={{width: "100%"}} to={{
                 pathname: "/user",
                 state: {
                     userInfo: currentStudent
