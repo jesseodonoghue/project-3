@@ -122,7 +122,7 @@ export default function PostSelect(props) {
                                 <div>{postCreator.firstName} {postCreator.lastName}</div>
                             </div>
                             <div className="date">
-                            {Moment().format('MMMM Do YYYY')}
+                            {Moment(userPost.date).format('MMMM Do YYYY')}
                             </div>
                         </div>
                         <h1  className="postTitle">{userPost.title}</h1>
