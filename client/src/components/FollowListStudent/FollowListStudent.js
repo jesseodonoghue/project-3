@@ -5,15 +5,23 @@ import { ArrowRightCircle } from 'react-bootstrap-icons';
 
 
 export default function FollowListStudent (props){
+
+  const student = props.student;
+
   return (
-  <li className="list-group-item">
-    <div className="nameandImgContainer">
-      <img src={ProfilePicL} className="posterImg"/>
-      <div className="poster">
-      Poster's name{props.children}
-      </div>
-      <ArrowRightCircle />
+
+    <div>
+      {student && (
+        <li className="list-group-item">
+          <div className="nameandImgContainer">
+            <img src={student.image || ProfilePicL} className="posterImg"/>
+            <div className="poster">
+              {student.firstName} {student.lastName}
+            </div>
+            <ArrowRightCircle />
+          </div>
+        </li>
+      )}
     </div>
-  </li>
   );
 }

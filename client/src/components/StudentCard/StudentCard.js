@@ -17,11 +17,19 @@ export default function StudentCard({currentStudent, currentUser}) {
         let tempObj = {
             mentoring: []
         };
+        let studentObj = {
+            learningFrom: []
+        };
+
         tempObj.mentoring = currentUser.mentoring;
         tempObj.mentoring.push(currentStudent._id);
+        studentObj.learningFrom = currentStudent.learningFrom;
+        studentObj.learningFrom.push()
+
         API.updateProfile(currentUser._id, tempObj)
         .then(res => {
             setUser(res.data);
+            API.updateProfile(currentStudent._id, studentObj);
             return res.data;
         })
     }
