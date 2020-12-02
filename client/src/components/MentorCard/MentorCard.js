@@ -19,12 +19,20 @@ export default function MentorCard( {currentMentor, currentUser} ) {
         let tempObj = {
             learningFrom: []
         };
+        let mentorObj = {
+            mentoring: []
+        };
+
         tempObj.learningFrom = currentUser.learningFrom;
         tempObj.learningFrom.push(currentMentor._id);
+        mentorObj.mentoring = currentMentor.mentoring;
+        mentorObj.mentoring.push(currentUser._id);
+
         // console.log(tempObj);
         API.updateProfile(currentUser._id, tempObj)
         .then(res => {
             setUser(res.data);
+            API.updateProfile(currentMentor._id, mentorObj);
             return res.data;
         })
     }

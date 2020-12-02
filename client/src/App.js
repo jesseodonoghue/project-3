@@ -49,7 +49,7 @@ function App() {
 
 	const login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 200) {
         // update the state
         setLoggedIn(true);

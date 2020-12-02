@@ -21,7 +21,8 @@ const postSchema = new Schema({
     type: String
   },
   createdby: {
-    type: Schema.Types.ObjectId
+    type: Schema.Types.ObjectId,
+    ref: "User" // Insert User who created reply
   },
   likes: {
     type: Number

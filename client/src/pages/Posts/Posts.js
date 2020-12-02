@@ -173,7 +173,8 @@ export default function Posts() {
                                             postInfo: postInfo
                                         }
                                         }}>
-                                    <FeaturedList key={index} title={postInfo.title} />
+                                    <FeaturedList key={index} post={postInfo} />
+
                                     </Link>
                                 ))}
                         </div>

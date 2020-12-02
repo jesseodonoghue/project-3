@@ -53,6 +53,10 @@ module.exports = {
   findById: (req, res) => {
     db.User
     .findById(req.params.id)
+    .populate("savedPosts")
+    .populate("mentoring")
+    .populate("learningFrom")
+    .populate("posts")
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
