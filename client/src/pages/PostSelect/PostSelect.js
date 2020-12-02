@@ -6,6 +6,7 @@ import Loading from '../../components/Loading/Loading';
 import Form from 'react-bootstrap/Form';
 import Moment from "moment";
 import AUTH from "../../utils/AUTH";
+import PostReply from "../../components/PostReply/PostReply";
 
 
 
@@ -117,7 +118,7 @@ export default function PostSelect(props) {
                     <div className="postContainer">
                         <div className="postNameDate">
                             <div className="nameImg">
-                                <div className="posterImg"><img src={postCreator.image}></img></div>
+                                <div className="posterImg"><img style={{ maxWidth: "25px", maxHeight: "25px", borderRadius: "50%"}}src={postCreator.image}></img></div>
                                 <div>{postCreator.firstName} {postCreator.lastName}</div>
                             </div>
                             <div className="date">
@@ -147,17 +148,7 @@ export default function PostSelect(props) {
                     <div className="submitCommentBox mlmr">
                             <Button className="submitBtn" onClick={submitComment}>Submit Comment</Button>
                     </div>
-                    <div className="postContainer">
-                        <div className="commentBy">
-                            Comment by user
-                        </div>
-                        <div className="time">
-                            9:30pm
-                        </div>
-                        <p>
-                        Comment goes here
-                        </p>
-                    </div>
+                    <PostReply />
                 </div>
                 )}
             </>
