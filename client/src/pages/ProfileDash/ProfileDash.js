@@ -189,8 +189,8 @@ export default function ProfileDash() {
                                         {/* <img src={ProfilePicL} className="profileImg"/> */}
                                         <h3>{user.firstName} {user.lastName}</h3>
                                         <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
-                                        <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a href={user.linkedin} target="blank">{user.linkedin}</a></p>
-                                        <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a href={user.github} target="blank">{user.github}</a></p>
+                                        <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a id="LinkedText" href={user.linkedin} target="blank">{user.linkedin}</a></p>
+                                        <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a id="GitText" href={user.github} target="blank">{user.github}</a></p>
                                         <hr/>
                                         <h3 style={{paddingTop: "15px"}}>Skills</h3>
                                         {skillsArr.length ? (

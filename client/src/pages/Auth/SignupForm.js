@@ -96,7 +96,7 @@ function MouseOut(event) {
                   value={userObject.confirmPassword}
                   onChange={handleChange}
                 />
-                <Link to="/"><ArrowLeftCircle style={{ width: "30px", height: "30px"}}/></Link>
+                <Link id="signupArrow" to="/"><ArrowLeftCircle style={{ width: "30px", height: "30px"}}/></Link>
                 <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Register</FormBtn>
               </form>
       </div>
