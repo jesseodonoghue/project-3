@@ -118,7 +118,7 @@ export default function PostSelect(props) {
                     <div className="postContainer">
                         <div className="postNameDate">
                             <div className="nameImg">
-                                <div className="posterImg"><img src={postCreator.image}></img></div>
+                                <div className="posterImg"><img style={{ maxWidth: "25px", maxHeight: "25px", borderRadius: "50%"}}src={postCreator.image}></img></div>
                                 <div>{postCreator.firstName} {postCreator.lastName}</div>
                             </div>
                             <div className="date">
