@@ -18,7 +18,7 @@ https://project-3-team-2.herokuapp.com<br>
 
   ## Installation
   No installation necessary. Head on over to https://project-3-team-2.herokuapp.com and register for an account.<br>
-  ![signup](https://user-images.githubusercontent.com/66035385/101026596-19650b00-3545-11eb-8e5a-cf363a3932f4.png)<br>
+  ![Screenshot_2020-12-03 DBUGME(6)](https://user-images.githubusercontent.com/66035385/101067504-9f914980-3565-11eb-8b6f-c3f9811fac5e.png)
   ![createaccount](https://user-images.githubusercontent.com/66035385/101026598-19fda180-3545-11eb-8943-60273409e731.png)<br>
   <hr>
 
