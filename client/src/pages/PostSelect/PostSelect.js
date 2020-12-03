@@ -55,7 +55,7 @@ export default function PostSelect(props) {
                 return res.data[0];
             })
             .then((res) => {
-                API.getSingleUser(res.createdby)
+                API.getSingleUser(res.createdby._id)
                 .then((res) => {
                     console.log(res.data);
                     setPostCreator(res.data)
@@ -123,10 +123,13 @@ export default function PostSelect(props) {
                 <div className="box" style={{ height: "100%" }}>
                     <div className="postContainer">
                         <div className="postNameDate">
-                            <div className="nameImg">
-                                <div className="posterImg"><img style={{ maxWidth: "25px", maxHeight: "25px", borderRadius: "50%"}}src={postCreator.image}></img></div>
-                                <div>{postCreator.firstName} {postCreator.lastName}</div>
-                            </div>
+                            {postCreator && (
+                                <div className="nameImg">
+                                    <div className="posterImg"><img style={{ maxWidth: "25px", maxHeight: "25px", borderRadius: "50%"}}src={postCreator.image}></img></div>
+                                    <div>{postCreator.firstName} {postCreator.lastName}</div>
+                                    <div>{console.log(postCreator)}</div>
+                                </div>
+                            )}
                             <div className="date">
                             {Moment(userPost.date).format('MMMM Do YYYY')}
                             </div>
