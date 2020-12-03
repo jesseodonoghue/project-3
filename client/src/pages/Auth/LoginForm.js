@@ -5,8 +5,7 @@ import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import './login.css';
 import Logo from '../../assets/logo.svg';
-import  loginValidation  from '../../components/Validation/validations';
-import classnames from 'classnames';
+
 
 
 function LoginForm({login}) {
@@ -17,7 +16,7 @@ function LoginForm({login}) {
     password: ''
   });
 
-  const [errors, setErrors] = useState({});
+  
 
   const [redirectTo, setRedirectTo] = useState(null);
 
@@ -36,20 +35,15 @@ function LoginForm({login}) {
 		});
 	};
 
-  useEffect (() => {})
+  
 	const handleSubmit = (event) => {
     event.preventDefault();
 
-    const validationErrors = loginValidation(userObject); 
 
-    if (Object.keys(validationErrors).length > 0) {
-      console.log(validationErrors)
-      setErrors(validationErrors)
-    } else {
       console.log("success")
   	login(userObject.email, userObject.password);
 		setRedirectTo('/');
-  }
+  
 };
 
 
@@ -71,27 +65,19 @@ function LoginForm({login}) {
               <div className="loginCard">
                 <form style={{ width: "100%"}}>
 
-                {errors.password 
-                  ? <small className="text-danger">{errors.email}</small> 
-                  : <label className="whitetxt" htmlFor="email">email: </label>
-                  }
                   <label className="whitetxt" htmlFor="email">Email: </label>
                   <Input
                     type="text"
                     name="email"
                     value={userObject.email}
-                    className={classnames('form-control', {'is-invalid': errors.email, 'is-valid': !errors.email})}
                     onChange={handleChange}
                   />
-                  {errors.password 
-                  ? <small className="text-danger">{errors.password}</small> 
-                  : <label className="whitetxt" htmlFor="password">Password: </label>
-                  }
+                  <label className="whitetxt" htmlFor="password">Password: </label>
                   <Input
                     type="password"
                     name="password"
                     value={userObject.password}
-                    className={classnames('form-control', {'is-invalid': errors.password, 'is-valid': !errors.password})}
+                    
                     onChange={handleChange}
                   />
                   <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Login</FormBtn>
