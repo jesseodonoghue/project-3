@@ -239,6 +239,9 @@ export default function ProfileDash() {
                                                 </Link>
                                             ))
                                         )}
+                                        {fullUser && (
+                                            <h4>No posts yet</h4>
+                                        )}
                                     </div>
                                 </div>
                                 <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
@@ -257,6 +260,9 @@ export default function ProfileDash() {
                                                         <FollowListMentor key={index} mentor={user}/>
                                                     ))
                                                 )}
+                                                {fullUser && (
+                                                    <h4>No mentors yet.</h4>
+                                                )}
                                             </div>
                                         </div>
                                     </div>    
@@ -268,6 +274,9 @@ export default function ProfileDash() {
                                                     fullUser.mentoring.map((user, index) => (
                                                         <FollowListMentor key={index} mentor={user}/>
                                                     ))
+                                                )}
+                                                {fullUser && (
+                                                    <h4>No students yet.</h4>
                                                 )}
                                             </div>
                                         </div>
