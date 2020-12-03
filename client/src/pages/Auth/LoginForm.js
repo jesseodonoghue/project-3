@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from '../../components/Grid';
 import { Card } from '../../components/Card';
 import { Input, FormBtn } from '../../components/Form';
 import './login.css';
 import Logo from '../../assets/logo.svg';
+import  loginValidation  from '../../components/Validation/validations';
+import classnames from 'classnames';
 
 
 function LoginForm({login}) {
@@ -14,6 +16,9 @@ function LoginForm({login}) {
     email: '',
     password: ''
   });
+
+  const [errors, setErrors] = useState({});
+
   const [redirectTo, setRedirectTo] = useState(null);
 
     function MouseOver(event) {
@@ -31,11 +36,22 @@ function LoginForm({login}) {
 		});
 	};
 
+  useEffect (() => {})
 	const handleSubmit = (event) => {
-		event.preventDefault();
-		login(userObject.email, userObject.password);
+    event.preventDefault();
+
+    const validationErrors = loginValidation(userObject); 
+
+    if (Object.keys(validationErrors).length > 0) {
+      console.log(validationErrors)
+      setErrors(validationErrors)
+    } else {
+      console.log("success")
+  	login(userObject.email, userObject.password);
 		setRedirectTo('/');
-	};
+  }
+};
+
 
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />
@@ -54,18 +70,28 @@ function LoginForm({login}) {
             <div className="col-md-5">
               <div className="loginCard">
                 <form style={{ width: "100%"}}>
+
+                {errors.password 
+                  ? <small className="text-danger">{errors.email}</small> 
+                  : <label className="whitetxt" htmlFor="email">email: </label>
+                  }
                   <label className="whitetxt" htmlFor="email">Email: </label>
                   <Input
                     type="text"
                     name="email"
                     value={userObject.email}
+                    className={classnames('form-control', {'is-invalid': errors.email, 'is-valid': !errors.email})}
                     onChange={handleChange}
                   />
-                  <label className="whitetxt" htmlFor="password">Password: </label>
+                  {errors.password 
+                  ? <small className="text-danger">{errors.password}</small> 
+                  : <label className="whitetxt" htmlFor="password">Password: </label>
+                  }
                   <Input
                     type="password"
                     name="password"
                     value={userObject.password}
+                    className={classnames('form-control', {'is-invalid': errors.password, 'is-valid': !errors.password})}
                     onChange={handleChange}
                   />
                   <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Login</FormBtn>

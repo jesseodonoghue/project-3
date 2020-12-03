@@ -9,6 +9,9 @@
     }
 
 }
+.is-valid {
+    border-color: #5680e9 !important;
+}
 
 hr {
     margin: 0;
