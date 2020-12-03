@@ -137,7 +137,7 @@ export default function ProfileDash() {
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
                         Create New Post
-                </Modal.Title>
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form ref={formEl}>
