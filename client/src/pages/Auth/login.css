@@ -72,8 +72,19 @@ label {
     .loginCard {
         margin-top: 5em;
     }
+
+    .whitetxt {
+        color: white !important;
+    }
   }
 
   #signupArrow {
       color: #5680E9;
+  }
+
+  @media only screen and (max-width: 1214px) {
+    .whitetxt {
+        color: #5680E9;
+    }
+
   }
