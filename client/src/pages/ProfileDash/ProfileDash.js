@@ -218,7 +218,7 @@ export default function ProfileDash() {
                                                 ))}
                                             </ul>
                                         ) : (
-                                        <h4 style={{paddingLeft: "15px"}}>No skills added yet</h4>
+                                        <p>No skills added yet</p>
                                         )}
                                     </div>
                                 </div>
