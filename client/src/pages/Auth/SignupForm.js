@@ -135,7 +135,7 @@ useEffect (() => {})
                   className={classnames('form-control', {'is-invalid': errors.confirmPassword, 'is-valid': !errors.confirmPassword})}
                   onChange={handleChange}
                 />
-                <Link to="/"><ArrowLeftCircle style={{ width: "30px", height: "30px"}}/></Link>
+                <Link to="/"><ArrowLeftCircle id="signupArrow" style={{ width: "30px", height: "30px"}}/></Link>
                 <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Register</FormBtn>
               </form>
               
