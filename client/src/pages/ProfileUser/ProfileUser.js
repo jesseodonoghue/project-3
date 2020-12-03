@@ -93,7 +93,7 @@ export default function ProfileUser(props) {
                     <div className="row" style={{ display: "flex", width: "100%", marginLeft: "0px", marginRight: "0px", justifyContent:"center", alignItems:"center"}}>
                         <div className="col-md-12" id="flexfix" style={{ padding: "0px", justifyContent:"center", alignItems:"center", display: "flex"}}>
                             <a.div className="profileCard" style={{ width: "100%", maxWidth: "500px", transform: interpBg, boxShadow: "0px 0px 10px black"}}>
-                                <div className="profileContent">
+                                <div className="profileContent" style={{ textAlign: "center" }}>
                                     {profile.image === "" && (
                                         <img src={ProfilePicL} className="profileImg"/>
                                     )}
@@ -102,13 +102,13 @@ export default function ProfileUser(props) {
                                     )}
                                     <h3>{profile.firstName} {profile.lastName}</h3>
                                     <p style={{ wordWrap: "break-word" }}>{profile.bio}</p>
-                                    <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a id="LinkedText" href={profile.linkedin} target="blank">{profile.linkedin}</a></p>
-                                    <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong><a id="GitText" href={profile.linkedin} target="blank">{profile.github}</a></p>
+                                    <p style={{ wordWrap: "anywhere" }}><strong>LinkedIn:</strong><br /> <a id="LinkedText" href={profile.linkedin} target="blank">{profile.linkedin}</a></p>
+                                    <p style={{ wordWrap: "anywhere" }}><strong>GitHub:</strong><br /> <a id="GitText" href={profile.linkedin} target="blank">{profile.github}</a></p>
 
                                     <hr/>
-                                    <h3 style={{marginTop: "15px"}}>Skills</h3>
+                                    <h3 style={{ marginTop: "15px" }}>Skills</h3>
                                     {skillsArr.length ? (
-                                        <ul>
+                                        <ul style={{ textAlign: "left" }}>
                                             {skillsArr.map((skill, i) => (
                                                 <li key={i}>{skill}</li>
                                             ))}
