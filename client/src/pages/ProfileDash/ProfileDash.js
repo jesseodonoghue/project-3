@@ -169,11 +169,6 @@ export default function ProfileDash() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    {/* <Button>
-                    <Paperclip />
-                    Attach File
-                </Button> */}
-
                     <Button onClick={handleFormSubmit}>Submit Post</Button>
                 </Modal.Footer>
             </Modal>
@@ -204,7 +199,6 @@ export default function ProfileDash() {
                                         {user.image !== "" && (
                                             <img src={user.image} className="profileImg" />
                                         )}
-                                        {/* <img src={ProfilePicL} className="profileImg"/> */}
                                         <h3>{user.firstName} {user.lastName}</h3>
                                         <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
                                         <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a id="LinkedText" href={user.linkedin} target="blank">{user.linkedin}</a></p>
@@ -218,8 +212,8 @@ export default function ProfileDash() {
                                                 ))}
                                             </ul>
                                         ) : (
-                                                <h4 style={{ paddingLeft: "15px" }}>No skills added yet</h4>
-                                            )}
+                                        <p>No skills added yet</p>
+                                        )}
                                     </div>
                                 </div>
                             </div>
