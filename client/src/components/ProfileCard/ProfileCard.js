@@ -188,10 +188,7 @@ function ProfileCard() {
                                 <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleFormSubmit}>Save Info</FormBtn>
                             </form>
                             
-                                <Notification style={{
-                                    top: 500,
-                                    left: 300
-                                }}
+                                <Notification 
                                     action={() => setShow(true)}
                                     close={() => setShow(false)}
                                     show={show}

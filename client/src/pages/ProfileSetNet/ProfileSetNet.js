@@ -173,7 +173,7 @@ export default function ProfileSetNet() {
                         </MDBContainer>
                         <Notification 
                             style={{
-                                    top: 400,
+                                    top: 550
                                 
                                 }}
                                     action={() => setShow(true)}

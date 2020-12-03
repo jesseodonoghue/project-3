@@ -12,7 +12,7 @@ function Success(props) {
         <Toast style={{
                 zIndex: '4',
                 position: 'absolute',
-                top: props.top, 
+                top: 450,
                 right: 60,
                 minHeight: '100px',
             }} 

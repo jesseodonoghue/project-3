@@ -9,7 +9,9 @@
     }
 
 }
-
+.is-valid {
+    border-color: #5680e9 !important;
+}
 /* html, body {
     overflow-x: hidden;
     } */
