@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Moment from "moment";
 import AUTH from "../../utils/AUTH";
 import PostReply from "../../components/PostReply/PostReply";
-
+import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 
 
 export default function PostSelect(props) {
@@ -125,7 +125,7 @@ export default function PostSelect(props) {
                         <div className="postNameDate">
                             {postCreator && (
                                 <div className="nameImg">
-                                    <div className="posterImg"><img style={{ maxWidth: "25px", maxHeight: "25px", borderRadius: "50%"}}src={postCreator.image}></img></div>
+                                    <div className="posterImg"><img style={{ maxWidth: "25px", maxHeight: "25px", borderRadius: "50%"}}src={postCreator.image || ProfilePicL}></img></div>
                                     <div>{postCreator.firstName} {postCreator.lastName}</div>
                                     <div>{console.log(postCreator)}</div>
                                 </div>
