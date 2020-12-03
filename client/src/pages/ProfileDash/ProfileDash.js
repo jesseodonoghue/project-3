@@ -218,7 +218,7 @@ export default function ProfileDash() {
                                                 ))}
                                             </ul>
                                         ) : (
-                                        <p>No skills added yet</p>
+                                        <h4 style={{paddingLeft: "15px"}}>No skills added yet</h4>
                                         )}
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@ export default function ProfileDash() {
                                                     </Link>
                                                 ))
                                             ) : (
-                                                <h4>No posts yet</h4>
+                                                <h4 style={{paddingLeft: "15px"}}>No posts yet</h4>
                                             )
                                         )}
                                     </div>
@@ -262,7 +262,7 @@ export default function ProfileDash() {
                                                             <FollowListMentor key={index} mentor={user}/>
                                                         ))
                                                     ) : (
-                                                        <h4>No mentors yet.</h4>
+                                                        <h4 style={{paddingLeft: "15px"}}>No mentors yet.</h4>
                                                     )
                                                 )}
                                             </div>
@@ -279,7 +279,7 @@ export default function ProfileDash() {
                                                         ))
 
                                                     ) : (
-                                                        <h4>No students yet.</h4>
+                                                        <h4 style={{paddingLeft: "15px"}}>No students yet.</h4>
                                                     )
                                                 )}
                                             </div>
