@@ -11,7 +11,7 @@ import validate from '../../components/Validation/validations';
 
 
 
-function SignupForm() {
+function SignupForm({login}) {
   const [userObject, setUserObject] = useState({
     firstName: '',
     lastName: '',
@@ -61,6 +61,7 @@ useEffect (() => {})
     }).then(response => {
       console.log(response);
       if (!response.data.errmsg) {
+        login(userObject.email, userObject.password)
         setRedirectTo('/');
       } else {
         console.log('duplicate');
@@ -135,7 +136,7 @@ useEffect (() => {})
                   onChange={handleChange}
                 />
                 <Link to="/"><ArrowLeftCircle style={{ width: "30px", height: "30px"}}/></Link>
-                <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={ handleSubmit}>Register</FormBtn>
+                <FormBtn onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={handleSubmit}>Register</FormBtn>
               </form>
               
       </div>

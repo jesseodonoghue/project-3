@@ -36,8 +36,8 @@
 
 .posterImg {
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    max-width: 25px;
+    max-height: 25px;
     margin-right: 10px;
   }
 

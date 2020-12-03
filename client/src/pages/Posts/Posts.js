@@ -16,6 +16,10 @@ export default function Posts() {
     const [filteredUserPosts, setFilteredUserPosts] = useState([]);
     const [featuredPosts, setFeaturedPosts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [searchTermFeatured, setSearchTermFeatured] = useState("");
+    const [filteredFeaturedPosts, setFilteredFeaturedPosts] = useState([]);
+
+
     const [loading, setLoading] = useState(false);
 
     let postArr = [];
@@ -64,7 +68,6 @@ export default function Posts() {
             })
             .finally(() => {
                 setLoading(false);
-                console.log(postArr[0].title);
             });
     }
 
@@ -77,6 +80,7 @@ export default function Posts() {
             })
             .then(() => {
                 setFeaturedPosts(featuredPostArr);
+                setFilteredFeaturedPosts(featuredPostArr);
             })
             .catch(err => {
                 console.log(err);
@@ -101,6 +105,21 @@ export default function Posts() {
         setFilteredUserPosts(filteredUserPosts);
     }
 
+    function onInputChangeFeatured(event) {
+
+        const value = event.target.value;
+        const name = event.target.name;
+
+        setSearchTermFeatured(value)
+
+        const searchTermFeatured = value.toLowerCase();
+
+        const filteredFeaturedPosts = featuredPosts.filter(data => data.title.toLowerCase().startsWith(searchTermFeatured));
+        
+        setFilteredFeaturedPosts(filteredFeaturedPosts);
+    }
+
+
     return (
         <>
             {loading && (
@@ -110,45 +129,52 @@ export default function Posts() {
                 <div className="container-flex">
                     <div className="yourPostsContainer col-md-5" style={{ flexDirection: "column"}}>
                         <Form>
-                            <Form.Group controlId="formBasicEmail">
+                            <Form.Group controlId="userPosts">
                                 <Form.Label style={{ color: "white" }}>Search</Form.Label>
                                 <Form.Control name="searchTerm" value={searchTerm} onChange={onInputChange} type="search" placeholder="Enter search" />
                             </Form.Group>
                         </Form>
                         <h3 style={{ marginTop: "1em", color: "white"}}>Your Posts</h3>
                         <div className="listItems overflow-auto">
+                            {userPosts.length > 0 && (
 
-                            {filteredUserPosts.map((postInfo, index) => (
-                                <Link key={index} to={{
-                                    pathname: "/postselect",
-                                    state: {
-                                        postInfo: postInfo
-                                    }
-                                    }}>
-                                <UserList key={index} title={postInfo.title} />
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="featuredContainer col-md-7">
-                        <Form>
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Search</Form.Label>
-                                <Form.Control type="search" placeholder="Enter search" />
-                            </Form.Group>
-                        </Form>
-                        <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
-                        <div className="listItems overflow-auto">
-
-                                {featuredPosts.map((postInfo, index) => (
+                                filteredUserPosts.map((postInfo, index) => (
                                     <Link key={index} to={{
                                         pathname: "/postselect",
                                         state: {
                                             postInfo: postInfo
                                         }
                                         }}>
-                                    <FeaturedList key={index} title={postInfo.title} />
+                                    <UserList key={index} title={postInfo.title} />
+                                    </Link>
+                                ))
+
+                            )}
+                            {!userPosts.length > 0 && (
+                                <h5 style={{ color: "white"}}>No user posts available. Create a post on the dashboard page.</h5>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="featuredContainer col-md-7">
+                        <Form>
+                            <Form.Group controlId="featuredPosts">
+                                <Form.Label>Search</Form.Label>
+                                <Form.Control name="searchTermFeatured" type="search" value={searchTermFeatured} onChange={onInputChangeFeatured} placeholder="Enter search" />
+                            </Form.Group>
+                        </Form>
+                        <h3 style={{ marginTop: "1em" }}>Featured Posts</h3>
+                        <div className="listItems overflow-auto">
+
+                                {filteredFeaturedPosts.map((postInfo, index) => (
+                                    <Link key={index} to={{
+                                        pathname: "/postselect",
+                                        state: {
+                                            postInfo: postInfo
+                                        }
+                                        }}>
+                                    <FeaturedList key={index} post={postInfo} />
+
                                     </Link>
                                 ))}
                         </div>

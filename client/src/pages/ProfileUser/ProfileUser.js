@@ -10,7 +10,7 @@ import { useSpring, animated as a, interpolate } from 'react-spring';
 
 
 
-export default function ProfileUser() {
+export default function ProfileUser(props) {
 
     //react spring interpolate
     const [{ st, xy }, set] = useSpring(() => ({ st: 0, xy: [0, 0] }));
@@ -22,11 +22,11 @@ export default function ProfileUser() {
     //get routes and stuff here
 
     // User information is not being pulled :(
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
     const [skillsArr, setSkillsArr] = useState([]);
-    let formObject = {};
-    const formEl = useRef(null);
+
+    const profile = props.location.state.userInfo;
 
     useEffect(() => {
         loadUser();
@@ -38,13 +38,10 @@ export default function ProfileUser() {
         AUTH.getUser()
             .then(res => {
                 setUser(res.data.user);
-                console.log(res.data.user);
                 return res.data.user;
             })
-            .then((userData) => {
-                // console.log(userData);
-                setSkillsArr(getSkills(userData));
-                // console.log(skillsArr);
+            .then(() => {
+                setSkillsArr(getSkills(profile));
             })
             .catch(err => {
                 console.log(err);
@@ -92,18 +89,24 @@ export default function ProfileUser() {
                 <Loading />
             )}
             {!loading && (
-                <div className="box" style={{backgroundSize: "cover", backgroundImage: `url(${bgImg})`, justifyContent:"center", alignItems:"center"}} onMouseMove={onMove} onScroll={onScroll}>
+                <div className="box" style={{backgroundSize: "cover", backgroundImage: `url(${bgImg})`, justifyContent:"center", alignItems:"center", overflowX:"auto", height: "100vh"}} onMouseMove={onMove} onScroll={onScroll}>
                     <div className="row" style={{ display: "flex", width: "100%", marginLeft: "0px", marginRight: "0px", justifyContent:"center", alignItems:"center"}}>
                         <div className="col-md-12" id="flexfix" style={{ padding: "0px", justifyContent:"center", alignItems:"center", display: "flex"}}>
                             <a.div className="profileCard" style={{ width: "100%", maxWidth: "500px", transform: interpBg, boxShadow: "0px 0px 10px black"}}>
                                 <div className="profileContent">
-                                    <img src={ProfilePicL} className="profileImg"/>
-                                    <h3>{user.firstName} {user.lastName}</h3>
-                                    <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
-                                    <p style={{ wordWrap: "break-word" }}>LinkedIn: {user.linkedin}</p>
-                                    <p style={{ wordWrap: "break-word" }}>GitHub: {user.github}</p>
+                                    {profile.image === "" && (
+                                        <img src={ProfilePicL} className="profileImg"/>
+                                    )}
+                                    {profile.image !== "" && (
+                                        <img src={profile.image} className="profileImg"/>
+                                    )}
+                                    <h3>{profile.firstName} {profile.lastName}</h3>
+                                    <p style={{ wordWrap: "break-word" }}>{profile.bio}</p>
+                                    <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a id="LinkedText" href={profile.linkedin} target="blank">{profile.linkedin}</a></p>
+                                    <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong><a id="GitText" href={profile.linkedin} target="blank">{profile.github}</a></p>
+
                                     <hr/>
-                                    <h3>Skills</h3>
+                                    <h3 style={{marginTop: "15px"}}>Skills</h3>
                                     {skillsArr.length ? (
                                         <ul>
                                             {skillsArr.map((skill, i) => (

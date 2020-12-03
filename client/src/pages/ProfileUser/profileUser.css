@@ -40,6 +40,11 @@
 .profileContent {
     max-width: 100%;
     font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }
 
 .listContainerMain {
@@ -153,4 +158,12 @@ h3 {
         min-width: 100% !important;
     }
 
+}
+
+#LinkedText {
+    color: #5680E9;
+}
+
+#GitText {
+    color: #5680E9;
 }

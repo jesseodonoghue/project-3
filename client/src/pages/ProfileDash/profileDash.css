@@ -3,7 +3,8 @@
 .box {
     display: flex;
     width: 100%;
-    height: 100vh ;
+    overflow-x: hidden;
+    height: auto;
     background-color: #F9FAFB;
     margin: 0px !important;
     padding: 0px;
@@ -122,10 +123,9 @@ h3 {
 
 #cardplacement {
     position: relative !important;
-    top: -150px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
 }
 
 @media only screen and (min-width: 768px) {
@@ -143,6 +143,10 @@ h3 {
         margin-left: 15px !important;
     }
 
+    #cardplacement {
+        top: -132px !important;
+    }
+
     #postsplacement {
         margin-top: -150px !important;
     }
@@ -151,4 +155,12 @@ h3 {
         min-width: 100% !important;
     }
 
+}
+
+#LinkedText {
+    color: #5680E9;
+}
+
+#GitText {
+    color: #5680E9;
 }

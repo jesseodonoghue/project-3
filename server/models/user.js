@@ -141,14 +141,17 @@ const userSchema = new Schema({
 	},
 	savedPosts: [{
 		type: Schema.Types.ObjectId,
+		ref: "Post",
 		unique: false
 	}],
 	mentoring: [{
 		type: Schema.Types.ObjectId,
+		ref: "User",
 		unique: false
 	}],
 	learningFrom: [{
 		type: Schema.Types.ObjectId,
+		ref: "User",
 		unique: false
 	}],
 	posts: [

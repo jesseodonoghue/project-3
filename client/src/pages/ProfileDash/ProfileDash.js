@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './profileDash.css';
 import ListItem from '../../components/List/ListItem.js';
 import FollowListMentor from '../../components/FollowListMentor/FollowListMentor.js';
-import FollowListStudent from '../../components/FollowListMentor/FollowListMentor.js';
 import '../../components/List/List.css';
 import Modal from 'react-bootstrap/Modal';
 import bgImg from '../../assets/profilebg.svg';
@@ -25,6 +25,7 @@ export default function ProfileDash() {
 
     // User information is not being pulled :(
     const [user, setUser] = useState("");
+    const [fullUser, setFullUser] = useState({});
     const [loading, setLoading] = useState(false);
     const [skillsArr, setSkillsArr] = useState([]);
     let formObject = {};
@@ -40,13 +41,17 @@ export default function ProfileDash() {
         AUTH.getUser()
             .then(res => {
                 setUser(res.data.user);
-                console.log(res.data.user);
+                // console.log(res.data.user);
                 return res.data.user;
             })
             .then((userData) => {
                 // console.log(userData);
                 setSkillsArr(getSkills(userData));
                 // console.log(skillsArr);
+                return userData;
+            })
+            .then(async (userData) => {
+                await getSingleUser(userData._id);
             })
             .catch(err => {
                 console.log(err);
@@ -54,6 +59,15 @@ export default function ProfileDash() {
             .finally(() => {
                 setLoading(false);
             });
+    }
+
+    async function getSingleUser(userID) {
+        await API.getSingleUser(userID)
+        .then(async res => {
+            // console.log("Full User is:");
+            console.log(res.data);
+            await setFullUser(res.data);
+        })
     }
 
     function getSkills(user) {
@@ -131,11 +145,15 @@ export default function ProfileDash() {
                         <Form.Label>Select Tag</Form.Label>
                         <Form.Control as="select" name="tag" onChange={handleInputChange} >
                         <option>Choose a tag..</option>
-                        <option>Javascript</option>
-                        <option>JQuery</option>
-                        <option>Ajax</option>
-                        <option>Mongo</option>
+                        <option>JavaScript</option>
+                        <option>HTML</option>
+                        <option>CSS</option>
+                        <option>jQuery</option>
+                        <option>Node.js</option>
+                        <option>Express</option>
                         <option>React</option>
+                        <option>MongoDB</option>
+                        <option>mySQL</option>
                         </Form.Control>
                     </Form.Group>
 
@@ -151,10 +169,10 @@ export default function ProfileDash() {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button>
+                {/* <Button>
                     <Paperclip />
                     Attach File
-                </Button>
+                </Button> */}
                 
                 <Button onClick={handleFormSubmit}>Submit Post</Button>
             </Modal.Footer>
@@ -179,12 +197,12 @@ export default function ProfileDash() {
                         <div className="row" style={{ width: "100%"}}>
                             <div className="col-md-5" id="cardplacement">
                                 <div className="profileCard"style={{ }}>
-                                    <div className="profileContent">
+                                    <div className="profileContent" style={{alignItems: "flex-start"}}>
                                     {user.image === "" && (
                                         <img src={ProfilePicL} className="profileImg"/>
                                     )}
                                     {user.image !== "" && (
-                                         <img src={user.image} className="profileImg"/>
+                                        <img src={user.image} className="profileImg"/>
                                     )}
                                         {/* <img src={ProfilePicL} className="profileImg"/> */}
                                         <h3>{user.firstName} {user.lastName}</h3>
@@ -207,14 +225,20 @@ export default function ProfileDash() {
                             </div>
                             <div className="col-md-7" id="postsplacement">
                                 <div className="listContainerInner">
-                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BookmarkHeartFill style={{ marginRight: "10px"}} /> Saved Posts</h3>
+                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BookmarkHeartFill style={{ marginRight: "10px"}} /> My Posts</h3>
                                     <div className="listItems overflow-auto">
-                                        <ListItem/>
-                                        <ListItem/>
-                                        <ListItem/>
-                                        <ListItem/>
-                                        <ListItem/>
-                                        <ListItem/>
+                                        {(fullUser && fullUser.posts) && (
+                                            fullUser.posts.map((post, index) => (
+                                                <Link key={index} to={{
+                                                    pathname: "/postselect",
+                                                    state: {
+                                                        postInfo: post
+                                                    }
+                                                }}>
+                                                    <ListItem key={index} post={post} author={fullUser} />
+                                                </Link>
+                                            ))
+                                        )}
                                     </div>
                                 </div>
                                 <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
@@ -226,28 +250,26 @@ export default function ProfileDash() {
                                <div className="row">
                                    <div className="col-md-6">
                                         <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
-                                                <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/>Your Mentors</h3>
-                                                <div className="listItems overflow-auto">
-                                                    <FollowListMentor/>
-                                                    <FollowListMentor/>
-                                                    <FollowListMentor/>
-                                                    <FollowListMentor/>
-                                                    <FollowListMentor/>
-                                                    <FollowListMentor/>
-                                                </div>
+                                            <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/>Your Mentors</h3>
+                                            <div className="listItems overflow-auto">
+                                                {(fullUser && fullUser.learningFrom) && (
+                                                    fullUser.learningFrom.map((user, index) => (
+                                                        <FollowListMentor key={index} mentor={user}/>
+                                                    ))
+                                                )}
+                                            </div>
                                         </div>
                                     </div>    
                                     <div className="col-md-6">
                                         <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
-                                                <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><Bug style={{ marginRight: "10px"}}/>Your Students</h3>
-                                                <div className="listItems overflow-auto">
-                                                    <FollowListStudent/>
-                                                    <FollowListStudent/>
-                                                    <FollowListStudent/>
-                                                    <FollowListStudent/>
-                                                    <FollowListStudent/>
-                                                    <FollowListStudent/>
-                                                </div>
+                                            <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><Bug style={{ marginRight: "10px"}}/>Your Students</h3>
+                                            <div className="listItems overflow-auto">
+                                                {(fullUser && fullUser.mentoring) && (
+                                                    fullUser.mentoring.map((user, index) => (
+                                                        <FollowListMentor key={index} mentor={user}/>
+                                                    ))
+                                                )}
+                                            </div>
                                         </div>
                                     </div>    
                                 </div> 

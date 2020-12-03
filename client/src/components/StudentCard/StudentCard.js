@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './StudentCard.css';
-import { PersonPlusFill } from 'react-bootstrap-icons';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
+import API from '../../utils/API';
 
 
 
-export default function StudentCard({currentStudent}) {
+export default function StudentCard({currentStudent, currentUser}) {
+
+    const [user, setUser] = useState();
+
+    function connect() {
+        let tempObj = {
+            mentoring: []
+        };
+        let studentObj = {
+            learningFrom: []
+        };
+
+        tempObj.mentoring = currentUser.mentoring;
+        tempObj.mentoring.push(currentStudent._id);
+        studentObj.learningFrom = currentStudent.learningFrom;
+        studentObj.learningFrom.push()
+
+        API.updateProfile(currentUser._id, tempObj)
+        .then(res => {
+            setUser(res.data);
+            API.updateProfile(currentStudent._id, studentObj);
+            return res.data;
+        })
+    }
 
     function getSkills(user) {
         const tempArr = [];
@@ -48,24 +73,44 @@ export default function StudentCard({currentStudent}) {
     }
 
     return (
-        <Card id="studentCardStyle" style={{ color: "black", textAlign: "center" }}>
-            <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "230px", marginTop: "1em", padding: "20px"}} />
+        <Card id="studentCardStyle" style={{ color: "black", textAlign: "center", alignItems: "center" }}>
+            {currentStudent.image === "" && (
+                <Card.Img variant="top" src={ProfilePic} style={{ maxHeight: "200px", marginTop: "1em", padding: "20px"}} />
+            )}
+            {currentStudent.image !== "" && (
+                <Card.Img variant="top" src={currentStudent.image} style={{ maxHeight: "200px", maxWidth: "200px", borderRadius: "50%", marginTop: "1em", padding: "20px"}} />
+            )}
+            
             <Card.Body>
                 <Card.Title>
-                    <div className="profileconnectbtnbox">
+                    <div className="profileconnectbtnbox">                        
                         <h3>{currentStudent.firstName} {currentStudent.lastName}</h3>
-                        <Button variant="secondary" className="connectbtn">
-                            <PersonPlusFill/>
-                        </Button>
+                        {currentUser.mentoring.indexOf(currentStudent._id) === -1 && (
+                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" onClick={() => {connect()}} >
+                                <PersonPlusFill style={{ width: "100%", height: "100%"}}/>
+                            </Button>
+                        )}
+                        {currentUser.mentoring.indexOf(currentStudent._id) !== -1 && (
+                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" >
+                                <PersonCheckFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
+                            </Button>
+                        )}
                     </div>
                 </Card.Title>
                 {/* <Card.Text> */}
                     <div className="bulletsforCard">
-                       {getSkills(currentStudent)}
+                        {getSkills(currentStudent)}
                     </div>
                 {/* </Card.Text> */}
             </Card.Body>
-            <Button variant="primary" className="profileBtn">Go to Profile</Button>
+            <Link style={{width: "100%"}} to={{
+                pathname: "/user",
+                state: {
+                    userInfo: currentStudent
+                }
+            }}>
+                <Button variant="primary" className="profileBtn">Go to Profile</Button>
+            </Link>
         </Card>
     )
 }

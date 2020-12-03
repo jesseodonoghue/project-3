@@ -6,6 +6,8 @@ module.exports = {
   findAllPosts: function (req, res) {
     db.Post
       .find({})
+      .populate("createdby")
+      .populate("replies.createdby")
       .then(dbPosts => {
         res.json(dbPosts);
       })
@@ -35,6 +37,8 @@ module.exports = {
 
     db.Post
     .find({ _id: req.params.id })
+    .populate("createdby")
+    .populate("replies.createdby")
     .then(post => {
       res.json(post);
     })

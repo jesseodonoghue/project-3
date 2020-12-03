@@ -49,7 +49,7 @@ function App() {
 
 	const login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 200) {
         // update the state
         setLoggedIn(true);
@@ -74,7 +74,7 @@ function App() {
       { !loggedIn && (
         <div>
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
-          <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/signup" component={() => < SignupForm login={login}/>} />
           {/* <Route exact path="/dashboard"> <Redirect to="/" /></Route>
           <Route exact path="/postselect"> <Redirect to="/" /></Route>
           <Route exact path="/posts"> <Redirect to="/" /></Route>
