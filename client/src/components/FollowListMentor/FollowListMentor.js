@@ -25,7 +25,7 @@ export default function FollowListMentor (props){
                     userInfo: mentor
                 }
               }}>
-                <ArrowRightCircle />
+                <ArrowRightCircle className="followArrow" style={{ color: "5680E9" }}/>
               </Link>
             </div>
           </li>

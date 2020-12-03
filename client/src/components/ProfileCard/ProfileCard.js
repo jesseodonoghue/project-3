@@ -79,20 +79,31 @@ function ProfileCard() {
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        
-        
-        const userID = user._id;
-        console.log(formObject);
 
-        API.updateProfile(userID, formObject)
+        const userID = user._id;
+        let formObj = formObject;
+        console.log(formObject);
+        
+        if (formObj.linkedin !== "") {
+            if (!formObj.linkedin.includes("https://")) {
+                formObj.linkedin =  "https://" + formObj.linkedin;
+            }
+        }
+
+        if (formObj.github !== "") {
+            if (!formObj.github.includes("https://")) {
+                formObj.github =  "https://" + formObj.github;
+            }
+        }
+
+        API.updateProfile(userID, formObj)
         .then(res => {
             formEl.current.reset();
             setUser(res.data);
             console.log(user);
             setShow(true);
         })
-        .catch(err => console.log(err));
-        
+        .catch(err => console.log(err));        
         
     };
 

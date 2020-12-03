@@ -63,38 +63,38 @@ export default function ProfileDash() {
 
     async function getSingleUser(userID) {
         await API.getSingleUser(userID)
-        .then(async res => {
-            // console.log("Full User is:");
-            console.log(res.data);
-            await setFullUser(res.data);
-        })
+            .then(async res => {
+                // console.log("Full User is:");
+                console.log(res.data);
+                await setFullUser(res.data);
+            })
     }
 
     function getSkills(user) {
         const tempArr = [];
 
-        if(user.jsMentor === true) {
+        if (user.jsMentor === true) {
             tempArr.push("JavaScript");
         }
-        if(user.htmlMentor === true) {
+        if (user.htmlMentor === true) {
             tempArr.push("HTML");
-        } 
-        if(user.cssMentor === true) {
+        }
+        if (user.cssMentor === true) {
             tempArr.push("CSS");
         }
-        if(user.nodejsMentor === true) {
+        if (user.nodejsMentor === true) {
             tempArr.push("Node.js");
         }
-        if(user.expressMentor === true) {
+        if (user.expressMentor === true) {
             tempArr.push("Express");
         }
-        if(user.reactMentor === true) {
+        if (user.reactMentor === true) {
             tempArr.push("React");
         }
-        if(user.mongodbMentor === true) {
+        if (user.mongodbMentor === true) {
             tempArr.push("MongoDB");
         }
-        if(user.mysqlMentor === true) {
+        if (user.mysqlMentor === true) {
             tempArr.push("mySQL");
         }
 
@@ -105,7 +105,7 @@ export default function ProfileDash() {
     function handleInputChange(event) {
         event.preventDefault();
         const { name, value } = event.target;
-        formObject = {...formObject, [name]: value};
+        formObject = { ...formObject, [name]: value };
         console.log(formObject);
     };
 
@@ -118,71 +118,71 @@ export default function ProfileDash() {
                 body: formObject.body,
                 createdby: user._id
             })
-            .then(res => {
-                formEl.current.reset();
-                setModalShow(false);
-            })
-            .catch(err => console.log(err));
+                .then(res => {
+                    formEl.current.reset();
+                    setModalShow(false);
+                })
+                .catch(err => console.log(err));
         }
     };
 
     function MyVerticallyCenteredModal(props) {
         return (
             <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
             >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                Create New Post
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form ref={formEl}>
-                    <Form.Group controlId="tagSelect">
-                        <Form.Label>Select Tag</Form.Label>
-                        <Form.Control as="select" name="tag" onChange={handleInputChange} >
-                        <option>Choose a tag..</option>
-                        <option>JavaScript</option>
-                        <option>HTML</option>
-                        <option>CSS</option>
-                        <option>jQuery</option>
-                        <option>Node.js</option>
-                        <option>Express</option>
-                        <option>React</option>
-                        <option>MongoDB</option>
-                        <option>mySQL</option>
-                        </Form.Control>
-                    </Form.Group>
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Create New Post
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form ref={formEl}>
+                        <Form.Group controlId="tagSelect">
+                            <Form.Label>Select Tag</Form.Label>
+                            <Form.Control as="select" name="tag" onChange={handleInputChange} >
+                                <option>Choose a tag..</option>
+                                <option>JavaScript</option>
+                                <option>HTML</option>
+                                <option>CSS</option>
+                                <option>jQuery</option>
+                                <option>Node.js</option>
+                                <option>Express</option>
+                                <option>React</option>
+                                <option>MongoDB</option>
+                                <option>mySQL</option>
+                            </Form.Control>
+                        </Form.Group>
 
-                    <Form.Group controlId="postTitle">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control type="post" placeholder="Post Title" name="title" onChange={handleInputChange} />
-                    </Form.Group>
+                        <Form.Group controlId="postTitle">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control type="post" placeholder="Post Title" name="title" onChange={handleInputChange} />
+                        </Form.Group>
 
-                    <Form.Group controlId="postContent">
-                        <Form.Label>Post Content</Form.Label>
-                        <Form.Control as="textarea" rows={5} name="body" onChange={handleInputChange} />
-                    </Form.Group>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                {/* <Button>
+                        <Form.Group controlId="postContent">
+                            <Form.Label>Post Content</Form.Label>
+                            <Form.Control as="textarea" rows={5} name="body" onChange={handleInputChange} />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    {/* <Button>
                     <Paperclip />
                     Attach File
                 </Button> */}
-                
-                <Button onClick={handleFormSubmit}>Submit Post</Button>
-            </Modal.Footer>
-        </Modal>
+
+                    <Button onClick={handleFormSubmit}>Submit Post</Button>
+                </Modal.Footer>
+            </Modal>
         );
     }
 
     //states for modal  
     const [modalShow, setModalShow] = React.useState(false);
-    
+
 
     return (
         <div>
@@ -190,27 +190,27 @@ export default function ProfileDash() {
                 <Loading />
             )}
             {!loading && (
-                <div className="box">
-                    <Jumbotron fluid style={{ minHeight: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})`}}>
+                <div className="box" style={{ height: "auto" }}>
+                    <Jumbotron fluid style={{ minHeight: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})` }}>
                     </Jumbotron>
-                    <div className="listContainerMain">
-                        <div className="row" style={{ width: "100%"}}>
+                    <div className="listContainerMain" style={{ height: "auto" }}>
+                        <div className="row" style={{ width: "100%" }}>
                             <div className="col-md-5" id="cardplacement">
-                                <div className="profileCard"style={{ }}>
-                                    <div className="profileContent" style={{alignItems: "flex-start"}}>
-                                    {user.image === "" && (
-                                        <img src={ProfilePicL} className="profileImg"/>
-                                    )}
-                                    {user.image !== "" && (
-                                        <img src={user.image} className="profileImg"/>
-                                    )}
+                                <div className="profileCard" style={{}}>
+                                    <div className="profileContent" style={{ alignItems: "flex-start" }}>
+                                        {user.image === "" && (
+                                            <img src={ProfilePicL} className="profileImg" />
+                                        )}
+                                        {user.image !== "" && (
+                                            <img src={user.image} className="profileImg" />
+                                        )}
                                         {/* <img src={ProfilePicL} className="profileImg"/> */}
                                         <h3>{user.firstName} {user.lastName}</h3>
                                         <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
-                                        <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a href={user.linkedin} target="blank">{user.linkedin}</a></p>
-                                        <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a href={user.github} target="blank">{user.github}</a></p>
-                                        <hr/>
-                                        <h3>Skills</h3>
+                                        <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a id="LinkedText" href={user.linkedin} target="blank">{user.linkedin}</a></p>
+                                        <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a id="GitText" href={user.github} target="blank">{user.github}</a></p>
+                                        <hr style={{ marginTop: "15px" }} />
+                                        <h3 style={{ marginTop: "15px" }}>Skills</h3>
                                         {skillsArr.length ? (
                                             <ul>
                                                 {skillsArr.map((skill, i) => (
@@ -218,61 +218,74 @@ export default function ProfileDash() {
                                                 ))}
                                             </ul>
                                         ) : (
-                                        <p>No skills added yet</p>
-                                        )}
+                                                <h4 style={{ paddingLeft: "15px" }}>No skills added yet</h4>
+                                            )}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-7" id="postsplacement">
                                 <div className="listContainerInner">
-                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BookmarkHeartFill style={{ marginRight: "10px"}} /> My Posts</h3>
+                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center" }}><BookmarkHeartFill style={{ marginRight: "10px" }} /> My Posts</h3>
                                     <div className="listItems overflow-auto">
                                         {(fullUser && fullUser.posts) && (
-                                            fullUser.posts.map((post, index) => (
-                                                <Link key={index} to={{
-                                                    pathname: "/postselect",
-                                                    state: {
-                                                        postInfo: post
-                                                    }
-                                                }}>
-                                                    <ListItem key={index} post={post} author={fullUser} />
-                                                </Link>
-                                            ))
+                                            fullUser.posts.length > 0 ? (
+                                                fullUser.posts.map((post, index) => (
+                                                    <Link key={index} to={{
+                                                        pathname: "/postselect",
+                                                        state: {
+                                                            postInfo: post
+                                                        }
+                                                    }}>
+                                                        <ListItem key={index} post={post} author={fullUser} />
+                                                    </Link>
+                                                ))
+                                            ) : (
+                                                    <h4 style={{ paddingLeft: "15px" }}>No posts yet</h4>
+                                                )
                                         )}
                                     </div>
                                 </div>
                                 <Button className="createPostBar" id="createPostBtn" onClick={() => setModalShow(true)} >Create New Post +</Button>
-                                    <MyVerticallyCenteredModal
-                                        show={modalShow}
-                                        onHide={() => setModalShow(false)}
-                                    />
+                                <MyVerticallyCenteredModal
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                                />
 
-                               <div className="row">
-                                   <div className="col-md-6">
-                                        <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
-                                            <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/>Your Mentors</h3>
-                                            <div className="listItems overflow-auto">
-                                                {(fullUser && fullUser.learningFrom) && (
-                                                    fullUser.learningFrom.map((user, index) => (
-                                                        <FollowListMentor key={index} mentor={user}/>
-                                                    ))
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>    
+                                <div className="row">
                                     <div className="col-md-6">
                                         <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
-                                            <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><Bug style={{ marginRight: "10px"}}/>Your Students</h3>
+                                            <h3 style={{ margin: "10px", display: "flex", alignItems: "center" }}><BugFill style={{ marginRight: "10px" }} />Your Mentors</h3>
                                             <div className="listItems overflow-auto">
-                                                {(fullUser && fullUser.mentoring) && (
-                                                    fullUser.mentoring.map((user, index) => (
-                                                        <FollowListMentor key={index} mentor={user}/>
-                                                    ))
+                                                {(fullUser && fullUser.learningFrom) && (
+                                                    fullUser.learningFrom.length > 0 ? (
+                                                        fullUser.learningFrom.map((user, index) => (
+                                                            <FollowListMentor key={index} mentor={user} />
+                                                        ))
+                                                    ) : (
+                                                            <h4 style={{ paddingLeft: "15px" }}>No mentors yet.</h4>
+                                                        )
                                                 )}
                                             </div>
                                         </div>
-                                    </div>    
-                                </div> 
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="listContainerInner" style={{ marginBottom: "2em", borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }}>
+                                            <h3 style={{ margin: "10px", display: "flex", alignItems: "center" }}><Bug style={{ marginRight: "10px" }} />Your Students</h3>
+                                            <div className="listItems overflow-auto">
+                                                {(fullUser && fullUser.mentoring) && (
+                                                    fullUser.mentoring.length > 0 ? (
+                                                        fullUser.mentoring.map((user, index) => (
+                                                            <FollowListMentor key={index} mentor={user} />
+                                                        ))
+
+                                                    ) : (
+                                                            <h4 style={{ paddingLeft: "15px" }}>No students yet.</h4>
+                                                        )
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>

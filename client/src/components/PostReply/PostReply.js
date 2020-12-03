@@ -1,16 +1,18 @@
 import React from 'react'
+import Moment from "moment";
 
-export default function PostReply() {
+export default function PostReply(props) {
+    console.log(props);
     return (
         <div className="postContainer">
             <div className="commentBy">
-                Comment by user
+                Comment by {props.value.createdby.firstName} {props.value.createdby.lastName}
             </div>
-            <div className="time">
-                9:30pm
-            </div>
+            {/* <div className="time">
+            {Moment().format('MMMM Do YYYY')}
+            </div> */}
             <p>
-            Comment goes here
+            {props.value.body}
             </p>
         </div>
     )
