@@ -57,7 +57,7 @@ function LoginForm({login}) {
             <div className="col-md-4">
               <img src={Logo} style={{ width: "100%" }}/>
               <p className="mt-3" style={{ fontSize: "16px"}}>
-              Need some help coding? Whether you’re a fledging developer or have years of practice, DBUGME is here to help! Match with a mentor, participate in posts and get coding!
+              Need some help coding? Whether you’re a fledgling developer or have years of practice, DBUGME is here to help! Match with a mentor, participate in posts and get coding!
               </p>
             </div>
             <div className="col-md-3"></div>

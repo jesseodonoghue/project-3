@@ -141,9 +141,9 @@ export default function PostSelect(props) {
                             </p>
                         </div>
                     </div>
-                    <div className="favoriteBtn">   
+                    {/* <div className="favoriteBtn">   
                         <Button>Favorite Post</Button>
-                    </div>
+                    </div> */}
                     <div className="commentAs mlmr">
                         Comment as {user.firstName} {user.lastName}
                     </div>
