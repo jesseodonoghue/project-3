@@ -228,19 +228,20 @@ export default function ProfileDash() {
                                     <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BookmarkHeartFill style={{ marginRight: "10px"}} /> My Posts</h3>
                                     <div className="listItems overflow-auto">
                                         {(fullUser && fullUser.posts) && (
-                                            fullUser.posts.map((post, index) => (
-                                                <Link key={index} to={{
-                                                    pathname: "/postselect",
-                                                    state: {
-                                                        postInfo: post
-                                                    }
-                                                }}>
-                                                    <ListItem key={index} post={post} author={fullUser} />
-                                                </Link>
-                                            ))
-                                        )}
-                                        {fullUser && (
-                                            <h4>No posts yet</h4>
+                                            fullUser.posts.length > 0 ? (
+                                                fullUser.posts.map((post, index) => (
+                                                    <Link key={index} to={{
+                                                        pathname: "/postselect",
+                                                        state: {
+                                                            postInfo: post
+                                                        }
+                                                    }}>
+                                                        <ListItem key={index} post={post} author={fullUser} />
+                                                    </Link>
+                                                ))
+                                            ) : (
+                                                <h4>No posts yet</h4>
+                                            )
                                         )}
                                     </div>
                                 </div>
@@ -256,12 +257,13 @@ export default function ProfileDash() {
                                             <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><BugFill style={{ marginRight: "10px"}}/>Your Mentors</h3>
                                             <div className="listItems overflow-auto">
                                                 {(fullUser && fullUser.learningFrom) && (
-                                                    fullUser.learningFrom.map((user, index) => (
-                                                        <FollowListMentor key={index} mentor={user}/>
-                                                    ))
-                                                )}
-                                                {fullUser && (
-                                                    <h4>No mentors yet.</h4>
+                                                    fullUser.learningFrom.length > 0 ? (
+                                                        fullUser.learningFrom.map((user, index) => (
+                                                            <FollowListMentor key={index} mentor={user}/>
+                                                        ))
+                                                    ) : (
+                                                        <h4>No mentors yet.</h4>
+                                                    )
                                                 )}
                                             </div>
                                         </div>
@@ -271,12 +273,14 @@ export default function ProfileDash() {
                                             <h3 style={{ margin: "10px", display: "flex", alignItems: "center"}}><Bug style={{ marginRight: "10px"}}/>Your Students</h3>
                                             <div className="listItems overflow-auto">
                                                 {(fullUser && fullUser.mentoring) && (
-                                                    fullUser.mentoring.map((user, index) => (
-                                                        <FollowListMentor key={index} mentor={user}/>
-                                                    ))
-                                                )}
-                                                {fullUser && (
-                                                    <h4>No students yet.</h4>
+                                                    fullUser.mentoring.length > 0 ? (
+                                                        fullUser.mentoring.map((user, index) => (
+                                                            <FollowListMentor key={index} mentor={user}/>
+                                                        ))
+
+                                                    ) : (
+                                                        <h4>No students yet.</h4>
+                                                    )
                                                 )}
                                             </div>
                                         </div>
