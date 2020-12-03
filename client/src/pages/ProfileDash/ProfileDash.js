@@ -190,10 +190,10 @@ export default function ProfileDash() {
                 <Loading />
             )}
             {!loading && (
-                <div className="box">
+                <div className="box" style={{ height: "auto"}}>
                     <Jumbotron fluid style={{ minHeight: "250px", marginBottom: "0px", position: "relative", width: "100%", backgroundSize: "cover", backgroundImage: `url(${bgImg})`}}>
                     </Jumbotron>
-                    <div className="listContainerMain">
+                    <div className="listContainerMain" style={{ height: "auto"}}>
                         <div className="row" style={{ width: "100%"}}>
                             <div className="col-md-5" id="cardplacement">
                                 <div className="profileCard"style={{ }}>
@@ -209,8 +209,8 @@ export default function ProfileDash() {
                                         <p style={{ wordWrap: "break-word" }}>{user.bio}</p>
                                         <p style={{ wordWrap: "break-word" }}><strong>LinkedIn:</strong> <a href={user.linkedin} target="blank">{user.linkedin}</a></p>
                                         <p style={{ wordWrap: "break-word" }}><strong>GitHub:</strong> <a href={user.github} target="blank">{user.github}</a></p>
-                                        <hr/>
-                                        <h3>Skills</h3>
+                                        <hr style={{ marginTop: "15px"}}/>
+                                        <h3 style={{ marginTop: "15px"}}>Skills</h3>
                                         {skillsArr.length ? (
                                             <ul>
                                                 {skillsArr.map((skill, i) => (
