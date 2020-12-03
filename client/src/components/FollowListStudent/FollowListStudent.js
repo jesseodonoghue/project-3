@@ -18,7 +18,7 @@ export default function FollowListStudent (props){
             <div className="poster">
               {student.firstName} {student.lastName}
             </div>
-            <ArrowRightCircle />
+            <ArrowRightCircle style={{ color: "5680E9" }} />
           </div>
         </li>
       )}
