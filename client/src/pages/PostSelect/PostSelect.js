@@ -21,6 +21,7 @@ export default function PostSelect(props) {
     const [postCreator, setPostCreator] = useState({});
     const [loading, setLoading] = useState(false);
     const [comment, setComment] = useState("");
+    const [postReplyList, setPostReplyList] = useState([]);
     
     
     useEffect(() => {
@@ -50,6 +51,7 @@ export default function PostSelect(props) {
             .then(res => {
                 setUserPost(res.data[0]);
                 // console.log(res.data[0]);
+                setPostReplyList(res.data[0].replies);
                 return res.data[0];
             })
             .then((res) => {
@@ -69,6 +71,7 @@ export default function PostSelect(props) {
     
     // Needs to validate if there is no comment on submit
     function submitComment() {
+        setLoading(true);
         const userPostId = userPost._id;
         const userId = user._id;
         // const commentBody = comment;
@@ -98,6 +101,9 @@ export default function PostSelect(props) {
             loadUserPost();
             // loadUser();
             console.log(userPost);
+            setPostReplyList(userPost.replies);
+            setComment("");
+            setLoading(false);
         })
     }
     
@@ -148,7 +154,12 @@ export default function PostSelect(props) {
                     <div className="submitCommentBox mlmr">
                             <Button className="submitBtn" onClick={submitComment}>Submit Comment</Button>
                     </div>
-                    <PostReply />
+                    {!loading && (
+                        // <p>{userPost.replies}</p>
+                        postReplyList.map((reply, index) => (
+                            <PostReply key={index} value={reply}/>
+                        ))
+                    )}
                 </div>
                 )}
             </>
