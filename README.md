@@ -73,7 +73,7 @@ https://project-3-team-2.herokuapp.com<br>
   ![JO](https://user-images.githubusercontent.com/66035385/101025331-6cd65980-3543-11eb-874e-270187bacb65.png)<br>
   #### Jesse O'Donoghue
   [GitHub: jesseodonoghue](https://github.com/jesseodonoghue)
-  [Email: jesse@c4recovery.org](jesse@c4recovery.org)<br>
+  [Email: jesseodonoghue@gmail.com](jesseodonoghue@gmail.com)<br>
   ![JA](https://user-images.githubusercontent.com/66035385/101025334-6cd65980-3543-11eb-9a41-e4f4c57fbbdd.png)<br>
   #### Jinhi Ahn
   [GitHub: JinhiA](https://github.com/JinhiA)
@@ -88,7 +88,7 @@ https://project-3-team-2.herokuapp.com<br>
   [Email: chelseahaviland13@gmail.com](chelseahaviland13@gmail.com)<br>
   ![VG](https://user-images.githubusercontent.com/66035385/101025330-6cd65980-3543-11eb-8c60-86bd511a689d.png)<br>
   #### Victoria Greenfield
-  [GitHub: jesseodonoghue](https://github.com/jesseodonoghue)
+  [GitHub: victoriagfield](https://github.com/victoriagfield)
   [Email: victoriagfield@gmail.com](victoriagfield@gmail.com)<br>
   Contact us! Email or message us on LinkedIn!<br><br>
   
