@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef, useContext, createContext } from 'r
 import './PostSelect.css';
 import Button from 'react-bootstrap/Button';
 import API from '../../utils/API';
+import AUTH from "../../utils/AUTH";
 import Loading from '../../components/Loading/Loading';
 import Form from 'react-bootstrap/Form';
 import Moment from "moment";
-import AUTH from "../../utils/AUTH";
 import PostReply from "../../components/PostReply/PostReply";
 import ProfilePicL from '../../assets/defaultprofilepiclarge.svg';
 
@@ -106,6 +106,43 @@ export default function PostSelect(props) {
             setLoading(false);
         })
     }
+
+    function addFavorite (event) {
+        event.preventDefault();
+        let tempObj = {
+            savedPosts: user.savedPosts
+        };
+        tempObj.savedPosts.push(props.location.state.postInfo._id);
+
+        API.updateProfile(user._id, tempObj)
+        .then (res => {
+            setUser(res.data);
+            console.log(res.data);
+            return res.data;
+        })
+    }
+
+    function removeFavorite (event) {
+        event.preventDefault();
+        let tempObj = {
+            savedPosts: []
+        };
+
+        for (let i = 0; i < user.savedPosts.length; i++) {
+            if (user.savedPosts[i] === props.location.state.postInfo._id) {
+                continue;
+            } else {
+                tempObj.savedPosts.push(user.savedPosts[i]);
+            }
+        }
+        
+        API.updateProfile(user._id, tempObj)
+        .then (res => {
+            setUser(res.data);
+            console.log(res.data);
+            return res.data;
+        })
+    }
     
     function onInputChange(event) {
         let value = event.target.value;
@@ -141,9 +178,16 @@ export default function PostSelect(props) {
                             </p>
                         </div>
                     </div>
-                    {/* <div className="favoriteBtn">   
-                        <Button>Favorite Post</Button>
-                    </div> */}
+                    {(user && !user.savedPosts.includes(props.location.state.postInfo._id)) && (
+                        <div className="favoriteBtn">   
+                            <Button onClick={addFavorite}>Favorite Post</Button>
+                        </div>
+                    )}
+                    {(user && user.savedPosts.includes(props.location.state.postInfo._id)) && (
+                        <div className="favoriteBtn">   
+                            <Button onClick={removeFavorite}>Remove Favorite</Button>
+                        </div>
+                    )}
                     <div className="commentAs mlmr">
                         Comment as {user.firstName} {user.lastName}
                     </div>

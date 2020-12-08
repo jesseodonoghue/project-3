@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './profileDash.css';
 import ListItem from '../../components/List/ListItem.js';
+import FeaturedList from '../../components/FeaturedList/FeaturedList.js';
 import FollowListMentor from '../../components/FollowListMentor/FollowListMentor.js';
 import '../../components/List/List.css';
 import Modal from 'react-bootstrap/Modal';
@@ -219,22 +220,22 @@ export default function ProfileDash() {
                             </div>
                             <div className="col-md-7" id="postsplacement">
                                 <div className="listContainerInner">
-                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center" }}><BookmarkHeartFill style={{ marginRight: "10px" }} /> My Posts</h3>
+                                    <h3 style={{ margin: "10px", display: "flex", alignItems: "center" }}><BookmarkHeartFill style={{ marginRight: "10px" }} /> Favorite Posts</h3>
                                     <div className="listItems overflow-auto">
-                                        {(fullUser && fullUser.posts) && (
-                                            fullUser.posts.length > 0 ? (
-                                                fullUser.posts.map((post, index) => (
+                                        {(fullUser && fullUser.savedPosts) && (
+                                            fullUser.savedPosts.length > 0 ? (
+                                                fullUser.savedPosts.map((postInfo, index) => (
                                                     <Link key={index} to={{
                                                         pathname: "/postselect",
                                                         state: {
-                                                            postInfo: post
+                                                            postInfo: postInfo
                                                         }
                                                     }}>
-                                                        <ListItem key={index} post={post} author={fullUser} />
+                                                        <FeaturedList key={index} post={postInfo} />
                                                     </Link>
                                                 ))
                                             ) : (
-                                                    <h4 style={{ paddingLeft: "15px" }}>No posts yet</h4>
+                                                    <h4 style={{ paddingLeft: "15px" }}>No favorite posts yet</h4>
                                                 )
                                         )}
                                     </div>

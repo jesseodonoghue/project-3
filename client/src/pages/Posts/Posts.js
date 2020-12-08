@@ -173,7 +173,8 @@ export default function Posts() {
                                             postInfo: postInfo
                                         }
                                         }}>
-                                    <FeaturedList key={index} post={postInfo} />
+                                            
+                                        <FeaturedList key={index} post={postInfo} />
 
                                     </Link>
                                 ))}
