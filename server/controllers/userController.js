@@ -53,7 +53,14 @@ module.exports = {
   findById: (req, res) => {
     db.User
     .findById(req.params.id)
-    .populate("savedPosts")
+    .populate({
+      path: "savedPosts",
+      model: "Post",
+      populate: {
+        path: "createdby",
+        model: "User"
+      }
+    })
     .populate("mentoring")
     .populate("learningFrom")
     .populate("posts")
