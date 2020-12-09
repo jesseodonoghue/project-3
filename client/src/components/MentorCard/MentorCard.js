@@ -100,9 +100,9 @@ export default function MentorCard( {currentMentor, currentUser} ) {
                     </div>
                 </Card.Title>
                 {/* <Card.Text> */}
-                    <div className="bulletsforCard">
+                    {/* <div className="bulletsforCard">
                         {getSkills(currentMentor)}
-                    </div>
+                    </div> */}
                 {/* </Card.Text> */}
             </Card.Body>
             <Link style={{width: "100%"}} to={{

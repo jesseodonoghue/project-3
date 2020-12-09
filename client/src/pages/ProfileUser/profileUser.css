@@ -88,6 +88,12 @@
     border-bottom-right-radius: 20px !important;
 }
 
+.profileskills {
+    column-count: 3;
+    height: 80px;
+    column-fill: balance;
+}
+
 #createPostBtn {
     display: flex !important;
     justify-content: flex-end !important;
