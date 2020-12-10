@@ -31,6 +31,8 @@ export default function ProfileDash() {
     const [skillsArr, setSkillsArr] = useState([]);
     let formObject = {};
     const formEl = useRef(null);
+    
+    
 
     useEffect(() => {
         loadUser();
@@ -110,9 +112,16 @@ export default function ProfileDash() {
         console.log(formObject);
     };
 
+    const [validated, setValidated] = useState(false);
+
     function handleFormSubmit(event) {
-        event.preventDefault();
-        if (formObject.title && formObject.body && formObject.tag && formObject.tag !== "Choose a tag..") {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false){
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+        
+        // if (formObject.title && formObject.body && formObject.tag && formObject.tag !== "Choose a tag..") {
             API.createPost({
                 tag: formObject.tag,
                 title: formObject.title,
@@ -124,8 +133,11 @@ export default function ProfileDash() {
                     setModalShow(false);
                 })
                 .catch(err => console.log(err));
+                    
         }
+        setValidated(true);
     };
+
 
     function MyVerticallyCenteredModal(props) {
         return (
@@ -141,10 +153,13 @@ export default function ProfileDash() {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form ref={formEl}>
-                        <Form.Group controlId="tagSelect">
+                    <Form noValidate validated={validated} ref={formEl}>
+                        <Form.Group controlId="tagSelect validationCustom01">
                             <Form.Label>Select Tag</Form.Label>
-                            <Form.Control as="select" name="tag" onChange={handleInputChange} >
+                            <Form.Control as="select" 
+                            required
+                            name="tag" 
+                            onChange={handleInputChange} >
                                 <option>Choose a tag..</option>
                                 <option>JavaScript</option>
                                 <option>HTML</option>
@@ -156,16 +171,33 @@ export default function ProfileDash() {
                                 <option>MongoDB</option>
                                 <option>mySQL</option>
                             </Form.Control>
+                            <Form.Control.Feedback type="invalid">
+                                You must have a title for your post!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="postTitle">
                             <Form.Label>Title</Form.Label>
-                            <Form.Control type="post" placeholder="Post Title" name="title" onChange={handleInputChange} />
+                            <Form.Control 
+                                required
+                                type="post" 
+                                placeholder="Post Title" 
+                                name="title" 
+                                onChange={handleInputChange} />
+                                <Form.Control.Feedback type="invalid">
+                                    Please leave a comment before submitting.
+                                </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="postContent">
                             <Form.Label>Post Content</Form.Label>
-                            <Form.Control as="textarea" rows={5} name="body" onChange={handleInputChange} />
+                            <Form.Control as="textarea" rows={5} 
+                                required
+                                name="body" 
+                                onChange={handleInputChange} />
+                            <Form.Control.Feedback type="invalid">
+                                You gotta have something to post!
+                            </Form.Control.Feedback>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
