@@ -68,9 +68,12 @@ export default function PostSelect(props) {
                 setLoading(false);
             });
     }
+
+    const [validated, setValidated] = useState(false);
     
     // Needs to validate if there is no comment on submit
-    function submitComment() {
+    const submitComment = (event) => {
+        
         setLoading(true);
         const userPostId = userPost._id;
         const userId = user._id;
@@ -81,31 +84,56 @@ export default function PostSelect(props) {
             replies: userPost.replies
         }
     
-        postReplies.replies.push({
-            body: commentText,
-            createdby: userId,
-            likes: null
-        });
+        // postReplies.replies.push({
+        //     body: commentText,
+        //     createdby: userId,
+        //     likes: null
+        // });
         console.log(postReplies);
-    
-        API.addComment(userPostId, postReplies)
-        .then(res => {
-            // loadUserPost();
-            console.log(commentText);
-            console.log(res.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-        .finally(() => {
-            loadUserPost();
-            // loadUser();
-            console.log(userPost);
-            setPostReplyList(userPost.replies);
-            setComment("");
+
+        const form = event.currentTarget;
+
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
             setLoading(false);
-        })
+            
+        } else {
+            
+            postReplies.replies.push({
+                body: commentText,
+                createdby: userId,
+                likes: null
+
+            });
+            
+            
+            API.addComment(userPostId, postReplies)
+            .then(res => {
+                // loadUserPost();
+                console.log(commentText);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+            .finally(() => {
+                
+                loadUserPost();
+                // loadUser();
+                console.log(userPost);
+                
+                setPostReplyList(userPost.replies);
+                setComment("");
+                setLoading(false);
+                
+            })
+            window.location.reload();
+        }
+         
+        setValidated(true);
     }
+
 
     function addFavorite (event) {
         event.preventDefault();
@@ -193,14 +221,28 @@ export default function PostSelect(props) {
                     </div>
                     <div className="postContainer" style={{ marginTop: "1em", marginBottom: "0px", borderBottomLeftRadius: "0px", borderBottomRightRadius: "0px" }}>
                         <div className="postCopyContainer">
-                        <Form.Group controlId="commentTextArea" style={{width: "100%"}}>
-                            <Form.Control name="comment" value={comment} onChange={onInputChange} as="textarea" rows={10} />
-                        </Form.Group>
+                            <Form noValidate validated={validated} onSubmit={submitComment}>
+                                <Form.Group controlId="validationCustom01" style={{width: "100%"}}>
+                                    <Form.Control 
+                                    required
+                                    name="comment" 
+                                    type="text"
+                                    value={comment} 
+                                    placeholder="Start typing here..."
+                                    onChange={onInputChange} as="textarea" rows={10} />
+                                    <Form.Control.Feedback type="invalid">
+                                        Please leave a comment before submitting.
+                                    </Form.Control.Feedback>
+                                </Form.Group>
+                                <div className="submitCommentBox mlmr">
+                            <Button className="submitBtn" type="submit" >Submit Comment</Button>
+                            
+                             </div>
+                            </Form>
                         </div>
+                        
                     </div>
-                    <div className="submitCommentBox mlmr">
-                            <Button className="submitBtn" onClick={submitComment}>Submit Comment</Button>
-                    </div>
+                   
                     {!loading && (
                         // <p>{userPost.replies}</p>
                         postReplyList.map((reply, index) => (
