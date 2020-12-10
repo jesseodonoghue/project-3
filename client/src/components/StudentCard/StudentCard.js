@@ -133,7 +133,7 @@ export default function StudentCard({currentStudent, currentUser}) {
                         )}
                         {currentUser.mentoring.indexOf(currentStudent._id) !== -1 && (
                             <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" onClick={() => {disconnect()}}>
-                                <PersonDashFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
+                                <PersonDashFill style={{ color: "#C93636", width: "100%", height: "100%" }}/>
                             </Button>
                         )}
                     </div>
