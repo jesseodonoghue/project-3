@@ -208,36 +208,35 @@ export default function PostSelect(props) {
                     </div>
                     {(user && !user.savedPosts.includes(props.location.state.postInfo._id)) && (
                         <div className="favoriteBtn">   
-                            <Button onClick={addFavorite}>Favorite Post</Button>
+                            <Button onClick={addFavorite}>+ Favorite Post</Button>
                         </div>
                     )}
                     {(user && user.savedPosts.includes(props.location.state.postInfo._id)) && (
                         <div className="favoriteBtn">   
-                            <Button onClick={removeFavorite}>Remove Favorite</Button>
+                            <Button onClick={removeFavorite} style={{backgroundColor: "red", borderColor: "white"}}>- Remove Favorite</Button>
                         </div>
                     )}
                     <div className="commentAs mlmr">
                         Comment as {user.firstName} {user.lastName}
                     </div>
                     <div className="postContainer" style={{ marginTop: "1em", marginBottom: "0px", borderBottomLeftRadius: "0px", borderBottomRightRadius: "0px" }}>
-                        <div className="postCopyContainer">
-                            <Form noValidate validated={validated} onSubmit={submitComment}>
-                                <Form.Group controlId="validationCustom01" style={{width: "100%"}}>
-                                    <Form.Control 
-                                    required
-                                    name="comment" 
-                                    type="text"
-                                    value={comment} 
-                                    placeholder="Start typing here..."
-                                    onChange={onInputChange} as="textarea" rows={10} />
-                                    <Form.Control.Feedback type="invalid">
-                                        Please leave a comment before submitting.
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-                                <div className="submitCommentBox mlmr">
-                            <Button className="submitBtn" type="submit" >Submit Comment</Button>
-                            
-                             </div>
+                        <div className="postCopyContainer" style={{width: "100%"}}>
+                            <Form className="commentForm" noValidate validated={validated} onSubmit={submitComment} style={{width: "100%"}}>
+                                <div className="form-row">
+                                    <Form.Group controlId="commentTextArea" style={{width: "100%"}}>
+                                        <Form.Control 
+                                        required
+                                        name="comment" 
+                                        type="text"
+                                        value={comment} 
+                                        placeholder="Start typing here..."
+                                        onChange={onInputChange} as="textarea" rows={10} />
+                                        <Form.Control.Feedback type="invalid">
+                                            Please leave a comment before submitting.
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                        <Button className="submitBtn" type="submit" >Submit Comment</Button>
+                                </div>
                             </Form>
                         </div>
                         
