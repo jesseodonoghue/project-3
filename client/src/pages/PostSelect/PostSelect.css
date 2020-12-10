@@ -9,6 +9,10 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.commentForm {
+    width: 100% !important;
+}
+
 .postContainer {
     display: flex;
     background-color: white;
@@ -95,8 +99,3 @@ p {
     border-bottom-right-radius: 8px;
 }
 
-.submitBtn {
-    border-color: white !important;
-    border-width: 2px !important;
-    background-color: transparent !important;
-}

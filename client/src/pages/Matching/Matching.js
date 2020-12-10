@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Form from 'react-bootstrap/Form';
+import Carousel from 'react-bootstrap/Carousel';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import { ArrowLeftCircle } from 'react-bootstrap-icons';
 import './Matching.css';
@@ -8,10 +9,6 @@ import MentorCard from '../../components/MentorCard/MentorCard';
 import AUTH from "../../utils/AUTH";
 import API from "../../utils/API";
 import Loading from '../../components/Loading/Loading';
-import { useTransition, animated } from 'react-spring';
-
-
-
 
 export default function Matching() {
     const [user, setUser] = useState({});
@@ -21,7 +18,6 @@ export default function Matching() {
     const [student, setStudent] = useState([]);
     const [mentor, setMentor] = useState([]);
 
-    
 
     useEffect(() => {
         loadUser();
@@ -175,16 +171,31 @@ export default function Matching() {
                                 </Form.Control>
                             </Form.Group>
                         </Form>
+                        
                         {student.length > 0 && (
-                            <div className="cardandArrowBox">
-                            <ArrowLeftCircle className="arrowsize" data-value="back" onClick={handleBtnClickStudent} />
-                            <StudentCard currentStudent= {student[userIndexStudent]} currentUser= {user} />
-                            <ArrowRightCircle className="arrowsize" data-value="next" onClick={handleBtnClickStudent} />
-                        </div>
+                            // <div className="carousel slide" data-ride="carousel">
+                            //     <div className="carousel-inner">
+                                <div className="cardandArrowBox">
+                                <ArrowLeftCircle className="arrowsize" data-value="back" onClick={handleBtnClickStudent} />
+                                        
+                                <StudentCard currentStudent= {student[userIndexStudent]} currentUser= {user} />
+                                        
+                                <ArrowRightCircle className="arrowsize" data-value="next" onClick={handleBtnClickStudent} />
+                                    
+                                </div>
+                                // <a className="carousel-control-prev" role="button" data-slide="prev" data-value="back" onClick={handleBtnClickStudent}>
+                                //     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                //     <span className="sr-only">Previous</span>
+                                // </a>
+                                // <a className="carousel-control-next" role="button" data-slide="next" data-value="next" onClick={handleBtnClickStudent} >
+                                //     <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                //     <span className="sr-only">Next</span>
+                                // </a>
                         )}
                         {!student.length > 0 && (
                             <h6>Select a language to search for Students.</h6>
                         )}
+                        
                     </div> 
                 </div>
 
