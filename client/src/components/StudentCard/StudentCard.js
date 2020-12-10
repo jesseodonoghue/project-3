@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './StudentCard.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
+import { PersonPlusFill, PersonDashFill } from 'react-bootstrap-icons';
 import API from '../../utils/API';
 
 
@@ -24,7 +24,7 @@ export default function StudentCard({currentStudent, currentUser}) {
         tempObj.mentoring = currentUser.mentoring;
         tempObj.mentoring.push(currentStudent._id);
         studentObj.learningFrom = currentStudent.learningFrom;
-        studentObj.learningFrom.push()
+        studentObj.learningFrom.push(currentUser._id);
 
         API.updateProfile(currentUser._id, tempObj)
         .then(res => {
@@ -33,6 +33,47 @@ export default function StudentCard({currentStudent, currentUser}) {
             return res.data;
         })
     }
+
+    function disconnect() {
+        let tempUserObj = {
+            mentoring: []
+        };
+        let tempStudentObj = {
+            learningFrom: []
+        };
+
+
+        // Getting User information
+        tempUserObj.mentoring = currentUser.mentoring;
+
+        const tempUserArray = tempUserObj.mentoring;
+
+        let userIndex =  tempUserArray.indexOf(currentStudent._id);
+
+        // // Getting Student information
+        tempStudentObj.learningFrom = currentStudent.learningFrom;
+
+        const tempStudentArray = currentStudent.learningFrom;
+
+        let studentIndex = tempStudentArray.indexOf(currentUser._id);
+
+
+        // // Removing specific Ids for each array
+        tempUserArray.splice(userIndex, 1);
+        tempStudentArray.splice(studentIndex, 1);
+
+        tempUserObj.mentoring = tempUserArray;
+        tempStudentObj.learningFrom = tempStudentArray;
+
+
+        API.updateProfile(currentUser._id, tempUserObj)
+        .then(res => {
+            setUser(res.data);
+            API.updateProfile(currentStudent._id, tempStudentObj)
+            return res.data;
+        })
+    }
+
 
     function getSkills(user) {
         const tempArr = [];
@@ -91,8 +132,8 @@ export default function StudentCard({currentStudent, currentUser}) {
                             </Button>
                         )}
                         {currentUser.mentoring.indexOf(currentStudent._id) !== -1 && (
-                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" >
-                                <PersonCheckFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
+                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" onClick={() => {disconnect()}}>
+                                <PersonDashFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
                             </Button>
                         )}
                     </div>
