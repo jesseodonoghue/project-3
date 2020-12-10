@@ -62,7 +62,7 @@ useEffect (() => {})
       console.log(response);
       if (!response.data.errmsg) {
         login(userObject.email, userObject.password)
-        setRedirectTo('/');
+        setRedirectTo('/profilesetgen');
       } else {
         console.log('duplicate');
       }

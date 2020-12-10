@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import ProfilePic from '../../assets/defaultprofilepic.svg';
 import './MentorCard.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { PersonPlusFill, PersonCheckFill } from 'react-bootstrap-icons';
+import { PersonPlusFill, PersonDashFill } from 'react-bootstrap-icons';
 import API from '../../utils/API';
 
 
@@ -14,8 +14,6 @@ export default function MentorCard( {currentMentor, currentUser} ) {
     const [user, setUser] = useState();
 
     function connect() {
-        // console.log(currentUser.learningFrom.indexOf(currentMentor._id));
-        // console.log(currentMentor);
         let tempObj = {
             learningFrom: []
         };
@@ -28,7 +26,6 @@ export default function MentorCard( {currentMentor, currentUser} ) {
         mentorObj.mentoring = currentMentor.mentoring;
         mentorObj.mentoring.push(currentUser._id);
 
-        // console.log(tempObj);
         API.updateProfile(currentUser._id, tempObj)
         .then(res => {
             setUser(res.data);
@@ -37,6 +34,42 @@ export default function MentorCard( {currentMentor, currentUser} ) {
         })
     }
     
+    function disconnect() {
+        let tempUserObj = {
+            learningFrom: []
+        };
+        let tempMentorObj = {
+            mentoring: []
+        };
+
+        tempUserObj.learningFrom = currentUser.learningFrom;
+
+        const tempUserArray = tempUserObj.learningFrom;
+
+        let userIndex =  tempUserArray.indexOf(currentMentor._id);
+
+        // // Getting Mentor information
+        tempMentorObj.mentoring = currentMentor.mentoring;
+
+        const tempMentorArray = currentMentor.mentoring;
+
+        let mentorIndex = tempMentorArray.indexOf(currentUser._id);
+
+        // // Removing specific Ids for each array
+        tempUserArray.splice(userIndex, 1);
+        tempMentorArray.splice(mentorIndex, 1);
+
+        tempUserObj.learningFrom = tempUserArray;
+        tempMentorObj.mentoring = tempMentorArray;
+
+        API.updateProfile(currentUser._id, tempUserObj)
+        .then(res => {
+            setUser(res.data);
+            API.updateProfile(currentMentor._id, tempMentorObj)
+            return res.data;
+        })
+    }
+
     function getSkills(user) {
         const tempArr = [];
 
@@ -93,16 +126,16 @@ export default function MentorCard( {currentMentor, currentUser} ) {
                             </Button>
                         )}
                         {currentUser.learningFrom.indexOf(currentMentor._id) !== -1 && (
-                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" >
-                                <PersonCheckFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
+                            <Button style={{marginLeft: "10px", marginBottom: ".5rem"}} variant="secondary" className="connectbtn" onClick={() => {disconnect()}} >
+                                <PersonDashFill style={{ color: "#8860D0", width: "100%", height: "100%" }}/>
                             </Button>
                         )}
                     </div>
                 </Card.Title>
                 {/* <Card.Text> */}
-                    <div className="bulletsforCard">
+                    {/* <div className="bulletsforCard">
                         {getSkills(currentMentor)}
-                    </div>
+                    </div> */}
                 {/* </Card.Text> */}
             </Card.Body>
             <Link style={{width: "100%"}} to={{
