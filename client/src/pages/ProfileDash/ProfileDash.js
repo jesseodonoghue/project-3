@@ -133,8 +133,9 @@ export default function ProfileDash() {
                     setModalShow(false);
                 })
                 .catch(err => console.log(err));
-                    
+                
         }
+
         setValidated(true);
     };
 
@@ -159,6 +160,7 @@ export default function ProfileDash() {
                             <Form.Control as="select" 
                             required
                             name="tag" 
+                            placeholder="Choose a tag"
                             onChange={handleInputChange} >
                                 <option>Choose a tag..</option>
                                 <option>JavaScript</option>
@@ -171,9 +173,6 @@ export default function ProfileDash() {
                                 <option>MongoDB</option>
                                 <option>mySQL</option>
                             </Form.Control>
-                            <Form.Control.Feedback type="invalid">
-                                You must have a title for your post!
-                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="postTitle">
@@ -184,9 +183,9 @@ export default function ProfileDash() {
                                 placeholder="Post Title" 
                                 name="title" 
                                 onChange={handleInputChange} />
-                                <Form.Control.Feedback type="invalid">
-                                    Please leave a comment before submitting.
-                                </Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                You must have a title for your post!
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group controlId="postContent">
@@ -206,6 +205,7 @@ export default function ProfileDash() {
                 </Modal.Footer>
             </Modal>
         );
+       
     }
 
     //states for modal  
