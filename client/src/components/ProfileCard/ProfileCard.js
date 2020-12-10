@@ -34,10 +34,6 @@ function ProfileCard() {
     //Toast Alert Hook
     const [show, setShow] = useState(false);
 
-    // //Button Hover
-    // const [buttonHover, setButtonHover] = useState(false);
-
-
 
     useEffect(() => {
         loadUser();
